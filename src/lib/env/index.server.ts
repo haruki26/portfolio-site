@@ -1,3 +1,4 @@
+import { createServerOnlyFn } from '@tanstack/react-start'
 import 'dotenv/config'
 import z from 'zod'
 
@@ -13,7 +14,7 @@ const envSchema = z.object({
   MICROCMS_SERVICE_DOMAIN: z.string(),
 })
 
-const parseEnv = () => {
+const parseEnv = createServerOnlyFn(() => {
   try {
     return envSchema.parse(process.env)
   } catch (error) {
@@ -24,7 +25,7 @@ const parseEnv = () => {
     }
     throw error
   }
-}
+})
 
 export type Env = z.infer<typeof envSchema>
 

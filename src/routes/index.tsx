@@ -1,4 +1,3 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import {
   Route as RouteIcon,
@@ -8,20 +7,12 @@ import {
   Waves,
   Zap,
 } from 'lucide-react'
-import { fetchAboutMeQueryOptions } from '@/api/aboutme'
 
 export const Route = createFileRoute('/')({
-  loader: async ({ context: { queryClient } }) => {
-    const data = await queryClient.ensureQueryData(fetchAboutMeQueryOptions())
-    console.log(data)
-  },
   component: App,
 })
 
 function App() {
-  const { data } = useSuspenseQuery(fetchAboutMeQueryOptions())
-  console.log(data.lastName)
-
   const features = [
     {
       icon: <Zap className="w-12 h-12 text-cyan-400" />,

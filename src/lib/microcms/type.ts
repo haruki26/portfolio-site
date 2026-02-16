@@ -10,7 +10,7 @@ import type {
 } from 'microcms-js-sdk'
 
 // endpoints
-interface Tag extends MicroCMSListContent {
+interface Tags extends MicroCMSListContent {
   name: string
 }
 
@@ -18,7 +18,8 @@ interface BaseContents extends MicroCMSListContent {
   title: string
   description: string
   body: string
-  tags: Tag[]
+  thumbnail?: MicroCMSImage
+  tags: Tags[]
 }
 
 interface Blogs extends BaseContents { }
@@ -46,7 +47,7 @@ interface Endpoints {
   }
   list: {
     works: Works
-    Blogs: Blogs
+    blogs: Blogs
   }
 }
 
@@ -94,4 +95,5 @@ export type {
   GetObjectResponse,
   Endpoints,
   Works,
+  Tags,
 }

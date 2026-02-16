@@ -12,7 +12,6 @@ import type {
   Endpoints,
   GetListRequest,
   GetListResponse,
-  GetObjectRequest,
   GetObjectResponse,
   GetQueries,
 } from './type'
@@ -31,8 +30,8 @@ export const createClient = (
   const client = _createClient(clientArg)
 
   const getList = <
-    TListEndpoint extends keyof Endpoints['list'],
-    TSchema extends Endpoints['list'][TListEndpoint] & MicroCMSListContent,
+    TListEndpoint extends keyof Endpoints,
+    TSchema extends Endpoints[TListEndpoint] & MicroCMSListContent,
     TField extends keyof TSchema,
   >({
     endpoint,
@@ -49,11 +48,11 @@ export const createClient = (
   }
 
   const getListDetail = <
-    TListEndpoints extends keyof Endpoints['list'],
-    TSchema extends Endpoints['list'][TListEndpoints] &
+    TListEndpoints extends keyof Endpoints,
+    TSchema extends Endpoints[TListEndpoints] &
     MicroCMSContentId &
     MicroCMSDate,
-    TField extends keyof Endpoints['list'][TListEndpoints],
+    TField extends keyof Endpoints[TListEndpoints],
   >({
     endpoint,
     contentId,
@@ -70,24 +69,5 @@ export const createClient = (
     })
   }
 
-  const getObject = <
-    TObjectEndpoints extends keyof Endpoints['object'],
-    TSchema extends Endpoints['object'][TObjectEndpoints] &
-    MicroCMSObjectContent,
-    TField extends keyof TSchema,
-  >({
-    endpoint,
-    queries = {},
-    ...args
-  }: GetObjectRequest<TObjectEndpoints, TSchema, TField>): Promise<
-    GetObjectResponse<TSchema, TField>
-  > => {
-    return client.getObject<TSchema>({
-      endpoint: String(endpoint),
-      queries: _queriesParser(queries),
-      ...args,
-    })
-  }
-
-  return { ...client, getList, getListDetail, getObject }
+  return { getListDetail, getList }
 }

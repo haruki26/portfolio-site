@@ -1,4 +1,5 @@
 import type { MicroCMSDate, MicroCMSImage } from 'microcms-js-sdk'
+import { toDate } from '@/lib/microcms/date'
 import { NotPublishedError } from '../error'
 import type { Image } from '../type'
 
@@ -13,7 +14,7 @@ const thumbnailMapper = (
     : undefined
 
 const updatedAtMapper = (updatedAt: MicroCMSDate['updatedAt']): Date =>
-  new Date(updatedAt)
+  toDate(updatedAt)
 
 const publishedAtMapper = (
   publishedAt: MicroCMSDate['publishedAt'],
@@ -22,7 +23,7 @@ const publishedAtMapper = (
   if (publishedAt === undefined) {
     throw new NotPublishedError(id)
   }
-  return new Date(publishedAt)
+  return toDate(publishedAt)
 }
 
 export { publishedAtMapper, thumbnailMapper, updatedAtMapper }

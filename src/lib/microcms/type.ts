@@ -1,7 +1,5 @@
 import type {
-  MicroCMSDate,
   GetListRequest as MicroCMSGetListRequest,
-  GetObjectRequest as MicroCMSGetObjectRequest,
   MicroCMSImage,
   MicroCMSListContent,
   MicroCMSListResponse,
@@ -26,29 +24,14 @@ interface Blogs extends BaseContents { }
 
 interface Works extends BaseContents { }
 
-interface Certification extends MicroCMSListContent {
+interface Certifications extends MicroCMSListContent {
   name: string
 }
 
-interface AboutMe {
-  firstName: string
-  lastName: string
-  firstNameEn: string
-  lastNameEn: string
-  avatar: MicroCMSImage
-  icon: MicroCMSImage
-  birthday: MicroCMSDate
-  certifications: Certification[]
-}
-
 interface Endpoints {
-  object: {
-    aboutme: AboutMe
-  }
-  list: {
-    works: Works
-    blogs: Blogs
-  }
+  works: Works
+  blogs: Blogs
+  certifications: Certifications
 }
 
 // MicroCMS Types
@@ -57,8 +40,8 @@ interface GetQueries<TField> extends Omit<MicroCMSQueries, 'fields'> {
 }
 
 interface GetListRequest<
-  TListEndpoints extends keyof Endpoints['list'],
-  TSchema extends Endpoints['list'][TListEndpoints],
+  TListEndpoints extends keyof Endpoints,
+  TSchema extends Endpoints[TListEndpoints],
   TField extends keyof TSchema,
 > extends Omit<MicroCMSGetListRequest, 'endpoint' | 'queries'> {
   endpoint: TListEndpoints
@@ -73,15 +56,6 @@ interface GetListResponse<TSchema, TField extends keyof TSchema>
   limit: number
 }
 
-interface GetObjectRequest<
-  TObjectEndpoints extends keyof Endpoints['object'],
-  TSchema extends Endpoints['object'][TObjectEndpoints],
-  TField extends keyof TSchema,
-> extends Omit<MicroCMSGetObjectRequest, 'endpoint' | 'queries'> {
-  endpoint: TObjectEndpoints
-  queries?: GetQueries<TField>
-}
-
 type GetObjectResponse<
   TSchema,
   TField extends keyof TSchema,
@@ -91,7 +65,6 @@ export type {
   GetQueries,
   GetListRequest,
   GetListResponse,
-  GetObjectRequest,
   GetObjectResponse,
   Endpoints,
   Works,

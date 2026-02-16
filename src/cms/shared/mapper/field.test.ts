@@ -34,11 +34,15 @@ describe('publishedAtMapper', () => {
   it('publishedAt を Date に変換する', () => {
     const publishedAt = '2026-02-16T00:00:00.000Z'
 
-    expect(publishedAtMapper(publishedAt, 'article-1')).toEqual(new Date(publishedAt))
+    expect(publishedAtMapper(publishedAt, 'article-1')).toEqual(
+      new Date(publishedAt),
+    )
   })
 
   it('publishedAt が undefined のとき NotPublishedError を投げる', () => {
-    expect(() => publishedAtMapper(undefined, 'article-1')).toThrowError(NotPublishedError)
+    expect(() => publishedAtMapper(undefined, 'article-1')).toThrowError(
+      NotPublishedError,
+    )
     expect(() => publishedAtMapper(undefined, 'article-1')).toThrowError(
       new NotPublishedError('article-1').message,
     )

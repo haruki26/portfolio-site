@@ -20,9 +20,9 @@ interface BaseContents extends MicroCMSListContent {
   tags: Tags[]
 }
 
-interface Blogs extends BaseContents { }
+interface Blogs extends BaseContents {}
 
-interface Works extends BaseContents { }
+interface Works extends BaseContents {}
 
 interface Certifications extends MicroCMSListContent {
   name: string

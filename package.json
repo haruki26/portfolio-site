@@ -7,9 +7,9 @@
         "build": "vite build",
         "preview": "vite preview",
         "test": "vitest run",
-        "format": "biome format",
+        "format": "biome format --write",
         "lint": "biome lint",
-        "check": "biome check",
+        "check": "biome check --write",
         "deploy": "pnpm run build && wrangler deploy",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"

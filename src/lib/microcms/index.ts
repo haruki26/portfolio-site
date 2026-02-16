@@ -3,7 +3,6 @@ import type {
   MicroCMSContentId,
   MicroCMSDate,
   MicroCMSListContent,
-  MicroCMSObjectContent,
   MicroCMSQueries,
 } from 'microcms-js-sdk'
 import { createClient as _createClient } from 'microcms-js-sdk'
@@ -12,7 +11,6 @@ import type {
   Endpoints,
   GetListRequest,
   GetListResponse,
-  GetObjectResponse,
   GetQueries,
 } from './type'
 
@@ -50,8 +48,8 @@ export const createClient = (
   const getListDetail = <
     TListEndpoints extends keyof Endpoints,
     TSchema extends Endpoints[TListEndpoints] &
-    MicroCMSContentId &
-    MicroCMSDate,
+      MicroCMSContentId &
+      MicroCMSDate,
     TField extends keyof Endpoints[TListEndpoints],
   >({
     endpoint,

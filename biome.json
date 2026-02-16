@@ -19,6 +19,7 @@
     "formatter": {
         "enabled": true,
         "indentStyle": "space",
+        "indentWidth": 2,
         "useEditorconfig": true
     },
     "assist": {
@@ -34,14 +35,30 @@
             "recommended": true,
             "correctness": {
                 "noUnusedImports": "error"
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "fix": "safe",
+                    "level": "error",
+                    "options": {
+                        "functions": ["twMerge", "clsx", "cn"]
+                    }
+                }
             }
         }
     },
     "javascript": {
         "formatter": {
+            "enabled": true,
             "quoteStyle": "single",
             "semicolons": "asNeeded",
             "trailingCommas": "all"
+        }
+    },
+    "json": {
+        "formatter": {
+            "enabled": true,
+            "indentWidth": 4
         }
     }
 }

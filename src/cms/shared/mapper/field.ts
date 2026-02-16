@@ -8,9 +8,9 @@ const thumbnailMapper = (
 ): Image | undefined =>
   thumbnail !== undefined
     ? {
-      src: thumbnail.url,
-      alt: thumbnail.alt,
-    }
+        src: thumbnail.url,
+        alt: thumbnail.alt,
+      }
     : undefined
 
 const updatedAtMapper = (updatedAt: MicroCMSDate['updatedAt']): Date =>

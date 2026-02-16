@@ -21,13 +21,12 @@ interface BaseArticle {
 
 type ListFilter =
   | {
-    currentPage?: undefined
-    limit?: number
-  }
+      currentPage?: undefined
+      limit?: number
+    }
   | {
-    currentPage: number
-    limit: number
-  }
+      currentPage: number
+      limit: number
+    }
 
 export type { BaseArticle, Tag, ListFilter, Image }
-

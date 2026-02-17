@@ -6,7 +6,7 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-
+import Header from '@/components/layout/Header'
 import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools'
 import * as TanStackQueryProvider from '@/integrations/tanstack-query/root-provider'
 import appCss from '@/styles.css?url'
@@ -43,13 +43,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   const contexts = TanStackQueryProvider.getContext()
 
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-base-100 px-2">
         <TanStackQueryProvider.Provider {...contexts}>
-          {children}
+          <div className="sticky top-0 left-0 w-full">
+            <Header />
+          </div>
+          <div className="flex-1">
+            <main>{children}</main>
+          </div>
           <TanStackDevtools
             config={{
               position: 'bottom-right',

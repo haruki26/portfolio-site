@@ -9,7 +9,7 @@ const HamburgerElement: React.FC<HamburgerElementProps> = ({ className }) => {
   return (
     <span
       className={cn(
-        'h-0.5 w-8 bg-primary-100 transition-transform duration-500 ease-in-out',
+        'h-0.5 w-8 bg-secondary-100 transition-transform duration-500 ease-in-out',
         className,
       )}
     />

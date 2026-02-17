@@ -9,7 +9,7 @@ const Glass: React.FC<Props> = ({ children, className }) => {
   return (
     <div
       className={cn(
-        'rounded-3xl bg-surface-100/10 backdrop-blur-lg',
+        'rounded-2xl bg-surface-100/30 backdrop-blur-xs',
         className,
       )}
     >

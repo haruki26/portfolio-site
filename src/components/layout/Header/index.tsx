@@ -7,12 +7,12 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <Glass className="flex flex-row items-center gap-3 px-5 py-4">
+      <Glass className="flex flex-row items-center gap-3 px-5 py-4 shadow-accent/10 shadow-xl">
         <Hamburger
           onClick={() => setIsOpenSidebar((prev) => !prev)}
           isOpen={isOpenSidebar}
         />
-        <span>This is header content.</span>
+        <span className="text-primary-100">This is header content.</span>
       </Glass>
     </header>
   )

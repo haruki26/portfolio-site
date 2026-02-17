@@ -6,6 +6,7 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import CosmoBackground from '@/components/layout/CosmoBackground'
 import Header from '@/components/layout/Header'
 import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools'
 import * as TanStackQueryProvider from '@/integrations/tanstack-query/root-provider'
@@ -47,7 +48,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-base-100 px-2">
+      <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-base-100 px-2 py-4">
+        <CosmoBackground />
         <TanStackQueryProvider.Provider {...contexts}>
           <div className="sticky top-0 left-0 w-full">
             <Header />

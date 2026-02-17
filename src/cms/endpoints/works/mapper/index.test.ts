@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { NotPublishedError } from '@/cms/shared/error'
 import type { Works } from '@/lib/microcms/type'
 import { workDetailMapper, workOverviewMapper } from './index'

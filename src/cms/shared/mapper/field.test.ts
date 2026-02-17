@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { NotPublishedError } from '../error'
 import { publishedAtMapper, thumbnailMapper, updatedAtMapper } from './field'
 

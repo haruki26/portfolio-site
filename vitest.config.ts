@@ -7,7 +7,12 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      include: ['src/**/*.{ts|tsx}'],
+      include: ['src/**/*.ts', 'src/**/*.tsx'],
+      exclude: ['routeTree.gen.ts'],
+      reporter: [
+        'text', 'json-summary', 'json'
+      ],
+      reportOnFailure: true,
     },
     projects: [
       {

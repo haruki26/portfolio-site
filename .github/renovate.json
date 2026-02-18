@@ -14,7 +14,7 @@
         "mise"
     ],
     "schedule": [
-        "at any time on Monday"
+        "on Monday"
     ],
     "timezone": "Asia/Tokyo",
     "rangeStrategy": "pin",

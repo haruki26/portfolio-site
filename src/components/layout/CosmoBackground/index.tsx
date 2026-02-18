@@ -1,4 +1,5 @@
 import { ClientOnly } from '@tanstack/react-router'
+import { cn } from '@/lib/cn'
 
 const STAR_MIN_SIZE = 0.5
 const STAR_MAX_SIZE = 2.5
@@ -9,7 +10,15 @@ const Star = () => {
 
   return (
     <span
-      className="twinkle absolute bg-zinc-50"
+      className={cn(
+        'twinkle absolute bg-radial from-zinc-50 shadow',
+        ((arr: string[]) => arr[Math.floor(Math.random() * arr.length)])([
+          'to-indigo-500 shadow-slate-300/60',
+          'to-cyan-200 shadow-indigo-600/60',
+          'to-yellow-200 shadow-yellow-300/50',
+          'to-rose-400 shadow-red-800/90',
+        ]),
+      )}
       style={{
         width: `${size}px`,
         height: `${size}px`,

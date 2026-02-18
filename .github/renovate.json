@@ -42,13 +42,17 @@
             "matchManagers": [
                 "npm"
             ],
-            "excludePackagePatterns": [
-                "^react$",
-                "^react-dom$",
-                "^@tanstack/"
-            ],
             "groupName": "pnpm dependencies",
             "groupSlug": "pnpm-all",
+            "matchPackageNames": [
+                "!/^react$/",
+                "!/^react-dom$/",
+                "@tanstack/react-start"
+            ],
+            "matchUpdateTypes": [
+                "patch",
+                "minor"
+            ],
             "automerge": true
         },
         {
@@ -56,8 +60,14 @@
                 "react",
                 "react-dom"
             ],
-            "matchPackagePatterns": [
-                "^@tanstack/"
+            "matchUpdateTypes": [
+                "patch"
+            ],
+            "automerge": true
+        },
+        {
+            "matchPackageNames": [
+                "@tanstack/react-start"
             ],
             "matchUpdateTypes": [
                 "patch"

@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?&family=Orbitron&family=Roboto+Flex&family=JetBrains+Mono&display=swap');
 @import "tailwindcss";
 
 @theme {
+    --font-orbitron: "Orbitron", sans-serif;
+    --font-roboto-flex: "Roboto Flex", sans-serif;
+    --font-jetbrains-mono: "JetBrains Mono", monospace;
+
     /* Base - 深い紫がかったダークブルー */
     --color-base-100: oklch(0.26 0.04 280.5);
     --color-base-200: oklch(0.18 0.04 280.5);
@@ -30,7 +35,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Roboto Flex", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,7 +44,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 

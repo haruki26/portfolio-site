@@ -12,7 +12,9 @@ const Header: React.FC = () => {
           onClick={() => setIsOpenSidebar((prev) => !prev)}
           isOpen={isOpenSidebar}
         />
-        <span className="text-shadow-edge">This is header content.</span>
+        <span className="font-orbitron text-lg text-shadow-edge">
+          yosei.dev
+        </span>
       </Glass>
     </header>
   )

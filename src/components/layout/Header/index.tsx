@@ -7,7 +7,7 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <Glass className="flex flex-row items-center gap-3 px-5 py-4">
+      <Glass className="z-50 flex flex-row items-center gap-4 px-5 py-4">
         <Hamburger
           onClick={() => setIsOpenSidebar((prev) => !prev)}
           isOpen={isOpenSidebar}

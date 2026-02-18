@@ -17,8 +17,16 @@ describe('Header', () => {
 
     await user.click(button)
 
-    expect(lines[0]).toHaveClass('translate-y-2', 'rotate-45', 'md:translate-y-2.5')
+    expect(lines[0]).toHaveClass(
+      'translate-y-2',
+      'rotate-45',
+      'md:translate-y-2.5',
+    )
     expect(lines[1]).toHaveClass('opacity-0')
-    expect(lines[2]).toHaveClass('-translate-y-2', '-rotate-45', 'md:-translate-y-2.5')
+    expect(lines[2]).toHaveClass(
+      '-translate-y-2',
+      '-rotate-45',
+      'md:-translate-y-2.5',
+    )
   })
 })

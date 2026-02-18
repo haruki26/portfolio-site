@@ -45,9 +45,9 @@
             "groupName": "pnpm dependencies",
             "groupSlug": "pnpm-all",
             "matchPackageNames": [
-                "!/^react$/",
-                "!/^react-dom$/",
-                "@tanstack/react-start"
+                "!react",
+                "!react-dom",
+                "!@tanstack/react-start"
             ],
             "matchUpdateTypes": [
                 "patch",

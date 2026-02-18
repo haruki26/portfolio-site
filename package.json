@@ -7,12 +7,15 @@
         "build": "vite build",
         "preview": "vite preview",
         "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
         "format": "biome format --write",
         "lint": "biome lint",
         "check": "biome check --write",
         "deploy": "pnpm run build && wrangler deploy",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
+        "build-storybook": "storybook build",
+        "ci:check": "biome check",
+        "ci:type": "tsc --noEmit"
     },
     "dependencies": {
         "@cloudflare/vite-plugin": "^1.25.0",

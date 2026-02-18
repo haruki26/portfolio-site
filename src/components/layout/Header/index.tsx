@@ -12,7 +12,7 @@ const Header: React.FC = () => {
           onClick={() => setIsOpenSidebar((prev) => !prev)}
           isOpen={isOpenSidebar}
         />
-        <span className="text-primary-100">This is header content.</span>
+        <span className="text-shadow-edge">This is header content.</span>
       </Glass>
     </header>
   )

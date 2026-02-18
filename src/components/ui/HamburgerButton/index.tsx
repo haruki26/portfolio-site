@@ -9,7 +9,9 @@ const HamburgerElement: React.FC<HamburgerElementProps> = ({ className }) => {
   return (
     <span
       className={cn(
-        'h-0.5 w-8 bg-secondary-100 transition-transform duration-500 ease-in-out',
+        'h-0.5 w-6 md:w-8',
+        'bg-primary-100 shadow-secondary shadow-sm backdrop-blur-md transition duration-500 ease-in-out',
+        'border border-white/20 group-hover:bg-primary-300',
         className,
       )}
     />
@@ -26,11 +28,15 @@ const Hamburger: React.FC<Props> = ({ isOpen, onClick }) => {
     <button
       type="button"
       onClick={onClick}
-      className="flex h-fit flex-col gap-2"
+      className="group flex h-fit flex-col gap-1.5 transition md:gap-2"
     >
-      <HamburgerElement className={isOpen && 'translate-y-2.5 rotate-45'} />
+      <HamburgerElement
+        className={isOpen && 'translate-y-2 rotate-45 md:translate-y-2.5'}
+      />
       <HamburgerElement className={isOpen && 'opacity-0'} />
-      <HamburgerElement className={isOpen && '-translate-y-2.5 -rotate-45'} />
+      <HamburgerElement
+        className={isOpen && '-translate-y-2 -rotate-45 md:-translate-y-2.5'}
+      />
     </button>
   )
 }

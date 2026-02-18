@@ -1,37 +1,67 @@
 import { ClientOnly } from '@tanstack/react-router'
+import type { ClassValue } from 'clsx'
+import type React from 'react'
+import { useMemo } from 'react'
 import { cn } from '@/lib/cn'
 
 const STAR_MIN_SIZE = 0.5
 const STAR_MAX_SIZE = 2.5
 const STAR_NUM = 100
 
-const Star = () => {
-  const size = Math.random() * (STAR_MAX_SIZE - STAR_MIN_SIZE) + STAR_MIN_SIZE
+const STAR_COLORS = ['indigo', 'cyan', 'purple', 'yellow', 'rose'] as const
+type StarColor = (typeof STAR_COLORS)[number]
 
+const STAR_VARIANTS: Record<StarColor, ClassValue> = {
+  indigo: 'to-indigo-500 shadow-slate-300/60',
+  cyan: 'to-cyan-200 shadow-indigo-600/60',
+  purple: 'to-purple-300 shadow-rose-300/80',
+  yellow: 'to-yellow-200 shadow-yellow-300/50',
+  rose: 'to-rose-400 shadow-red-800/90',
+}
+
+interface StarProps {
+  size: number
+  position: { x: number; y: number }
+  animationDelay: number
+  variant: StarColor
+}
+
+const Star: React.FC<StarProps> = ({
+  size,
+  position,
+  animationDelay,
+  variant,
+}) => {
   return (
     <span
       className={cn(
         'twinkle absolute bg-radial from-zinc-50 shadow',
-        ((arr: string[]) => arr[Math.floor(Math.random() * arr.length)])([
-          'to-indigo-500 shadow-slate-300/60',
-          'to-cyan-200 shadow-indigo-600/60',
-          'to-purple-300 shadow-rose-300/80',
-          'to-yellow-200 shadow-yellow-300/50',
-          'to-rose-400 shadow-red-800/90',
-        ]),
+        STAR_VARIANTS[variant],
       )}
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        top: `${Math.random() * 100}vh`,
-        left: `${Math.random() * 100}vw`,
-        animationDelay: `${Math.random() * 10}s`,
+        top: `${position.y}vh`,
+        left: `${position.x}vw`,
+        animationDelay: `${animationDelay}s`,
       }}
     />
   )
 }
 
-const CosmoBackground = () => {
+const CosmoBackground: React.FC = () => {
+  const stars = useMemo(
+    () =>
+      Array.from({ length: STAR_NUM }, (_): StarProps & { id: string } => ({
+        id: Math.random().toString(),
+        size: Math.random() * (STAR_MAX_SIZE - STAR_MIN_SIZE) + STAR_MIN_SIZE,
+        position: { x: Math.random() * 100, y: Math.random() * 100 },
+        animationDelay: Math.random() * 10,
+        variant: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
+      })),
+    [],
+  )
+
   return (
     <div className="pointer-events-none fixed top-0 left-0 -z-50 h-full w-full overflow-hidden">
       <span className="cosmo absolute top-1/4 right-1/4 h-40 w-40 bg-radial from-purple-500/50 to-purple-300/5 blur-2xl delay-193" />
@@ -39,8 +69,8 @@ const CosmoBackground = () => {
       <span className="cosmo absolute top-1/3 left-1/3 h-60 w-60 bg-radial from-indigo-500/40 to-indigo-300/5 blur-2xl" />
       <span className="twinkle absolute bottom-1/2 left-1/2 h-20 w-20 bg-radial from-slate-200/60 to-indigo-300/40 blur-2xl" />
       <ClientOnly>
-        {Array.from({ length: STAR_NUM }).map((_) => (
-          <Star key={Math.random()} />
+        {stars.map(({ id, ...props }) => (
+          <Star key={id} {...props} />
         ))}
       </ClientOnly>
     </div>

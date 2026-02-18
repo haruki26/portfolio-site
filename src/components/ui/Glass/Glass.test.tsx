@@ -13,9 +13,9 @@ describe('Glass', () => {
     const wrapper = child.parentElement
 
     expect(wrapper).toHaveClass(
-      'rounded-3xl',
-      'bg-surface-100/10',
-      'backdrop-blur-lg',
+      'rounded-2xl',
+      'bg-surface/30',
+      'backdrop-blur-[1.5px]',
       'custom-class',
     )
     expect(child).toBeInTheDocument()

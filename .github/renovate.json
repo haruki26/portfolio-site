@@ -1,0 +1,68 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended",
+        ":separatePatchReleases",
+        ":label(dependencies)"
+    ],
+    "assignees": [
+        "haruki26"
+    ],
+    "automerge": true,
+    "enabledManagers": [
+        "npm",
+        "mise"
+    ],
+    "schedule": [
+        "at any time on Monday"
+    ],
+    "timezone": "Asia/Tokyo",
+    "rangeStrategy": "pin",
+    "packageRules": [
+        {
+            "matchManagers": [
+                "npm"
+            ],
+            "postUpdateOptions": [
+                "pnpmDedupe"
+            ],
+            "labels": [
+                "dep:pnpm"
+            ]
+        },
+        {
+            "matchManagers": [
+                "mise"
+            ],
+            "labels": [
+                "dep:mise"
+            ]
+        },
+        {
+            "matchManagers": [
+                "npm"
+            ],
+            "excludePackagePatterns": [
+                "^react$",
+                "^react-dom$",
+                "^@tanstack/"
+            ],
+            "groupName": "pnpm dependencies",
+            "groupSlug": "pnpm-all",
+            "automerge": true
+        },
+        {
+            "matchPackageNames": [
+                "react",
+                "react-dom"
+            ],
+            "matchPackagePatterns": [
+                "^@tanstack/"
+            ],
+            "matchUpdateTypes": [
+                "patch"
+            ],
+            "automerge": true
+        }
+    ]
+}

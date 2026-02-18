@@ -63,7 +63,7 @@ const CosmoBackground: React.FC = () => {
   )
 
   return (
-    <div className="pointer-events-none fixed top-0 left-0 -z-50 h-full w-full overflow-hidden">
+    <div className="-z-50 pointer-events-none fixed top-0 left-0 h-full w-full overflow-hidden">
       <span className="cosmo absolute top-1/4 right-1/4 h-40 w-40 bg-radial from-purple-500/50 to-purple-300/5 blur-2xl delay-193" />
       <span className="cosmo absolute right-1/3 bottom-1/3 h-50 w-50 bg-radial from-teal-500/30 to-teal-300/5 blur-2xl delay-367" />
       <span className="cosmo absolute top-1/3 left-1/3 h-60 w-60 bg-radial from-indigo-500/40 to-indigo-300/5 blur-2xl" />

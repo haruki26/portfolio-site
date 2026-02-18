@@ -8,9 +8,17 @@ describe('HamburgerButton', () => {
     const lines = container.querySelectorAll('span')
 
     expect(lines).toHaveLength(3)
-    expect(lines[0]).toHaveClass('translate-y-2', 'rotate-45', 'md:translate-y-2.5')
+    expect(lines[0]).toHaveClass(
+      'translate-y-2',
+      'rotate-45',
+      'md:translate-y-2.5',
+    )
     expect(lines[1]).toHaveClass('opacity-0')
-    expect(lines[2]).toHaveClass('-translate-y-2', '-rotate-45', 'md:-translate-y-2.5')
+    expect(lines[2]).toHaveClass(
+      '-translate-y-2',
+      '-rotate-45',
+      'md:-translate-y-2.5',
+    )
   })
 
   it('ボタンクリックでonClickを呼び出す', async () => {

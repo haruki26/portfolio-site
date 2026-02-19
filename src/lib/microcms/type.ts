@@ -26,6 +26,7 @@ interface Works extends BaseContents {}
 
 interface Certifications extends MicroCMSListContent {
   name: string
+  date: string
 }
 
 interface Hobbies {

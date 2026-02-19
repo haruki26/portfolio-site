@@ -47,6 +47,8 @@ describe('blogOverviewMapper', () => {
       thumbnail: {
         src: 'https://example.com/blogs/thumbnail.png',
         alt: 'thumbnail',
+        width: 500,
+        height: 300,
       },
       publishedAt: new Date(baseBlog.publishedAt),
       tags: baseBlog.tags,
@@ -91,6 +93,8 @@ describe('blogDetailMapper', () => {
       thumbnail: {
         src: 'https://example.com/blogs/thumbnail.png',
         alt: 'thumbnail',
+        width: 500,
+        height: 300,
       },
       publishedAt: new Date(baseBlog.publishedAt),
       updatedAt: new Date(baseBlog.updatedAt),

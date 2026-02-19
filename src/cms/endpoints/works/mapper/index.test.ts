@@ -47,6 +47,8 @@ describe('workOverviewMapper', () => {
       thumbnail: {
         src: 'https://example.com/works/thumbnail.png',
         alt: 'thumbnail',
+        width: 500,
+        height: 300,
       },
       publishedAt: new Date(baseWork.publishedAt),
       tags: baseWork.tags,
@@ -91,6 +93,8 @@ describe('workDetailMapper', () => {
       thumbnail: {
         src: 'https://example.com/works/thumbnail.png',
         alt: 'thumbnail',
+        width: 500,
+        height: 300,
       },
       publishedAt: new Date(baseWork.publishedAt),
       updatedAt: new Date(baseWork.updatedAt),

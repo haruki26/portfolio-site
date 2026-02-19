@@ -1,9 +1,9 @@
-import { tagMapper } from '@/cms/shared/mapper'
 import {
   publishedAtMapper,
+  tagMapper,
   thumbnailMapper,
-  updatedAtMapper,
-} from '@/cms/shared/mapper/field'
+} from '@/cms/shared/mapper'
+import { dateMapper } from '@/cms/shared/mapper/field'
 import type { Blogs } from '@/lib/microcms/type'
 import type { Blog } from '../type'
 
@@ -42,7 +42,7 @@ const blogDetailMapper = ({
 }: Blogs): Blog => ({
   ...rest,
   ...commonMapper({ id: rest.id, thumbnail, publishedAt, tags }),
-  updatedAt: updatedAtMapper(updatedAt),
+  updatedAt: dateMapper(updatedAt),
 })
 
 export { blogDetailMapper, blogOverviewMapper }

@@ -1,4 +1,5 @@
 import type { Certifications } from '@/lib/microcms/type'
+import type { Certification } from '../type'
 import { certificationMapper } from './index'
 
 describe('certificationMapper', () => {
@@ -16,6 +17,6 @@ describe('certificationMapper', () => {
     expect(certificationMapper(input)).toEqual({
       name: 'AWS Certified Developer - Associate',
       date: new Date(input.date),
-    })
+    } satisfies Certification)
   })
 })

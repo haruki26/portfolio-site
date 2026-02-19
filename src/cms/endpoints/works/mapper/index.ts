@@ -34,14 +34,20 @@ const workOverviewMapper = ({
 })
 
 const workDetailMapper = ({
+  id,
+  title,
+  description,
+  body,
   thumbnail,
   publishedAt,
   updatedAt,
   tags,
-  ...rest
 }: Works): Work => ({
-  ...rest,
-  ...commonMapper({ id: rest.id, thumbnail, publishedAt, tags }),
+  id,
+  title,
+  description,
+  body,
+  ...commonMapper({ id, thumbnail, publishedAt, tags }),
   updatedAt: dateMapper(updatedAt),
 })
 

@@ -1,4 +1,5 @@
 import type { Hobbies } from '@/lib/microcms/type'
+import type { Hobby } from '../type'
 import { hobbyMapper } from './index'
 
 describe('hobbyMapper', () => {
@@ -28,7 +29,6 @@ describe('hobbyMapper', () => {
     } satisfies Hobbies
 
     expect(hobbyMapper(input)).toEqual({
-      id: 'hobby-1',
       name: 'Photography',
       description: 'I enjoy taking landscape photos.',
       images: [
@@ -45,10 +45,6 @@ describe('hobbyMapper', () => {
           alt: 'Ocean view',
         },
       ],
-      createdAt: '2026-02-14T00:00:00.000Z',
-      updatedAt: '2026-02-15T00:00:00.000Z',
-      publishedAt: '2026-02-16T00:00:00.000Z',
-      revisedAt: '2026-02-17T00:00:00.000Z',
-    })
+    } satisfies Hobby)
   })
 })

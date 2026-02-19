@@ -1,5 +1,6 @@
 import { NotPublishedError } from '@/cms/shared/error'
 import type { Blogs } from '@/lib/microcms/type'
+import type { Blog } from '../type'
 import { blogDetailMapper, blogOverviewMapper } from './index'
 
 const baseBlog = {
@@ -88,8 +89,6 @@ describe('blogDetailMapper', () => {
       title: 'My Blog',
       description: 'Blog description',
       body: '<p>blog body</p>',
-      createdAt: '2026-02-14T00:00:00.000Z',
-      revisedAt: '2026-02-17T00:00:00.000Z',
       thumbnail: {
         src: 'https://example.com/blogs/thumbnail.png',
         alt: 'thumbnail',
@@ -99,6 +98,6 @@ describe('blogDetailMapper', () => {
       publishedAt: new Date(baseBlog.publishedAt),
       updatedAt: new Date(baseBlog.updatedAt),
       tags: baseBlog.tags,
-    })
+    } satisfies Blog)
   })
 })

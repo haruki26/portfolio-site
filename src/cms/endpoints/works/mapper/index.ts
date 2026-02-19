@@ -5,7 +5,7 @@ import {
 } from '@/cms/shared/mapper'
 import { dateMapper } from '@/cms/shared/mapper/field'
 import type { Work } from '@/features/work/types'
-import type { Works } from '@/lib/microcms/type'
+import type { Works } from '@/libs/microcms/type'
 
 type OverviewKeys =
   | 'id'

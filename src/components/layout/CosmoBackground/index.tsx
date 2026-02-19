@@ -2,7 +2,7 @@ import { ClientOnly } from '@tanstack/react-router'
 import type { ClassValue } from 'clsx'
 import type React from 'react'
 import { useMemo } from 'react'
-import { cn } from '@/lib/cn'
+import { cn } from '@/libs/cn'
 
 const STAR_MIN_SIZE = 0.5
 const STAR_MAX_SIZE = 2.5

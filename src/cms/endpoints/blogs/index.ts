@@ -1,5 +1,5 @@
 import type { ListFilter } from '@/cms/shared/type'
-import { tryAsync } from '@/lib/result'
+import { tryAsync } from '@/libs/result'
 import { fetchBlogDetail, fetchBlogsOverview } from './functions'
 import { blogDetailMapper, blogOverviewMapper } from './mapper'
 

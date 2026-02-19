@@ -1,5 +1,5 @@
 import type { ListFilter } from '@/cms/shared/type'
-import { tryAsync } from '@/lib/result'
+import { tryAsync } from '@/libs/result'
 import { fetchWorkDetail, fetchWorksOverview } from './functions'
 import { workDetailMapper, workOverviewMapper } from './mapper'
 

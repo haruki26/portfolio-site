@@ -1,5 +1,5 @@
 import type { ListFilter } from '@/cms/shared/type'
-import { createClient } from '@/lib/microcms'
+import { createClient } from '@/libs/microcms'
 
 const fetchBlogsOverview = async (options?: ListFilter) => {
   const client = createClient()

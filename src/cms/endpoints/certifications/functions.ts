@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/microcms'
+import { createClient } from '@/libs/microcms'
 
 const fetchCertifications = async () => {
   const client = createClient()

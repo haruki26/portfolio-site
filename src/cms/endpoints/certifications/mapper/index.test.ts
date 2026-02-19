@@ -1,5 +1,5 @@
 import type { Certification } from '@/features/about/types'
-import type { Certifications } from '@/lib/microcms/type'
+import type { Certifications } from '@/libs/microcms/type'
 import { certificationMapper } from './index'
 
 describe('certificationMapper', () => {

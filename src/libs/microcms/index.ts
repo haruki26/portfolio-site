@@ -6,7 +6,7 @@ import type {
   MicroCMSQueries,
 } from 'microcms-js-sdk'
 import { createClient as _createClient } from 'microcms-js-sdk'
-import { appEnv } from '@/lib/env'
+import { appEnv } from '@/libs/env'
 import type {
   Endpoints,
   GetListRequest,

@@ -1,5 +1,5 @@
 import { QueryError } from '@/errors'
-import type { SerializableError } from '@/lib/result'
+import type { SerializableError } from '@/libs/result'
 
 const createQueryError = (e: SerializableError) => {
   const error = new QueryError(e.message)

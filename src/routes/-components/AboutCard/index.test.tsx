@@ -6,7 +6,9 @@ describe('AboutCard', () => {
   it('プロフィール情報と説明文を表示する', () => {
     render(<AboutCard />)
 
-    const icon = screen.getByRole('img', { name: 'my-icon' })
+    const icon = screen.getByRole('img', {
+      name: `${MY_INFO.lastName} ${MY_INFO.firstName}のプロフィール画像`,
+    })
 
     expect(icon).toHaveAttribute('src', expect.stringContaining('icon.svg'))
     expect(screen.getByText(MY_INFO.lastName)).toBeInTheDocument()

@@ -26,12 +26,20 @@ interface Works extends BaseContents {}
 
 interface Certifications extends MicroCMSListContent {
   name: string
+  date: string
+}
+
+interface Hobbies extends MicroCMSListContent {
+  name: string
+  description: string
+  images: MicroCMSImage[]
 }
 
 interface Endpoints {
   works: Works
   blogs: Blogs
   certifications: Certifications
+  hobbies: Hobbies
 }
 
 // MicroCMS Types
@@ -68,5 +76,8 @@ export type {
   GetObjectResponse,
   Endpoints,
   Works,
+  Blogs,
   Tags,
+  Hobbies,
+  Certifications,
 }

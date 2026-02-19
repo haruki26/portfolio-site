@@ -1,10 +1,10 @@
 import type { ListFilter } from '@/cms/shared/type'
 import { createClient } from '@/lib/microcms'
 
-const fetchWorksOverview = async (options?: ListFilter) => {
+const fetchBlogsOverview = async (options?: ListFilter) => {
   const client = createClient()
   return await client.getList({
-    endpoint: 'works',
+    endpoint: 'blogs',
     queries: {
       fields: [
         'id',
@@ -23,12 +23,12 @@ const fetchWorksOverview = async (options?: ListFilter) => {
   })
 }
 
-const fetchWorkDetail = async (id: string) => {
+const fetchBlogDetail = async (id: string) => {
   const client = createClient()
   return await client.getListDetail({
-    endpoint: 'works',
+    endpoint: 'blogs',
     contentId: id,
   })
 }
 
-export { fetchWorkDetail, fetchWorksOverview }
+export { fetchBlogDetail, fetchBlogsOverview }

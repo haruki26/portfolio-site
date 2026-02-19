@@ -1,5 +1,6 @@
 import { NotPublishedError } from '@/cms/shared/error'
 import type { Works } from '@/lib/microcms/type'
+import type { Work } from '../type'
 import { workDetailMapper, workOverviewMapper } from './index'
 
 const baseWork = {
@@ -47,6 +48,8 @@ describe('workOverviewMapper', () => {
       thumbnail: {
         src: 'https://example.com/works/thumbnail.png',
         alt: 'thumbnail',
+        width: 500,
+        height: 300,
       },
       publishedAt: new Date(baseWork.publishedAt),
       tags: baseWork.tags,
@@ -86,15 +89,15 @@ describe('workDetailMapper', () => {
       title: 'Portfolio Site',
       description: 'My portfolio site',
       body: '<p>detail body</p>',
-      createdAt: '2026-02-14T00:00:00.000Z',
-      revisedAt: '2026-02-17T00:00:00.000Z',
       thumbnail: {
         src: 'https://example.com/works/thumbnail.png',
         alt: 'thumbnail',
+        width: 500,
+        height: 300,
       },
       publishedAt: new Date(baseWork.publishedAt),
       updatedAt: new Date(baseWork.updatedAt),
       tags: baseWork.tags,
-    })
+    } satisfies Work)
   })
 })

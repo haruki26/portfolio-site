@@ -4,8 +4,8 @@ import {
   thumbnailMapper,
 } from '@/cms/shared/mapper'
 import { dateMapper } from '@/cms/shared/mapper/field'
-import type { Works } from '@/lib/microcms/type'
-import type { Work } from '../type'
+import type { Blogs } from '@/lib/microcms/type'
+import type { Blog } from '../type'
 
 type OverviewKeys =
   | 'id'
@@ -16,24 +16,24 @@ type OverviewKeys =
   | 'tags'
 
 const commonMapper = (
-  target: Pick<Works, 'id' | 'thumbnail' | 'publishedAt' | 'tags'>,
+  target: Pick<Blogs, 'id' | 'thumbnail' | 'publishedAt' | 'tags'>,
 ) => ({
   thumbnail: thumbnailMapper(target.thumbnail),
   publishedAt: publishedAtMapper(target.publishedAt, target.id),
   tags: target.tags.map(tagMapper),
 })
 
-const workOverviewMapper = ({
+const blogOverviewMapper = ({
   thumbnail,
   publishedAt,
   tags,
   ...rest
-}: Pick<Works, OverviewKeys>): Pick<Work, OverviewKeys> => ({
+}: Pick<Blogs, OverviewKeys>): Pick<Blog, OverviewKeys> => ({
   ...rest,
   ...commonMapper({ id: rest.id, thumbnail, publishedAt, tags }),
 })
 
-const workDetailMapper = ({
+const blogDetailMapper = ({
   id,
   title,
   description,
@@ -42,7 +42,7 @@ const workDetailMapper = ({
   publishedAt,
   updatedAt,
   tags,
-}: Works): Work => ({
+}: Blogs): Blog => ({
   id,
   title,
   description,
@@ -51,4 +51,4 @@ const workDetailMapper = ({
   updatedAt: dateMapper(updatedAt),
 })
 
-export { workDetailMapper, workOverviewMapper }
+export { blogDetailMapper, blogOverviewMapper }

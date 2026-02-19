@@ -29,7 +29,7 @@ interface Certifications extends MicroCMSListContent {
   date: string
 }
 
-interface Hobbies {
+interface Hobbies extends MicroCMSListContent {
   name: string
   description: string
   images: MicroCMSImage[]

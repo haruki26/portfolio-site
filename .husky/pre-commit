@@ -1,2 +1,5 @@
 lint-staged
 
+pnpm ci:type
+pnpm test
+

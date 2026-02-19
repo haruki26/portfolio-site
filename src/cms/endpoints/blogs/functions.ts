@@ -17,7 +17,7 @@ const fetchBlogsOverview = async (options?: ListFilter) => {
       limit: options?.limit,
       offset:
         options?.currentPage !== undefined
-          ? options.limit * (1 - options.currentPage)
+          ? options.limit * (options.currentPage - 1)
           : undefined,
     },
   })

@@ -1,3 +1,6 @@
+import type z from 'zod'
+import type { getArticleListSchema } from './schemas'
+
 interface Image {
   src: string
   alt?: string
@@ -21,4 +24,6 @@ interface Article {
   tags: Tag[]
 }
 
-export type { Image, Article, Tag }
+type GetArticleListQuery = z.infer<typeof getArticleListSchema>
+
+export type { Image, Article, Tag, GetArticleListQuery }

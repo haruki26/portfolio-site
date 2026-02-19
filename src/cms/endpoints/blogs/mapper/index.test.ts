@@ -1,6 +1,6 @@
 import { NotPublishedError } from '@/cms/shared/error'
+import type { Blog } from '@/features/blog/types'
 import type { Blogs } from '@/lib/microcms/type'
-import type { Blog } from '../type'
 import { blogDetailMapper, blogOverviewMapper } from './index'
 
 const baseBlog = {

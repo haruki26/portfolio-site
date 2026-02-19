@@ -1,26 +1,3 @@
-interface Image {
-  src: string
-  alt?: string
-  width?: number
-  height?: number
-}
-
-interface Tag {
-  id: string
-  name: string
-}
-
-interface BaseArticle {
-  id: string
-  title: string
-  description: string
-  body: string
-  thumbnail?: Image
-  publishedAt: Date
-  updatedAt: Date
-  tags: Tag[]
-}
-
 type ListFilter =
   | {
       currentPage?: undefined
@@ -31,4 +8,4 @@ type ListFilter =
       limit: number
     }
 
-export type { BaseArticle, Tag, ListFilter, Image }
+export type { ListFilter }

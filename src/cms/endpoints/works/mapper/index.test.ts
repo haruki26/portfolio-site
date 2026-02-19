@@ -1,6 +1,6 @@
 import { NotPublishedError } from '@/cms/shared/error'
+import type { Work } from '@/features/work/types'
 import type { Works } from '@/lib/microcms/type'
-import type { Work } from '../type'
 import { workDetailMapper, workOverviewMapper } from './index'
 
 const baseWork = {

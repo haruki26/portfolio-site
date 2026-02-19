@@ -4,8 +4,8 @@ import {
   thumbnailMapper,
 } from '@/cms/shared/mapper'
 import { dateMapper } from '@/cms/shared/mapper/field'
+import type { Blog } from '@/features/blog/types'
 import type { Blogs } from '@/lib/microcms/type'
-import type { Blog } from '../type'
 
 type OverviewKeys =
   | 'id'

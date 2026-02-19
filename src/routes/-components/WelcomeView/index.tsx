@@ -1,4 +1,4 @@
-import { MY_INFO } from '@/config'
+import { MY_INFO } from '@/configs/myInfo'
 import { toUpperFirst } from '@/lib/toUpperFirst'
 
 const WelcomeView: React.FC = () => {

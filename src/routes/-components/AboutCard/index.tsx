@@ -1,5 +1,5 @@
 import Glass from '@/components/ui/Glass'
-import { MY_INFO } from '@/config'
+import { MY_INFO } from '@/configs/myInfo'
 
 const AboutCard: React.FC = () => {
   return (

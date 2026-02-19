@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { MY_INFO } from '@/config'
+import { MY_INFO } from '@/configs/myInfo'
 import AboutCard from '.'
 
 describe('AboutCard', () => {

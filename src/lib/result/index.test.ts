@@ -45,6 +45,9 @@ describe('result helpers', () => {
       type: 'Failure',
       error: expect.any(Error),
     })
-    expect(result.error.message).toBe('Unknown error occurred.')
+
+    if (result.type === 'Failure') {
+      expect(result.error.message).toBe('Unknown error occurred.')
+    }
   })
 })

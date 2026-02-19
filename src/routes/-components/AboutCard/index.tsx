@@ -7,7 +7,7 @@ const AboutCard: React.FC = () => {
       <div className="flex items-center gap-5">
         <img
           src={MY_INFO.iconImage}
-          alt="my-icon"
+          alt={`${MY_INFO.lastName} ${MY_INFO.firstName}のプロフィール画像`}
           className="h-18 w-18 rounded-2xl bg-slate-200"
         />
         <div className="grid grid-cols-2 grid-rows-2 pt-2">

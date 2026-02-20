@@ -26,7 +26,7 @@ const ArticleOverview: React.FC<Props> = ({ article }) => {
         </div>
         <div className="flex flex-col gap-2 px-1">
           <h2 className="text-xl">{article.title}</h2>
-          <p className="px-2 text-lg">{article.description}</p>
+          <p className="text px-2">{article.description}</p>
           <div className="flex flex-row items-center gap-2 text-base-content-muted">
             <ClockArrowUp className="h-5 w-5" />
             <div className="flex flex-row gap-0.5 text-lg">

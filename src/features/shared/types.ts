@@ -24,6 +24,11 @@ interface Article {
   tags: Tag[]
 }
 
+type ArticleOverview = Pick<
+  Article,
+  'id' | 'title' | 'description' | 'thumbnail' | 'publishedAt' | 'tags'
+>
+
 type GetArticleListQuery = z.infer<typeof getArticleListSchema>
 
-export type { Image, Article, Tag, GetArticleListQuery }
+export type { Image, Article, Tag, GetArticleListQuery, ArticleOverview }

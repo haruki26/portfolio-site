@@ -12,7 +12,7 @@ interface Tags extends MicroCMSListContent {
   name: string
 }
 
-interface BaseContents extends MicroCMSListContent {
+interface Articles extends MicroCMSListContent {
   title: string
   description: string
   body: string
@@ -20,9 +20,9 @@ interface BaseContents extends MicroCMSListContent {
   tags: Tags[]
 }
 
-interface Blogs extends BaseContents {}
+interface Blogs extends Articles {}
 
-interface Works extends BaseContents {}
+interface Works extends Articles {}
 
 interface Certifications extends MicroCMSListContent {
   name: string
@@ -80,4 +80,5 @@ export type {
   Tags,
   Hobbies,
   Certifications,
+  Articles,
 }

@@ -1,7 +1,7 @@
-import type { ListFilter } from '@/cms/shared/type'
+import type { GetArticleListQuery } from '@/features/shared/types'
 import { createClient } from '@/libs/microcms'
 
-const fetchWorksOverview = async (options?: ListFilter) => {
+const fetchWorksOverview = async (options?: GetArticleListQuery) => {
   const client = createClient()
   return await client.getList({
     endpoint: 'works',

@@ -1,9 +1,9 @@
-import type { ListFilter } from '@/cms/shared/type'
+import type { GetArticleListQuery } from '@/features/shared/types'
 import { tryAsync } from '@/libs/result'
 import { fetchBlogDetail, fetchBlogsOverview } from './functions'
 import { blogDetailMapper, blogOverviewMapper } from './mapper'
 
-const getBlogList = (options?: ListFilter) =>
+const getBlogList = (options?: GetArticleListQuery) =>
   tryAsync(async () => {
     const res = await fetchBlogsOverview(options)
     return {

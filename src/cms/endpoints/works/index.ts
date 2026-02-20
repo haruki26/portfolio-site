@@ -1,9 +1,9 @@
-import type { ListFilter } from '@/cms/shared/type'
+import type { GetArticleListQuery } from '@/features/shared/types'
 import { tryAsync } from '@/libs/result'
 import { fetchWorkDetail, fetchWorksOverview } from './functions'
 import { workDetailMapper, workOverviewMapper } from './mapper'
 
-const getWorkList = (options?: ListFilter) =>
+const getWorkList = (options?: GetArticleListQuery) =>
   tryAsync(async () => {
     const res = await fetchWorksOverview(options)
     return {

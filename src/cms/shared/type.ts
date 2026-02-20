@@ -1,11 +1,5 @@
-type ListFilter =
-  | {
-      currentPage?: undefined
-      limit?: number
-    }
-  | {
-      currentPage: number
-      limit: number
-    }
+import type { ArticleOverview } from '@/features/shared/types'
 
-export type { ListFilter }
+type ArticleOverviewKeys = keyof ArticleOverview
+
+export type { ArticleOverviewKeys }

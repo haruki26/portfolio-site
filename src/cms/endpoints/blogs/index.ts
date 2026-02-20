@@ -1,4 +1,4 @@
-import type { GetArticleListQuery } from '@/features/shared/types'
+import type { GetArticleListQuery } from '@/features/article/shared/types'
 import { tryAsync } from '@/libs/result'
 import { fetchBlogDetail, fetchBlogsOverview } from './functions'
 import { blogDetailMapper, blogOverviewMapper } from './mapper'

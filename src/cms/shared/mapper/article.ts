@@ -4,7 +4,7 @@ import {
   thumbnailMapper,
 } from '@/cms/shared/mapper'
 import { dateMapper } from '@/cms/shared/mapper/field'
-import type { Article, ArticleOverview } from '@/features/shared/types'
+import type { Article, ArticleOverview } from '@/features/article/shared/types'
 import type { Articles } from '@/libs/microcms/type'
 import type { ArticleOverviewKeys } from '../type'
 

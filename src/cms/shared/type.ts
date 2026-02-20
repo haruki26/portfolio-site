@@ -1,4 +1,4 @@
-import type { ArticleOverview } from '@/features/shared/types'
+import type { ArticleOverview } from '@/features/article/shared/types'
 
 type ArticleOverviewKeys = keyof ArticleOverview
 

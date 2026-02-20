@@ -1,5 +1,5 @@
 import { NotPublishedError } from '@/cms/shared/error'
-import type { Blog } from '@/features/blog/types'
+import type { Blog } from '@/features/article/blog/types'
 import type { Blogs } from '@/libs/microcms/type'
 import { blogDetailMapper, blogOverviewMapper } from './index'
 

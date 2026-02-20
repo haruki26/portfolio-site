@@ -1,5 +1,5 @@
 import type { MicroCMSImage } from 'microcms-js-sdk'
-import type { Image } from '@/features/shared/types'
+import type { Image } from '@/features/article/shared/types'
 
 const imageMapper = ({ url, ...rest }: MicroCMSImage): Image => ({
   ...rest,

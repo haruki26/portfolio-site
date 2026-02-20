@@ -3,7 +3,7 @@ import {
   articleOverviewMapper,
 } from '@/cms/shared/mapper/article'
 import type { ArticleOverviewKeys } from '@/cms/shared/type'
-import type { Work } from '@/features/work/types'
+import type { Work } from '@/features/article/work/types'
 import type { Works } from '@/libs/microcms/type'
 
 const workOverviewMapper = (

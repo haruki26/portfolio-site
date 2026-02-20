@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { TOP_ARTICLE_NUM } from '@/configs/page'
-import { getWorksOptions } from '@/features/work/api'
+import { getWorksOptions } from '@/features/article/work/api'
 import AboutCard from './-components/AboutCard'
 import WelcomeView from './-components/WelcomeView'
 

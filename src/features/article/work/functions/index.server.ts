@@ -1,7 +1,7 @@
 import { createServerFn, createServerOnlyFn } from '@tanstack/react-start'
 import z from 'zod'
 import { getWorkDetail, getWorkList } from '@/cms/endpoints/works'
-import { getArticleListSchema } from '@/features/shared/schemas'
+import { getArticleListSchema } from '@/features/article/shared/schemas'
 import { toSerializableResult } from '@/libs/result'
 
 const _getWorks = createServerOnlyFn(getWorkList)

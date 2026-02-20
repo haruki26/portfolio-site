@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
+import type { GetArticleListQuery } from '@/features/article/shared/types'
 import { createQueryError } from '@/features/shared/createQueryError'
-import type { GetArticleListQuery } from '@/features/shared/types'
 import { getWork, getWorks } from '../functions/index.server'
 import { worksKeys } from './key'
 

@@ -1,5 +1,5 @@
 import { NotPublishedError } from '@/cms/shared/error'
-import type { Work } from '@/features/work/types'
+import type { Work } from '@/features/article/work/types'
 import type { Works } from '@/libs/microcms/type'
 import { workDetailMapper, workOverviewMapper } from './index'
 

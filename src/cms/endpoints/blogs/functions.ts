@@ -1,4 +1,4 @@
-import type { GetArticleListQuery } from '@/features/shared/types'
+import type { GetArticleListQuery } from '@/features/article/shared/types'
 import { createClient } from '@/libs/microcms'
 
 const fetchBlogsOverview = async (options?: GetArticleListQuery) => {

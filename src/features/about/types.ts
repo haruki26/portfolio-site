@@ -1,4 +1,4 @@
-import type { Image } from '../shared/types'
+import type { Image } from '../article/shared/types'
 
 interface Certification {
   name: string

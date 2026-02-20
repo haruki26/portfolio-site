@@ -2,9 +2,9 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { createLazyFileRoute } from '@tanstack/react-router'
 import Section from '@/components/layout/Section'
 import { TOP_ARTICLE_NUM } from '@/configs/page'
+import AboutCard from '@/features/about/components/AboutCard'
 import ArticleOverview from '@/features/article/components/ArticleOverview'
 import { getWorksOptions } from '@/features/article/work/api'
-import AboutCard from './-components/AboutCard'
 import WelcomeView from './-components/WelcomeView'
 
 export const Route = createLazyFileRoute('/')({

@@ -1,0 +1,3 @@
+const ARTICLE_STALE_TIME = 60 * 60 * 1000
+
+export { ARTICLE_STALE_TIME }

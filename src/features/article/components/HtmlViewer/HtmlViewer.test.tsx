@@ -34,4 +34,12 @@ describe('HtmlViewer', () => {
       'const x = 1',
     )
   })
+
+  it('pre > code のclassがundefinedでもシンタックスハイライトとして表示する', () => {
+    render(<HtmlViewer htmlString="<pre><code>const y = 2</code></pre>" />)
+
+    expect(screen.getByTestId('syntax-highlighter')).toHaveTextContent(
+      'const y = 2',
+    )
+  })
 })

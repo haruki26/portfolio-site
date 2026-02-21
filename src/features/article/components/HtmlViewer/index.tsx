@@ -26,11 +26,12 @@ const options: HTMLReactParserOptions = {
           firstChild.name === 'code' &&
           isText(firstChild.firstChild)
         ) {
+          const lang = firstChild.attribs.class
+            ? firstChild.attribs.class.replace('language-', '')
+            : undefined
+
           return (
-            <SyntaxHighlighter
-              language={firstChild.attribs.class.replace('language-', '')}
-              style={highlightStyle}
-            >
+            <SyntaxHighlighter language={lang} style={highlightStyle}>
               {firstChild.firstChild.data}
             </SyntaxHighlighter>
           )

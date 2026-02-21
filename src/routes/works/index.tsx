@@ -17,6 +17,8 @@ export const Route = createFileRoute('/works/')({
         currentPage: page,
       }),
     )
+    if (totalCount === 0) return
+
     const maxPage = Math.ceil(totalCount / LIST_ARTICLES_NUM)
 
     if (maxPage < page) {

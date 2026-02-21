@@ -72,4 +72,22 @@ describe('works page', () => {
       expect(window.location.search).toBe('?page=2')
     })
   })
+
+  it('totalCountが0の場合はページネーションを表示しない', async () => {
+    mockGetWorks.mockResolvedValue({
+      type: 'Success',
+      value: {
+        totalCount: 0,
+        works: [],
+      },
+    })
+
+    renderWithRouter('/works?page=1')
+
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Works' }),
+    ).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'next' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'prev' })).not.toBeInTheDocument()
+  })
 })

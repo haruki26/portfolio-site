@@ -1,5 +1,4 @@
 import { cn } from '@/libs/cn'
-import Glass from '../Glass'
 
 interface Props {
   type?: HTMLButtonElement['type']
@@ -9,14 +8,16 @@ interface Props {
 
 const Button: React.FC<Props> = ({ type = 'button', children, className }) => {
   return (
-    <Glass
+    <button
+      type={type}
       className={cn(
-        'flex items-center justify-center px-5 py-2 font-bold font-orbitron',
+        'flex items-center justify-center rounded-xl px-5 py-2 font-bold font-orbitron',
+        'inset-shadow-edge inset-shadow-sm/70 bg-surface/50 ring-2 ring-edge/20 backdrop-blur-[0.8px]',
         className,
       )}
     >
-      <button type={type}>{children}</button>
-    </Glass>
+      {children}
+    </button>
   )
 }
 

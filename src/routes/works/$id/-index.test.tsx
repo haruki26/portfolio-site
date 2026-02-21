@@ -25,7 +25,7 @@ describe('work detail page', () => {
       },
     })
 
-    renderWithRouter('/works/work-1')
+    await renderWithRouter('/works/work-1')
 
     expect(
       await screen.findByRole('heading', { level: 2, name: '作品詳細' }),

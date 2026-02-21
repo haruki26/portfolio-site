@@ -28,7 +28,7 @@ describe('home page', () => {
       },
     })
 
-    renderWithRouter('/')
+    await renderWithRouter('/')
 
     expect(await screen.findByText('Welcome')).toBeInTheDocument()
     expect(

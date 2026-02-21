@@ -35,7 +35,7 @@ describe('works page', () => {
       },
     })
 
-    renderWithRouter('/works?page=1')
+    await renderWithRouter('/works?page=1')
 
     expect(
       await screen.findByRole('heading', { level: 1, name: 'Works' }),
@@ -65,7 +65,7 @@ describe('works page', () => {
       },
     })
 
-    renderWithRouter('/works?page=99')
+    await renderWithRouter('/works?page=99')
 
     await waitFor(() => {
       expect(window.location.pathname).toBe('/works')
@@ -82,7 +82,7 @@ describe('works page', () => {
       },
     })
 
-    renderWithRouter('/works?page=1')
+    await renderWithRouter('/works?page=1')
 
     expect(
       await screen.findByRole('heading', { level: 1, name: 'Works' }),

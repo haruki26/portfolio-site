@@ -13,7 +13,7 @@ const SectionTitle: React.FC<Props> = ({ label }) => {
         'before:bg-base-content before:shadow-secondary-200/50 before:shadow-xl',
         'after:mt-[0.12rem] after:ml-3 after:inline-block after:h-[0.4px] after:w-[1.2rem] after:bg-base-content',
         'after:bg-base-content after:shadow-secondary-200/50 after:shadow-xl',
-        'font-medium font-orbitron text-3xl text-shadow-lg text-shadow-secondary-200 tracking-tighter md:text-5xl',
+        'font-extrabold font-orbitron text-3xl text-shadow-lg text-shadow-secondary-300/80 tracking-wider md:text-5xl',
       )}
     >
       {label}

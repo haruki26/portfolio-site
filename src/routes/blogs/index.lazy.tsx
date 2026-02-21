@@ -24,6 +24,7 @@ function RouteComponent() {
   return (
     <div className="flex w-full flex-col gap-8">
       <section>
+        <h1 className="sr-only">All blogs</h1>
         <div className="flex flex-col gap-5 px-4">
           {blogs.map((blog) => (
             <Link key={blog.id} to="/blogs/$id" params={{ id: blog.id }}>

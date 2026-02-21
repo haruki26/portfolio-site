@@ -4,14 +4,12 @@ import Glass from '../Glass'
 
 const GlassLink: React.FC<{
   label: string
-  isSelected?: boolean
   disable?: boolean
-}> = ({ label, isSelected, disable = false }) => {
+}> = ({ label, disable = false }) => {
   return (
     <Glass
       className={cn(
         'w-fit rounded-xl px-3 py-1.5 text-lg',
-        isSelected && 'text-xl',
         disable && 'bg-surface/10 text-base-content-muted',
       )}
     >

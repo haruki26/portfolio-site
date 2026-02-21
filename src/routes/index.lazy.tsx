@@ -4,6 +4,7 @@ import Section from '@/components/layout/Section'
 import Button from '@/components/ui/Button'
 import { TOP_ARTICLE_NUM } from '@/configs/page'
 import AboutCard from '@/features/about/components/AboutCard'
+import { getBlogsOptions } from '@/features/article/blog/api'
 import ArticleCard from '@/features/article/components/ArticleCard'
 import { getWorksOptions } from '@/features/article/work/api'
 
@@ -15,6 +16,9 @@ function RouteComponent() {
   const {
     data: { works },
   } = useSuspenseQuery(getWorksOptions({ limit: TOP_ARTICLE_NUM }))
+  const {
+    data: { blogs },
+  } = useSuspenseQuery(getBlogsOptions({ limit: TOP_ARTICLE_NUM }))
 
   return (
     <div className="flex w-full flex-col items-center gap-16 px-3 py-3">
@@ -38,6 +42,20 @@ function RouteComponent() {
           </div>
           <Link to="/works" search={{ page: 1 }}>
             <Button className="w-48 py-3 text-xl">All Works</Button>
+          </Link>
+        </div>
+      </Section>
+      <Section sectionLabel="Blogs">
+        <div className="flex w-full flex-col items-center gap-10">
+          <div className="grid grid-cols-1 gap-7">
+            {blogs.map((blog) => (
+              <Link key={blog.id} to="/blogs/$id" params={{ id: blog.id }}>
+                <ArticleCard article={blog} />
+              </Link>
+            ))}
+          </div>
+          <Link to="/blogs" search={{ page: 1 }}>
+            <Button className="w-48 py-3 text-xl">All Blogs</Button>
           </Link>
         </div>
       </Section>

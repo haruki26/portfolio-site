@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorksRouteRouteImport } from './routes/works/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works/index'
+import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
+import { Route as BlogsIdIndexRouteImport } from './routes/blogs/$id/index'
 
 const WorksRouteRoute = WorksRouteRouteImport.update({
   id: '/works',
@@ -29,6 +31,11 @@ const WorksIndexRoute = WorksIndexRouteImport.update({
   path: '/',
   getParentRoute: () => WorksRouteRoute,
 } as any).lazy(() => import('./routes/works/index.lazy').then((d) => d.Route))
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/blogs/index.lazy').then((d) => d.Route))
 const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
@@ -36,36 +43,64 @@ const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
 } as any).lazy(() =>
   import('./routes/works/$id/index.lazy').then((d) => d.Route),
 )
+const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
+  id: '/blogs/$id/',
+  path: '/blogs/$id/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./routes/blogs/$id/index.lazy').then((d) => d.Route),
+)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/works': typeof WorksRouteRouteWithChildren
+  '/blogs/': typeof BlogsIndexRoute
   '/works/': typeof WorksIndexRoute
+  '/blogs/$id/': typeof BlogsIdIndexRoute
   '/works/$id/': typeof WorksIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blogs': typeof BlogsIndexRoute
   '/works': typeof WorksIndexRoute
+  '/blogs/$id': typeof BlogsIdIndexRoute
   '/works/$id': typeof WorksIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/works': typeof WorksRouteRouteWithChildren
+  '/blogs/': typeof BlogsIndexRoute
   '/works/': typeof WorksIndexRoute
+  '/blogs/$id/': typeof BlogsIdIndexRoute
   '/works/$id/': typeof WorksIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/works' | '/works/' | '/works/$id/'
+  fullPaths:
+    | '/'
+    | '/works'
+    | '/blogs/'
+    | '/works/'
+    | '/blogs/$id/'
+    | '/works/$id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/works' | '/works/$id'
-  id: '__root__' | '/' | '/works' | '/works/' | '/works/$id/'
+  to: '/' | '/blogs' | '/works' | '/blogs/$id' | '/works/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/works'
+    | '/blogs/'
+    | '/works/'
+    | '/blogs/$id/'
+    | '/works/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WorksRouteRoute: typeof WorksRouteRouteWithChildren
+  BlogsIndexRoute: typeof BlogsIndexRoute
+  BlogsIdIndexRoute: typeof BlogsIdIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -91,12 +126,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksIndexRouteImport
       parentRoute: typeof WorksRouteRoute
     }
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/works/$id/': {
       id: '/works/$id/'
       path: '/$id'
       fullPath: '/works/$id/'
       preLoaderRoute: typeof WorksIdIndexRouteImport
       parentRoute: typeof WorksRouteRoute
+    }
+    '/blogs/$id/': {
+      id: '/blogs/$id/'
+      path: '/blogs/$id'
+      fullPath: '/blogs/$id/'
+      preLoaderRoute: typeof BlogsIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -118,6 +167,8 @@ const WorksRouteRouteWithChildren = WorksRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WorksRouteRoute: WorksRouteRouteWithChildren,
+  BlogsIndexRoute: BlogsIndexRoute,
+  BlogsIdIndexRoute: BlogsIdIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,5 +1,5 @@
-import type { Hobbies } from '@/lib/microcms/type'
-import type { Hobby } from '../type'
+import type { Hobby } from '@/features/about/types'
+import type { Hobbies } from '@/libs/microcms/type'
 import { hobbyMapper } from './index'
 
 describe('hobbyMapper', () => {

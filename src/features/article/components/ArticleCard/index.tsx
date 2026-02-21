@@ -1,0 +1,44 @@
+import { ClockArrowUp } from 'lucide-react'
+import LabelWithIcon from '@/components/layout/LabelWithIcon'
+import DateViewer from '@/components/ui/DateViewer'
+import Glass from '@/components/ui/Glass'
+import NoImage from '@/components/ui/NoImage'
+import type { ArticleOverview } from '../../shared/types'
+
+interface Props {
+  article: Omit<ArticleOverview, 'id'>
+}
+
+const ArticleCard: React.FC<Props> = ({ article }) => {
+  return (
+    <article>
+      <Glass className="flex flex-col gap-3 p-5">
+        <div className="flex max-h-full min-h-36 w-full items-center justify-center rounded-xl bg-slate-300/80 backdrop-blur-3xl">
+          {article.thumbnail ? (
+            <img
+              src={article.thumbnail.src}
+              alt={article.thumbnail.alt ?? `${article.title}サムネイル`}
+              width={article.thumbnail.width}
+              height={article.thumbnail.height}
+              className="h-full w-full"
+            />
+          ) : (
+            <NoImage />
+          )}
+        </div>
+        <div className="flex flex-col gap-2 px-1">
+          <h2 className="font-bold text-2xl">{article.title}</h2>
+          <p className="text px-2">{article.description}</p>
+          <LabelWithIcon
+            Icon={() => <ClockArrowUp className="h-5 w-5" />}
+            className="text-base-content-muted"
+          >
+            <DateViewer date={article.publishedAt} />
+          </LabelWithIcon>
+        </div>
+      </Glass>
+    </article>
+  )
+}
+
+export default ArticleCard

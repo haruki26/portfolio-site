@@ -1,4 +1,4 @@
-import { tryAsync } from '@/lib/result'
+import { tryAsync } from '@/libs/result'
 import { fetchHobbies } from './functions'
 import { hobbyMapper } from './mapper'
 

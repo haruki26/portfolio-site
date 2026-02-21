@@ -30,10 +30,20 @@ export default defineConfig({
         test: {
           name: 'component',
           environment: 'jsdom',
-          include: ['src/**/*.test.tsx'],
+          include: ['src/**/components/**/*.test.tsx'],
           setupFiles: ['./test/component/setup.ts'],
         }
-      }
+      },
+      {
+        extends: true,
+        test: {
+          name: 'page',
+          environment: 'jsdom',
+          include: ['src/routes/**/*.test.tsx'],
+          exclude: ['src/routes/**/-components/*/*.test.tsx'],
+          setupFiles: ['./test/page/setup.ts']
+        }
+      },
     ],
   }
 })

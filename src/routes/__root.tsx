@@ -30,12 +30,14 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         title: 'TanStack Start Starter',
       },
     ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-    ],
+    links: appCss
+      ? [
+          {
+            rel: 'stylesheet',
+            href: appCss,
+          },
+        ]
+      : [],
   }),
   shellComponent: RootDocument,
 })
@@ -51,7 +53,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-linear-to-br from-5% from-base-200 to-base-300 px-2 py-4">
         <CosmoBackground />
         <TanStackQueryProvider.Provider {...contexts}>
-          <div className="sticky top-0 left-0 w-full py-2">
+          <div className="sticky top-0 left-0 z-50 w-full py-2">
             <Header />
           </div>
           <div className="flex-1">

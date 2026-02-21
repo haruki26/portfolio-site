@@ -1,16 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
-import AboutCard from './-components/AboutCard'
-import WelcomeView from './-components/WelcomeView'
+import { TOP_ARTICLE_NUM } from '@/configs/page'
+import { getWorksOptions } from '@/features/article/work/api'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  loader: async ({ context: { queryClient } }) => {
+    const works = await queryClient.ensureQueryData(
+      getWorksOptions({ limit: TOP_ARTICLE_NUM }),
+    )
+    return {
+      works: works.works,
+    }
+  },
 })
-
-function App() {
-  return (
-    <div className="flex w-full flex-col items-center gap-10 px-3 py-3">
-      <WelcomeView />
-      <AboutCard />
-    </div>
-  )
-}

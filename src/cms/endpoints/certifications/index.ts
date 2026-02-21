@@ -1,4 +1,4 @@
-import { tryAsync } from '@/lib/result'
+import { tryAsync } from '@/libs/result'
 import { fetchCertifications } from './functions'
 import { certificationMapper } from './mapper'
 

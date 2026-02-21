@@ -1,7 +1,7 @@
-import type { ListFilter } from '@/cms/shared/type'
-import { createClient } from '@/lib/microcms'
+import type { GetArticleListQuery } from '@/features/article/shared/types'
+import { createClient } from '@/libs/microcms'
 
-const fetchBlogsOverview = async (options?: ListFilter) => {
+const fetchBlogsOverview = async (options?: GetArticleListQuery) => {
   const client = createClient()
   return await client.getList({
     endpoint: 'blogs',

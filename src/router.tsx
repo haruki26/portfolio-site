@@ -8,7 +8,7 @@ export function getRouter() {
 
     context: getContext(),
 
-    scrollRestoration: true,
+    scrollRestoration: import.meta.env.MODE !== 'test',
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
   })

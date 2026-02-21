@@ -1,54 +1,15 @@
 import {
-  publishedAtMapper,
-  tagMapper,
-  thumbnailMapper,
-} from '@/cms/shared/mapper'
-import { dateMapper } from '@/cms/shared/mapper/field'
-import type { Works } from '@/lib/microcms/type'
-import type { Work } from '../type'
+  articleDetailMapper,
+  articleOverviewMapper,
+} from '@/cms/shared/mapper/article'
+import type { ArticleOverviewKeys } from '@/cms/shared/type'
+import type { Work } from '@/features/article/work/types'
+import type { Works } from '@/libs/microcms/type'
 
-type OverviewKeys =
-  | 'id'
-  | 'title'
-  | 'thumbnail'
-  | 'description'
-  | 'publishedAt'
-  | 'tags'
+const workOverviewMapper = (
+  work: Pick<Works, ArticleOverviewKeys>,
+): Pick<Work, ArticleOverviewKeys> => articleOverviewMapper(work)
 
-const commonMapper = (
-  target: Pick<Works, 'id' | 'thumbnail' | 'publishedAt' | 'tags'>,
-) => ({
-  thumbnail: thumbnailMapper(target.thumbnail),
-  publishedAt: publishedAtMapper(target.publishedAt, target.id),
-  tags: target.tags.map(tagMapper),
-})
-
-const workOverviewMapper = ({
-  thumbnail,
-  publishedAt,
-  tags,
-  ...rest
-}: Pick<Works, OverviewKeys>): Pick<Work, OverviewKeys> => ({
-  ...rest,
-  ...commonMapper({ id: rest.id, thumbnail, publishedAt, tags }),
-})
-
-const workDetailMapper = ({
-  id,
-  title,
-  description,
-  body,
-  thumbnail,
-  publishedAt,
-  updatedAt,
-  tags,
-}: Works): Work => ({
-  id,
-  title,
-  description,
-  body,
-  ...commonMapper({ id, thumbnail, publishedAt, tags }),
-  updatedAt: dateMapper(updatedAt),
-})
+const workDetailMapper = (work: Works): Work => articleDetailMapper(work)
 
 export { workDetailMapper, workOverviewMapper }

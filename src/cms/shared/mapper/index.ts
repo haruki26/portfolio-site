@@ -1,7 +1,7 @@
 import type { MicroCMSDate, MicroCMSImage } from 'microcms-js-sdk'
-import type { Tags } from '@/lib/microcms/type'
+import type { Image, Tag } from '@/features/article/shared/types'
+import type { Tags } from '@/libs/microcms/type'
 import { NotPublishedError } from '../error'
-import type { Image, Tag } from '../type'
 import { dateMapper, imageMapper } from './field'
 
 const thumbnailMapper = (

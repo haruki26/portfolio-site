@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?&family=Orbitron&family=Roboto+Flex&family=JetBrains+Mono&display=swap');
+
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
     --font-orbitron: "Orbitron", sans-serif;

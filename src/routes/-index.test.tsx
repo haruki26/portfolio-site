@@ -4,17 +4,23 @@ import { renderWithRouter } from '../../test/page/renderWithRouter'
 const { mockGetWorks } = vi.hoisted(() => ({
   mockGetWorks: vi.fn(),
 }))
+const { mockGetWork } = vi.hoisted(() => ({
+  mockGetWork: vi.fn(),
+}))
 const { mockGetBlogs } = vi.hoisted(() => ({
   mockGetBlogs: vi.fn(),
+}))
+const { mockGetBlog } = vi.hoisted(() => ({
+  mockGetBlog: vi.fn(),
 }))
 
 vi.mock('@/features/article/work/functions/index.server', () => ({
   getWorks: mockGetWorks,
-  getWork: vi.fn(),
+  getWork: mockGetWork,
 }))
 vi.mock('@/features/article/blog/functions/index.server', () => ({
   getBlogs: mockGetBlogs,
-  getBlog: vi.fn(),
+  getBlog: mockGetBlog,
 }))
 
 describe('home page', () => {
@@ -72,6 +78,8 @@ describe('home page', () => {
     await waitFor(() => {
       expect(mockGetWorks).toHaveBeenCalledWith({ data: { limit: 3 } })
       expect(mockGetBlogs).toHaveBeenCalledWith({ data: { limit: 3 } })
+      expect(mockGetWork).not.toHaveBeenCalled()
+      expect(mockGetBlog).not.toHaveBeenCalled()
     })
   })
 })

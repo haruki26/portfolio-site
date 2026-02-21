@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useSuspenseQueries } from '@tanstack/react-query'
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
 import Section from '@/components/layout/Section'
 import Button from '@/components/ui/Button'
@@ -13,12 +13,19 @@ export const Route = createLazyFileRoute('/')({
 })
 
 function RouteComponent() {
-  const {
-    data: { works },
-  } = useSuspenseQuery(getWorksOptions({ limit: TOP_ARTICLE_NUM }))
-  const {
-    data: { blogs },
-  } = useSuspenseQuery(getBlogsOptions({ limit: TOP_ARTICLE_NUM }))
+  const [
+    {
+      data: { works },
+    },
+    {
+      data: { blogs },
+    },
+  ] = useSuspenseQueries({
+    queries: [
+      getWorksOptions({ limit: TOP_ARTICLE_NUM }),
+      getBlogsOptions({ limit: TOP_ARTICLE_NUM }),
+    ],
+  })
 
   return (
     <div className="flex w-full flex-col items-center gap-16 px-3 py-3">

@@ -20,6 +20,7 @@ function RouteComponent() {
   return (
     <div className="flex w-full flex-col items-center gap-8">
       <article className="flex w-full flex-col gap-10 px-2">
+        <h1 className="sr-only">{data.title}</h1>
         <ArticleOverview article={data} />
         <Divider className="to-secondary-100" />
         <HtmlViewer htmlString={data.body} />

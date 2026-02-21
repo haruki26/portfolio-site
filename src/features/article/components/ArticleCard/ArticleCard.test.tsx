@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import ArticleOverview from '.'
+import ArticleCard from '.'
 
 describe('ArticleOverview', () => {
   it('サムネイルありの場合は画像と記事情報を表示する', () => {
     render(
-      <ArticleOverview
+      <ArticleCard
         article={{
           title: '記事タイトル',
           description: '記事説明',
@@ -31,7 +31,7 @@ describe('ArticleOverview', () => {
 
   it('サムネイルなしの場合は No Image を表示する', () => {
     render(
-      <ArticleOverview
+      <ArticleCard
         article={{
           title: '記事タイトル',
           description: '記事説明',

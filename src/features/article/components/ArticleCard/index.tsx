@@ -1,13 +1,13 @@
 import { ClockArrowUp } from 'lucide-react'
 import Glass from '@/components/ui/Glass'
 import NoImage from '@/components/ui/NoImage'
-import type { ArticleOverview as _ArticleOverview } from '../../shared/types'
+import type { ArticleOverview } from '../../shared/types'
 
 interface Props {
-  article: Omit<_ArticleOverview, 'id'>
+  article: Omit<ArticleOverview, 'id'>
 }
 
-const ArticleOverview: React.FC<Props> = ({ article }) => {
+const ArticleCard: React.FC<Props> = ({ article }) => {
   return (
     <article>
       <Glass className="flex flex-col gap-3 p-5">
@@ -43,4 +43,4 @@ const ArticleOverview: React.FC<Props> = ({ article }) => {
   )
 }
 
-export default ArticleOverview
+export default ArticleCard

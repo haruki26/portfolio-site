@@ -65,7 +65,7 @@ const HtmlViewer: React.FC<Props> = ({ htmlString, className }) => {
   return (
     <div
       className={cn(
-        'prose wrap-anywhere w-full break-keep px-5 text-base-content',
+        'prose wrap-anywhere w-full break-keep px-3 text-base-content',
         'prose-pre:overflow-x-auto prose-code:font-jetbrains-mono prose-headings:text-base-content',
         'prose-a:text-secondary-100 prose-li:text-base-content prose-strong:text-primary-100',
         className,

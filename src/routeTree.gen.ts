@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorksRouteRouteImport } from './routes/works/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works/index'
+import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
 
 const WorksRouteRoute = WorksRouteRouteImport.update({
   id: '/works',
@@ -28,28 +29,38 @@ const WorksIndexRoute = WorksIndexRouteImport.update({
   path: '/',
   getParentRoute: () => WorksRouteRoute,
 } as any).lazy(() => import('./routes/works/index.lazy').then((d) => d.Route))
+const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
+  id: '/$id/',
+  path: '/$id/',
+  getParentRoute: () => WorksRouteRoute,
+} as any).lazy(() =>
+  import('./routes/works/$id/index.lazy').then((d) => d.Route),
+)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/works': typeof WorksRouteRouteWithChildren
   '/works/': typeof WorksIndexRoute
+  '/works/$id/': typeof WorksIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/works': typeof WorksIndexRoute
+  '/works/$id': typeof WorksIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/works': typeof WorksRouteRouteWithChildren
   '/works/': typeof WorksIndexRoute
+  '/works/$id/': typeof WorksIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/works' | '/works/'
+  fullPaths: '/' | '/works' | '/works/' | '/works/$id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/works'
-  id: '__root__' | '/' | '/works' | '/works/'
+  to: '/' | '/works' | '/works/$id'
+  id: '__root__' | '/' | '/works' | '/works/' | '/works/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -80,15 +91,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksIndexRouteImport
       parentRoute: typeof WorksRouteRoute
     }
+    '/works/$id/': {
+      id: '/works/$id/'
+      path: '/$id'
+      fullPath: '/works/$id/'
+      preLoaderRoute: typeof WorksIdIndexRouteImport
+      parentRoute: typeof WorksRouteRoute
+    }
   }
 }
 
 interface WorksRouteRouteChildren {
   WorksIndexRoute: typeof WorksIndexRoute
+  WorksIdIndexRoute: typeof WorksIdIndexRoute
 }
 
 const WorksRouteRouteChildren: WorksRouteRouteChildren = {
   WorksIndexRoute: WorksIndexRoute,
+  WorksIdIndexRoute: WorksIdIndexRoute,
 }
 
 const WorksRouteRouteWithChildren = WorksRouteRoute._addFileChildren(

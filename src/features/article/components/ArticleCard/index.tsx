@@ -1,4 +1,6 @@
 import { ClockArrowUp } from 'lucide-react'
+import LabelWithIcon from '@/components/layout/LabelWithIcon'
+import DateViewer from '@/components/ui/DateViewer'
 import Glass from '@/components/ui/Glass'
 import NoImage from '@/components/ui/NoImage'
 import type { ArticleOverview } from '../../shared/types'
@@ -25,18 +27,14 @@ const ArticleCard: React.FC<Props> = ({ article }) => {
           )}
         </div>
         <div className="flex flex-col gap-2 px-1">
-          <h2 className="text-xl">{article.title}</h2>
+          <h2 className="font-bold text-2xl">{article.title}</h2>
           <p className="text px-2">{article.description}</p>
-          <div className="flex flex-row items-center gap-2 text-base-content-muted">
-            <ClockArrowUp className="h-5 w-5" />
-            <div className="flex flex-row gap-0.5 text-lg">
-              <span>{article.publishedAt.getFullYear()}</span>
-              <span>&#45;</span>
-              <span>{article.publishedAt.getMonth() + 1}</span>
-              <span>&#45;</span>
-              <span>{article.publishedAt.getDate()}</span>
-            </div>
-          </div>
+          <LabelWithIcon
+            Icon={() => <ClockArrowUp className="h-5 w-5" />}
+            className="text-base-content-muted"
+          >
+            <DateViewer date={article.publishedAt} />
+          </LabelWithIcon>
         </div>
       </Glass>
     </article>

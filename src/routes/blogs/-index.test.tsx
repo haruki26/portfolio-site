@@ -10,6 +10,11 @@ vi.mock('@/features/article/blog/functions/index.server', () => ({
   getBlog: vi.fn(),
 }))
 
+vi.mock('@/features/article/work/functions/index.server', () => ({
+  getWorks: vi.fn(),
+  getWork: vi.fn(),
+}))
+
 describe('blogs page', () => {
   it('ブログ一覧とページネーションを表示する', async () => {
     mockGetBlogs.mockResolvedValue({

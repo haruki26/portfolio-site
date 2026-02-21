@@ -1,6 +1,6 @@
 interface Props {
   date: Date
-  separator?: 'hyphen'
+  separator?: string
 }
 
 const DateViewer: React.FC<Props> = ({ date, separator = '-' }) => {

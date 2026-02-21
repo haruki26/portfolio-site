@@ -1,37 +1,37 @@
 import { screen, waitFor } from '@testing-library/react'
 import { renderWithRouter } from '../../../test/page/renderWithRouter'
 
-const { mockGetWorks } = vi.hoisted(() => ({
-  mockGetWorks: vi.fn(),
-}))
-
-vi.mock('@/features/article/work/functions/index.server', () => ({
-  getWorks: mockGetWorks,
-  getWork: vi.fn(),
+const { mockGetBlogs } = vi.hoisted(() => ({
+  mockGetBlogs: vi.fn(),
 }))
 
 vi.mock('@/features/article/blog/functions/index.server', () => ({
-  getBlogs: vi.fn(),
+  getBlogs: mockGetBlogs,
   getBlog: vi.fn(),
 }))
 
-describe('works page', () => {
-  it('作品一覧とページネーションを表示する', async () => {
-    mockGetWorks.mockResolvedValue({
+vi.mock('@/features/article/work/functions/index.server', () => ({
+  getWorks: vi.fn(),
+  getWork: vi.fn(),
+}))
+
+describe('blogs page', () => {
+  it('ブログ一覧とページネーションを表示する', async () => {
+    mockGetBlogs.mockResolvedValue({
       type: 'Success',
       value: {
         totalCount: 20,
-        works: [
+        blogs: [
           {
-            id: 'work-1',
-            title: '作品1',
+            id: 'blog-1',
+            title: 'ブログ1',
             description: '説明1',
             publishedAt: new Date(2024, 0, 5),
             tags: [],
           },
           {
-            id: 'work-2',
-            title: '作品2',
+            id: 'blog-2',
+            title: 'ブログ2',
             description: '説明2',
             publishedAt: new Date(2024, 0, 6),
             tags: [],
@@ -40,28 +40,25 @@ describe('works page', () => {
       },
     })
 
-    await renderWithRouter('/works?page=1')
+    await renderWithRouter('/blogs?page=1')
 
-    expect(
-      await screen.findByRole('heading', { level: 1, name: 'Works' }),
-    ).toBeInTheDocument()
-    expect(await screen.findByText('作品1')).toBeInTheDocument()
-    expect(screen.getByText('作品2')).toBeInTheDocument()
+    expect(await screen.findByText('ブログ1')).toBeInTheDocument()
+    expect(screen.getByText('ブログ2')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'next' })).toHaveAttribute(
       'href',
-      '/works?page=2',
+      '/blogs?page=2',
     )
   })
 
   it('最大ページを超えた場合は最終ページへリダイレクトする', async () => {
-    mockGetWorks.mockResolvedValue({
+    mockGetBlogs.mockResolvedValue({
       type: 'Success',
       value: {
         totalCount: 15,
-        works: [
+        blogs: [
           {
-            id: 'work-1',
-            title: '作品1',
+            id: 'blog-1',
+            title: 'ブログ1',
             description: '説明1',
             publishedAt: new Date(2024, 0, 5),
             tags: [],
@@ -70,28 +67,25 @@ describe('works page', () => {
       },
     })
 
-    await renderWithRouter('/works?page=99')
+    await renderWithRouter('/blogs?page=99')
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe('/works')
+      expect(window.location.pathname).toBe('/blogs')
       expect(window.location.search).toBe('?page=2')
     })
   })
 
   it('totalCountが0の場合はページネーションを表示しない', async () => {
-    mockGetWorks.mockResolvedValue({
+    mockGetBlogs.mockResolvedValue({
       type: 'Success',
       value: {
         totalCount: 0,
-        works: [],
+        blogs: [],
       },
     })
 
-    await renderWithRouter('/works?page=1')
+    await renderWithRouter('/blogs?page=1')
 
-    expect(
-      await screen.findByRole('heading', { level: 1, name: 'Works' }),
-    ).toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'next' })).not.toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'prev' })).not.toBeInTheDocument()
   })

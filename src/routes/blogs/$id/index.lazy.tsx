@@ -5,17 +5,17 @@ import LabelWithIcon from '@/components/layout/LabelWithIcon'
 import Button from '@/components/ui/Button'
 import DateViewer from '@/components/ui/DateViewer'
 import Divider from '@/components/ui/Divider'
+import { getBlogOptions } from '@/features/article/blog/api'
 import ArticleOverview from '@/features/article/components/ArticleOverview'
 import HtmlViewer from '@/features/article/components/HtmlViewer'
-import { getWorkOptions } from '@/features/article/work/api'
 
-export const Route = createLazyFileRoute('/works/$id/')({
+export const Route = createLazyFileRoute('/blogs/$id/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
   const params = Route.useParams()
-  const { data } = useSuspenseQuery(getWorkOptions(params.id))
+  const { data } = useSuspenseQuery(getBlogOptions(params.id))
 
   return (
     <div className="flex w-full flex-col items-center gap-8">
@@ -32,7 +32,7 @@ function RouteComponent() {
         </LabelWithIcon>
       </div>
       <Link to=".." search={(old) => old}>
-        <Button className="px-10 py-3 text-xl">All Works</Button>
+        <Button className="px-10 py-3 text-xl">All Blogs</Button>
       </Link>
     </div>
   )

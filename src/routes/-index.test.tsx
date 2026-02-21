@@ -4,14 +4,27 @@ import { renderWithRouter } from '../../test/page/renderWithRouter'
 const { mockGetWorks } = vi.hoisted(() => ({
   mockGetWorks: vi.fn(),
 }))
+const { mockGetWork } = vi.hoisted(() => ({
+  mockGetWork: vi.fn(),
+}))
+const { mockGetBlogs } = vi.hoisted(() => ({
+  mockGetBlogs: vi.fn(),
+}))
+const { mockGetBlog } = vi.hoisted(() => ({
+  mockGetBlog: vi.fn(),
+}))
 
 vi.mock('@/features/article/work/functions/index.server', () => ({
   getWorks: mockGetWorks,
-  getWork: vi.fn(),
+  getWork: mockGetWork,
+}))
+vi.mock('@/features/article/blog/functions/index.server', () => ({
+  getBlogs: mockGetBlogs,
+  getBlog: mockGetBlog,
 }))
 
 describe('home page', () => {
-  it('トップページにプロフィールと作品一覧を表示する', async () => {
+  it('トップページにプロフィールと作品・ブログ一覧を表示する', async () => {
     mockGetWorks.mockResolvedValue({
       type: 'Success',
       value: {
@@ -22,6 +35,21 @@ describe('home page', () => {
             title: '作品A',
             description: '作品Aの説明',
             publishedAt: new Date(2024, 0, 5),
+            tags: [],
+          },
+        ],
+      },
+    })
+    mockGetBlogs.mockResolvedValue({
+      type: 'Success',
+      value: {
+        totalCount: 1,
+        blogs: [
+          {
+            id: 'blog-1',
+            title: 'ブログA',
+            description: 'ブログAの説明',
+            publishedAt: new Date(2024, 0, 6),
             tags: [],
           },
         ],
@@ -41,9 +69,17 @@ describe('home page', () => {
     ).toBeInTheDocument()
     expect(await screen.findByText('作品A')).toBeInTheDocument()
     expect(screen.getByText('作品Aの説明')).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { level: 2, name: 'Blogs' }),
+    ).toBeInTheDocument()
+    expect(await screen.findByText('ブログA')).toBeInTheDocument()
+    expect(screen.getByText('ブログAの説明')).toBeInTheDocument()
 
     await waitFor(() => {
       expect(mockGetWorks).toHaveBeenCalledWith({ data: { limit: 3 } })
+      expect(mockGetBlogs).toHaveBeenCalledWith({ data: { limit: 3 } })
+      expect(mockGetWork).not.toHaveBeenCalled()
+      expect(mockGetBlog).not.toHaveBeenCalled()
     })
   })
 })

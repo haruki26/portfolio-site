@@ -2,10 +2,10 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
 import Pagination from '@/components/ui/Pagination'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
+import { getBlogsOptions } from '@/features/article/blog/api'
 import ArticleCard from '@/features/article/components/ArticleCard'
-import { getWorksOptions } from '@/features/article/work/api'
 
-export const Route = createLazyFileRoute('/works/')({
+export const Route = createLazyFileRoute('/blogs/')({
   component: RouteComponent,
 })
 
@@ -13,9 +13,9 @@ function RouteComponent() {
   const search = Route.useSearch()
 
   const {
-    data: { totalCount, works },
+    data: { totalCount, blogs },
   } = useSuspenseQuery(
-    getWorksOptions({
+    getBlogsOptions({
       limit: LIST_ARTICLES_NUM,
       currentPage: search.page,
     }),
@@ -24,11 +24,11 @@ function RouteComponent() {
   return (
     <div className="flex w-full flex-col gap-8">
       <section>
-        <h1 className="sr-only">All works</h1>
+        <h1 className="sr-only">All blogs</h1>
         <div className="flex flex-col gap-5 px-4">
-          {works.map((work) => (
-            <Link key={work.id} to="/works/$id" params={{ id: work.id }}>
-              <ArticleCard article={work} />
+          {blogs.map((blog) => (
+            <Link key={blog.id} to="/blogs/$id" params={{ id: blog.id }}>
+              <ArticleCard article={blog} />
             </Link>
           ))}
         </div>

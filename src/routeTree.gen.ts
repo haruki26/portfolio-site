@@ -13,6 +13,7 @@ import { Route as WorksRouteRouteImport } from './routes/works/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
+import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
 import { Route as BlogsIdIndexRouteImport } from './routes/blogs/$id/index'
 
@@ -36,6 +37,11 @@ const BlogsIndexRoute = BlogsIndexRouteImport.update({
   path: '/blogs/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/blogs/index.lazy').then((d) => d.Route))
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
 const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
@@ -54,6 +60,7 @@ const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/works': typeof WorksRouteRouteWithChildren
+  '/about/': typeof AboutIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/works/': typeof WorksIndexRoute
   '/blogs/$id/': typeof BlogsIdIndexRoute
@@ -61,6 +68,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutIndexRoute
   '/blogs': typeof BlogsIndexRoute
   '/works': typeof WorksIndexRoute
   '/blogs/$id': typeof BlogsIdIndexRoute
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/works': typeof WorksRouteRouteWithChildren
+  '/about/': typeof AboutIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/works/': typeof WorksIndexRoute
   '/blogs/$id/': typeof BlogsIdIndexRoute
@@ -80,16 +89,18 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/works'
+    | '/about/'
     | '/blogs/'
     | '/works/'
     | '/blogs/$id/'
     | '/works/$id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs' | '/works' | '/blogs/$id' | '/works/$id'
+  to: '/' | '/about' | '/blogs' | '/works' | '/blogs/$id' | '/works/$id'
   id:
     | '__root__'
     | '/'
     | '/works'
+    | '/about/'
     | '/blogs/'
     | '/works/'
     | '/blogs/$id/'
@@ -99,6 +110,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WorksRouteRoute: typeof WorksRouteRouteWithChildren
+  AboutIndexRoute: typeof AboutIndexRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
   BlogsIdIndexRoute: typeof BlogsIdIndexRoute
 }
@@ -131,6 +143,13 @@ declare module '@tanstack/react-router' {
       path: '/blogs'
       fullPath: '/blogs/'
       preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/works/$id/': {
@@ -167,6 +186,7 @@ const WorksRouteRouteWithChildren = WorksRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WorksRouteRoute: WorksRouteRouteWithChildren,
+  AboutIndexRoute: AboutIndexRoute,
   BlogsIndexRoute: BlogsIndexRoute,
   BlogsIdIndexRoute: BlogsIdIndexRoute,
 }

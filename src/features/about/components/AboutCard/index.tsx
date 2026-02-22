@@ -1,5 +1,6 @@
 import Glass from '@/components/ui/Glass'
 import { MY_INFO } from '@/configs/myInfo'
+import { toUpperFirst } from '@/libs/toUpperFirst'
 
 const AboutCard: React.FC = () => {
   return (
@@ -16,8 +17,8 @@ const AboutCard: React.FC = () => {
             <span>{MY_INFO.firstName}</span>
           </div>
           <div className="col-span-2 grid grid-cols-subgrid text-base-content-muted text-xl">
-            <span className="pl-1">{MY_INFO.lastNameEn}</span>
-            <span className="pl-1.5">{MY_INFO.firstNameEn}</span>
+            <span className="pl-1">{toUpperFirst(MY_INFO.lastNameEn)}</span>
+            <span className="pl-1.5">{toUpperFirst(MY_INFO.firstNameEn)}</span>
           </div>
         </div>
       </div>

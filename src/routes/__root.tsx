@@ -1,6 +1,7 @@
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import type { QueryClient } from '@tanstack/react-query'
 import {
+  ClientOnly,
   createRootRouteWithContext,
   HeadContent,
   Scripts,
@@ -51,7 +52,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-linear-to-br from-5% from-base-200 to-base-300 px-2 py-4">
-        <CosmoBackground />
         <TanStackQueryProvider.Provider {...contexts}>
           <div className="sticky top-0 left-0 z-50 w-full py-2">
             <Header />
@@ -72,6 +72,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             ]}
           />
         </TanStackQueryProvider.Provider>
+        <ClientOnly>
+          <CosmoBackground />
+        </ClientOnly>
         <Scripts />
       </body>
     </html>

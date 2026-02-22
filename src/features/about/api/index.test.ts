@@ -1,5 +1,5 @@
 import { QueryClient } from '@tanstack/react-query'
-import { getCerticationsOptions, getHobbiesOptions } from './index'
+import { getCertificationsOptions, getHobbiesOptions } from './index'
 
 const { mockGetCertifications, mockGetHobbies, mockCreateQueryError } =
   vi.hoisted(() => ({
@@ -28,7 +28,7 @@ describe('about api queryOptions', () => {
       value: certifications,
     })
 
-    const result = await queryClient.fetchQuery(getCerticationsOptions())
+    const result = await queryClient.fetchQuery(getCertificationsOptions())
 
     expect(result).toEqual(certifications)
     expect(mockGetCertifications).toHaveBeenCalledWith()

@@ -3,7 +3,7 @@ import { createQueryError } from '@/features/shared/createQueryError'
 import { getCertifications, getHobbies } from '../functions/index.server'
 import { aboutKeys } from './key'
 
-const getCerticationsOptions = () =>
+const getCertificationsOptions = () =>
   queryOptions({
     queryKey: aboutKeys.certifications(),
     queryFn: async () => {
@@ -29,4 +29,4 @@ const getHobbiesOptions = () =>
     },
   })
 
-export { getCerticationsOptions, getHobbiesOptions }
+export { getCertificationsOptions, getHobbiesOptions }

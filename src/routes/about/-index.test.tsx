@@ -14,16 +14,6 @@ vi.mock('@/features/about/functions/index.server', () => ({
   getHobbies: mockGetHobbies,
 }))
 
-vi.mock('@/features/article/work/functions/index.server', () => ({
-  getWorks: vi.fn(),
-  getWork: vi.fn(),
-}))
-
-vi.mock('@/features/article/blog/functions/index.server', () => ({
-  getBlogs: vi.fn(),
-  getBlog: vi.fn(),
-}))
-
 describe('about page', () => {
   it('プロフィールと認定・趣味情報を表示する', async () => {
     mockGetCertifications.mockResolvedValue({

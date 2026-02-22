@@ -10,11 +10,6 @@ vi.mock('@/features/article/work/functions/index.server', () => ({
   getWork: mockGetWork,
 }))
 
-vi.mock('@/features/article/blog/functions/index.server', () => ({
-  getBlogs: vi.fn(),
-  getBlog: vi.fn(),
-}))
-
 describe('work detail page', () => {
   it('作品詳細を表示する', async () => {
     mockGetWork.mockResolvedValue({

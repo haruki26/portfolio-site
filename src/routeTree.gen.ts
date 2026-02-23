@@ -8,8 +8,11 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorksRouteRouteImport } from './routes/works/route'
+import { Route as ContactRouteRouteImport } from './routes/contact/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
@@ -17,9 +20,18 @@ import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
 import { Route as BlogsIdIndexRouteImport } from './routes/blogs/$id/index'
 
+const ContactIndexLazyRouteImport = createFileRoute('/contact/')()
+const ContactCompleteIndexLazyRouteImport =
+  createFileRoute('/contact/complete/')()
+
 const WorksRouteRoute = WorksRouteRouteImport.update({
   id: '/works',
   path: '/works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRouteRoute = ContactRouteRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -27,6 +39,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+const ContactIndexLazyRoute = ContactIndexLazyRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ContactRouteRoute,
+} as any).lazy(() => import('./routes/contact/index.lazy').then((d) => d.Route))
 const WorksIndexRoute = WorksIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -42,6 +59,14 @@ const AboutIndexRoute = AboutIndexRouteImport.update({
   path: '/about/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
+const ContactCompleteIndexLazyRoute =
+  ContactCompleteIndexLazyRouteImport.update({
+    id: '/complete/',
+    path: '/complete/',
+    getParentRoute: () => ContactRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/contact/complete/index.lazy').then((d) => d.Route),
+  )
 const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
@@ -59,56 +84,79 @@ const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRouteRouteWithChildren
   '/works': typeof WorksRouteRouteWithChildren
   '/about/': typeof AboutIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/works/': typeof WorksIndexRoute
+  '/contact/': typeof ContactIndexLazyRoute
   '/blogs/$id/': typeof BlogsIdIndexRoute
   '/works/$id/': typeof WorksIdIndexRoute
+  '/contact/complete/': typeof ContactCompleteIndexLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutIndexRoute
   '/blogs': typeof BlogsIndexRoute
   '/works': typeof WorksIndexRoute
+  '/contact': typeof ContactIndexLazyRoute
   '/blogs/$id': typeof BlogsIdIndexRoute
   '/works/$id': typeof WorksIdIndexRoute
+  '/contact/complete': typeof ContactCompleteIndexLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRouteRouteWithChildren
   '/works': typeof WorksRouteRouteWithChildren
   '/about/': typeof AboutIndexRoute
   '/blogs/': typeof BlogsIndexRoute
   '/works/': typeof WorksIndexRoute
+  '/contact/': typeof ContactIndexLazyRoute
   '/blogs/$id/': typeof BlogsIdIndexRoute
   '/works/$id/': typeof WorksIdIndexRoute
+  '/contact/complete/': typeof ContactCompleteIndexLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/works'
     | '/about/'
     | '/blogs/'
     | '/works/'
+    | '/contact/'
     | '/blogs/$id/'
     | '/works/$id/'
+    | '/contact/complete/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/blogs' | '/works' | '/blogs/$id' | '/works/$id'
+  to:
+    | '/'
+    | '/about'
+    | '/blogs'
+    | '/works'
+    | '/contact'
+    | '/blogs/$id'
+    | '/works/$id'
+    | '/contact/complete'
   id:
     | '__root__'
     | '/'
+    | '/contact'
     | '/works'
     | '/about/'
     | '/blogs/'
     | '/works/'
+    | '/contact/'
     | '/blogs/$id/'
     | '/works/$id/'
+    | '/contact/complete/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRouteRoute: typeof ContactRouteRouteWithChildren
   WorksRouteRoute: typeof WorksRouteRouteWithChildren
   AboutIndexRoute: typeof AboutIndexRoute
   BlogsIndexRoute: typeof BlogsIndexRoute
@@ -124,12 +172,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexLazyRouteImport
+      parentRoute: typeof ContactRouteRoute
     }
     '/works/': {
       id: '/works/'
@@ -152,6 +214,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact/complete/': {
+      id: '/contact/complete/'
+      path: '/complete'
+      fullPath: '/contact/complete/'
+      preLoaderRoute: typeof ContactCompleteIndexLazyRouteImport
+      parentRoute: typeof ContactRouteRoute
+    }
     '/works/$id/': {
       id: '/works/$id/'
       path: '/$id'
@@ -169,6 +238,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ContactRouteRouteChildren {
+  ContactIndexLazyRoute: typeof ContactIndexLazyRoute
+  ContactCompleteIndexLazyRoute: typeof ContactCompleteIndexLazyRoute
+}
+
+const ContactRouteRouteChildren: ContactRouteRouteChildren = {
+  ContactIndexLazyRoute: ContactIndexLazyRoute,
+  ContactCompleteIndexLazyRoute: ContactCompleteIndexLazyRoute,
+}
+
+const ContactRouteRouteWithChildren = ContactRouteRoute._addFileChildren(
+  ContactRouteRouteChildren,
+)
+
 interface WorksRouteRouteChildren {
   WorksIndexRoute: typeof WorksIndexRoute
   WorksIdIndexRoute: typeof WorksIdIndexRoute
@@ -185,6 +268,7 @@ const WorksRouteRouteWithChildren = WorksRouteRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRouteRoute: ContactRouteRouteWithChildren,
   WorksRouteRoute: WorksRouteRouteWithChildren,
   AboutIndexRoute: AboutIndexRoute,
   BlogsIndexRoute: BlogsIndexRoute,

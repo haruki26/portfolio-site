@@ -11,6 +11,7 @@ class EnvError extends Error {
 const envSchema = z.object({
   MICROCMS_API_KEY: z.string(),
   MICROCMS_SERVICE_DOMAIN: z.string(),
+  FORM_API_URL: z.string(),
 })
 
 const parseEnv = () => {

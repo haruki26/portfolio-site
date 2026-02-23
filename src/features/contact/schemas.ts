@@ -10,7 +10,7 @@ const contactFormSchema = z.object({
   lastName: nameSchema,
   email: z.email({ error: 'メールアドレスの形式で入力してください' }),
   message: z
-    .string({ error: '1文字以上50文字以下で入力してください' })
+    .string({ error: '1文字以上500文字以下で入力してください' })
     .min(1, { error: '1文字以上で入力してください' })
     .max(500, { error: '500文字以下で入力してください' }),
 })

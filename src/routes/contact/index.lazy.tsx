@@ -7,7 +7,7 @@ export const Route = createLazyFileRoute('/contact/')({
 
 function RouteComponent() {
   return (
-    <div className="flex-col items-center justify-center px-4">
+    <div className="flex items-center justify-center px-4">
       <ContactForm />
     </div>
   )

@@ -73,7 +73,7 @@ const ContactForm: React.FC = () => {
             <Input
               formValue={{
                 name: field.name,
-                type: 'email',
+                type: 'text',
                 onChange: (e) => field.handleChange(e.target.value),
                 value: field.state.value,
                 errorMessage: field.state.meta.errors[0]?.message,
@@ -90,7 +90,7 @@ const ContactForm: React.FC = () => {
           {([canSubmit, isSubmitting]) => (
             <Button
               type="submit"
-              isDisable={!canSubmit || isSubmitting}
+              isDisabled={!canSubmit || isSubmitting}
               className="bg-primary-100 text-xl tracking-widest transition-colors duration-150 disabled:bg-primary-300/80"
             >
               Submit

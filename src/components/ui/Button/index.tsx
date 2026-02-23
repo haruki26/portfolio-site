@@ -3,14 +3,14 @@ import { cn } from '@/libs/cn'
 interface Props {
   type?: HTMLButtonElement['type']
   children: React.ReactNode
-  isDisable?: boolean
+  isDisabled?: boolean
   className?: string
 }
 
 const Button: React.FC<Props> = ({
   type = 'button',
   children,
-  isDisable = false,
+  isDisabled = false,
   className,
 }) => {
   return (
@@ -21,7 +21,7 @@ const Button: React.FC<Props> = ({
         'inset-shadow-edge inset-shadow-sm/70 bg-surface/50 ring-2 ring-edge/20 backdrop-blur-[0.8px]',
         className,
       )}
-      disabled={isDisable}
+      disabled={isDisabled}
     >
       {children}
     </button>

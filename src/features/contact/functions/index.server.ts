@@ -24,11 +24,8 @@ const handleSendForm = async (
       Accept: 'application/json',
     },
   })
-  const json = await response.json()
 
-  console.log(json)
-  const jsonData = sendFormResponseSchema.safeParse(json)
-
+  const jsonData = sendFormResponseSchema.safeParse(await response.json())
   if (jsonData.success) {
     return jsonData.data
   }

@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router'
-import { PackageCheck } from 'lucide-react'
 import PageFrame from '@/components/layout/PageFrame'
+import { PAGE } from '@/configs/page'
 
 export const Route = createFileRoute('/works')({
   component: RouteComponent,
@@ -8,7 +8,7 @@ export const Route = createFileRoute('/works')({
 
 function RouteComponent() {
   return (
-    <PageFrame Icon={PackageCheck} pageName="Works">
+    <PageFrame Icon={PAGE.work.Icon} pageName="Work">
       <Outlet />
     </PageFrame>
   )

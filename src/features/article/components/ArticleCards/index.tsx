@@ -20,12 +20,7 @@ const ArticleCards: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div
-      className={cn(
-        'grid w-fit grid-cols-1 items-center gap-7 px-3',
-        className,
-      )}
-    >
+    <div className={cn('grid w-fit grid-cols-1 items-center gap-7', className)}>
       {articles.map((article) => (
         <Glass
           key={article.id}

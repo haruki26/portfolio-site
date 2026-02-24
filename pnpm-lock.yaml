@@ -14,6 +14,9 @@ importers:
       '@praha/byethrow':
         specifier: ^0.9.0
         version: 0.9.0(typescript@5.9.3)
+      '@primer/octicons-react':
+        specifier: ^19.22.0
+        version: 19.22.0(react@19.2.4)
       '@storybook/react-vite':
         specifier: ^10.2.8
         version: 10.2.8(esbuild@0.27.3)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rollup@4.57.1)(storybook@10.2.8(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(typescript@5.9.3)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.2))
@@ -795,6 +798,12 @@ packages:
     resolution: {integrity: sha512-D8XhQ40RsGkwcJdKYqoQ2RUfoqgzztHWXZNpMaRE5P5U+D1c1YboFPc8hysJWQhqloQ32kCXB0XPwM3dFiNyIg==}
     peerDependencies:
       typescript: '>=5.0.0'
+
+  '@primer/octicons-react@19.22.0':
+    resolution: {integrity: sha512-I6hQfmxbM6YbjwQ/VRaGAk+/aFHzqhWh0hThPkO/CyYKrNzEfy/sFAsoSwDH2hRDR7CCCdQaILEDQBT3gaV1bw==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '>=16.3'
 
   '@rolldown/pluginutils@1.0.0-beta.40':
     resolution: {integrity: sha512-s3GeJKSQOwBlzdUrj4ISjJj5SfSh+aqn0wjOar4Bx95iV1ETI7F6S/5hLcfAxZ9kXDcyrAkxPlqmd1ZITttf+w==}
@@ -3409,6 +3418,10 @@ snapshots:
     dependencies:
       '@standard-schema/spec': 1.1.0
       typescript: 5.9.3
+
+  '@primer/octicons-react@19.22.0(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
 
   '@rolldown/pluginutils@1.0.0-beta.40': {}
 

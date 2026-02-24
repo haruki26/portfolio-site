@@ -10,7 +10,7 @@ const HamburgerElement: React.FC<HamburgerElementProps> = ({ className }) => {
     <span
       className={cn(
         'h-0.5 w-6 md:w-8',
-        'bg-accent shadow-md shadow-secondary-300 transition duration-500 ease-in-out',
+        'bg-primary-100 transition duration-500 ease-in-out',
         'border border-white/20 group-hover:bg-primary-300',
         className,
       )}

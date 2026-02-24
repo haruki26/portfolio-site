@@ -21,6 +21,7 @@
     "dependencies": {
         "@cloudflare/vite-plugin": "^1.25.0",
         "@praha/byethrow": "^0.9.0",
+        "@primer/octicons-react": "^19.22.0",
         "@storybook/react-vite": "^10.2.8",
         "@tailwindcss/vite": "^4.1.18",
         "@tanstack/react-devtools": "^0.7.11",

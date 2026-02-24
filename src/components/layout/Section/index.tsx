@@ -8,7 +8,7 @@ interface Props {
 const Section: React.FC<Props> = ({ children, sectionLabel }) => {
   return (
     <section>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-10 md:gap-16">
         <SectionTitle label={sectionLabel} />
         {children}
       </div>

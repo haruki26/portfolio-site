@@ -28,18 +28,15 @@ function RouteComponent() {
   })
 
   return (
-    <div className="flex w-full flex-col items-center gap-16 px-3 py-3">
-      <div className="flex flex-col items-center gap-8 text-shadow-lg/40 text-shadow-secondary-100">
-        <h1 className="font-orbitron text-5xl">Welcome</h1>
-        <p className="wrap-anywhere flex flex-col gap-0.5 break-keep bg-base-300/5 text-center text-xl">
-          このサイトは 私のプロフィールや 作品についてまとめています
-        </p>
+    <div className="flex w-full flex-col items-center gap-16 px-3 py-3 md:gap-20">
+      <div className="flex h-80 flex-col items-center justify-center gap-8 text-shadow-lg text-shadow-secondary-200 md:gap-16">
+        <h1 className="font-orbitron text-6xl md:text-8xl">Welcome</h1>
       </div>
       <Section sectionLabel="About">
-        <div className="flex flex-col items-center gap-7">
+        <div className="flex flex-col items-center gap-7 md:gap-10">
           <AboutCard />
           <Link to="/about">
-            <Button className="w-48 py-3 text-xl">More</Button>
+            <Button>More</Button>
           </Link>
         </div>
       </Section>
@@ -51,7 +48,7 @@ function RouteComponent() {
             className="lg:grid-cols-3 lg:gap-10"
           />
           <Link to="/works" search={{ page: 1 }}>
-            <Button className="w-48 py-3 text-xl">All Works</Button>
+            <Button>All Works</Button>
           </Link>
         </div>
       </Section>
@@ -63,7 +60,7 @@ function RouteComponent() {
             className="lg:grid-cols-3 lg:gap-10"
           />
           <Link to="/blogs" search={{ page: 1 }}>
-            <Button className="w-48 py-3 text-xl">All Blogs</Button>
+            <Button>All Blogs</Button>
           </Link>
         </div>
       </Section>

@@ -2,7 +2,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
 import Pagination from '@/components/ui/Pagination'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
-import ArticleCard from '@/features/article/components/ArticleCard'
+import ArticleCards from '@/features/article/components/ArticleCards'
 import { getWorksOptions } from '@/features/article/work/api'
 
 export const Route = createLazyFileRoute('/works/')({
@@ -22,16 +22,14 @@ function RouteComponent() {
   )
 
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col items-center gap-8">
       <section>
-        <h1 className="sr-only">All works</h1>
-        <div className="flex flex-col gap-5 px-4">
-          {works.map((work) => (
-            <Link key={work.id} to="/works/$id" params={{ id: work.id }}>
-              <ArticleCard article={work} />
-            </Link>
-          ))}
-        </div>
+        <h2 className="sr-only">All works</h2>
+        <ArticleCards
+          articleType="work"
+          articles={works}
+          className="md:grid-cols-2"
+        />
       </section>
       <Pagination
         totalCount={totalCount}

@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button'
 import { TOP_ARTICLE_NUM } from '@/configs/page'
 import AboutCard from '@/features/about/components/AboutCard'
 import { getBlogsOptions } from '@/features/article/blog/api'
-import ArticleCard from '@/features/article/components/ArticleCard'
+import ArticleCards from '@/features/article/components/ArticleCards'
 import { getWorksOptions } from '@/features/article/work/api'
 
 export const Route = createLazyFileRoute('/')({
@@ -36,17 +36,20 @@ function RouteComponent() {
         </p>
       </div>
       <Section sectionLabel="About">
-        <AboutCard />
+        <div className="flex flex-col items-center gap-7">
+          <AboutCard />
+          <Link to="/about">
+            <Button className="w-48 py-3 text-xl">More</Button>
+          </Link>
+        </div>
       </Section>
       <Section sectionLabel="Works">
         <div className="flex w-full flex-col items-center gap-10">
-          <div className="grid grid-cols-1 gap-7">
-            {works.map((work) => (
-              <Link key={work.id} to="/works/$id" params={{ id: work.id }}>
-                <ArticleCard article={work} />
-              </Link>
-            ))}
-          </div>
+          <ArticleCards
+            articleType="work"
+            articles={works}
+            className="lg:grid-cols-3 lg:gap-10"
+          />
           <Link to="/works" search={{ page: 1 }}>
             <Button className="w-48 py-3 text-xl">All Works</Button>
           </Link>
@@ -54,13 +57,11 @@ function RouteComponent() {
       </Section>
       <Section sectionLabel="Blogs">
         <div className="flex w-full flex-col items-center gap-10">
-          <div className="grid grid-cols-1 gap-7">
-            {blogs.map((blog) => (
-              <Link key={blog.id} to="/blogs/$id" params={{ id: blog.id }}>
-                <ArticleCard article={blog} />
-              </Link>
-            ))}
-          </div>
+          <ArticleCards
+            articleType="blog"
+            articles={blogs}
+            className="lg:grid-cols-3 lg:gap-10"
+          />
           <Link to="/blogs" search={{ page: 1 }}>
             <Button className="w-48 py-3 text-xl">All Blogs</Button>
           </Link>

@@ -8,6 +8,8 @@
     --font-roboto-flex: "Roboto Flex", sans-serif;
     --font-jetbrains-mono: "JetBrains Mono", monospace;
 
+    --breakpoint-xs: 32rem;
+
     /* Base - 深い紫がかったダークブルー */
     --color-base-100: oklch(0.26 0.04 280.5);
     --color-base-200: oklch(0.18 0.04 280.5);

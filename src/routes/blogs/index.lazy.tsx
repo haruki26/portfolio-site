@@ -3,8 +3,7 @@ import { createLazyFileRoute, Link } from '@tanstack/react-router'
 import Pagination from '@/components/ui/Pagination'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
 import { getBlogsOptions } from '@/features/article/blog/api'
-import ArticleCard from '@/features/article/components/ArticleCard'
-
+import ArticleCards from '@/features/article/components/ArticleCards'
 export const Route = createLazyFileRoute('/blogs/')({
   component: RouteComponent,
 })
@@ -22,15 +21,15 @@ function RouteComponent() {
   )
 
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col items-center gap-8">
       <section>
-        <h1 className="sr-only">All blogs</h1>
+        <h2 className="sr-only">All blogs</h2>
         <div className="flex flex-col gap-5 px-4">
-          {blogs.map((blog) => (
-            <Link key={blog.id} to="/blogs/$id" params={{ id: blog.id }}>
-              <ArticleCard article={blog} />
-            </Link>
-          ))}
+          <ArticleCards
+            articleType="blog"
+            articles={blogs}
+            className="md:grid-cols-2"
+          />
         </div>
       </section>
       <Pagination

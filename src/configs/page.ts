@@ -1,16 +1,13 @@
-import type { LinkProps } from '@tanstack/react-router'
 import { BookMarked, CircleUser, House, Mail, PackageCheck } from 'lucide-react'
-import type { getRouter } from '@/router'
+import type { AppPath, Page } from '@/types'
 
 const TOP_ARTICLE_NUM = 3
 const LIST_ARTICLES_NUM = 10
 
 interface PageConfig {
   Icon: React.ElementType<{ className: string }>
-  path: LinkProps<ReturnType<typeof getRouter>>
+  path: AppPath
 }
-
-type Page = 'top' | 'work' | 'blog' | 'contact' | 'about'
 
 const PAGE: Record<Page, PageConfig> = {
   top: {

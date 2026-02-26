@@ -1,24 +1,26 @@
 import { MarkGithubIcon } from '@primer/octicons-react'
-import { Link } from '@tanstack/react-router'
+import { Link, MatchRoute } from '@tanstack/react-router'
 import { Mail } from 'lucide-react'
 import { useState } from 'react'
 import Glass from '@/components/ui/Glass'
 import Hamburger from '@/components/ui/HamburgerButton'
 import { MY_INFO } from '@/configs/myInfo'
 import { PAGE } from '@/configs/page'
+import { cn } from '@/libs/cn'
 import { toUpperFirst } from '@/libs/toUpperFirst'
+import Sidemenu from './Sidemenu'
 
 const Header: React.FC = () => {
-  const [isOpenSidebar, setIsOpenSidebar] = useState(false)
+  const [isOpenSidemenu, setIsOpenSidemenu] = useState(false)
 
   return (
-    <header>
-      <Glass className="z-50 flex flex-row items-center justify-between px-5 py-4 md:px-12">
+    <header className="z-50">
+      <Glass className="flex flex-row items-center justify-between px-5 py-4 md:px-12">
         <div className="flex flex-row items-center gap-4">
           <span className="md:hidden">
             <Hamburger
-              onClick={() => setIsOpenSidebar((prev) => !prev)}
-              isOpen={isOpenSidebar}
+              onClick={() => setIsOpenSidemenu((prev) => !prev)}
+              isOpen={isOpenSidemenu}
             />
           </span>
           <span className="font-bold font-orbitron text-lg text-shadow-edge text-shadow-lg/40 md:text-3xl">
@@ -28,12 +30,25 @@ const Header: React.FC = () => {
         <div className="flex flex-row items-center gap-5 md:gap-10">
           <div className="hidden md:block">
             <nav>
-              <ul className="flex gap-5 font-bold font-orbitron text-2xl">
+              <ul className="flex gap-5">
                 {Object.entries(PAGE)
                   .filter(([p, _]) => p !== 'contact')
                   .map(([page, conf]) => (
-                    <li key={page}>
-                      <Link {...conf.path}>{toUpperFirst(page)}</Link>
+                    <li key={`header-${page}`}>
+                      <MatchRoute to={conf.path.to} fuzzy>
+                        {(match) => (
+                          <Link
+                            {...conf.path}
+                            className={cn(
+                              'font-bold font-orbitron text-2xl',
+                              match &&
+                                'text-accent underline underline-offset-4',
+                            )}
+                          >
+                            {toUpperFirst(page)}
+                          </Link>
+                        )}
+                      </MatchRoute>
                     </li>
                   ))}
               </ul>
@@ -49,6 +64,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </Glass>
+      {isOpenSidemenu && <Sidemenu onClose={() => setIsOpenSidemenu(false)} />}
     </header>
   )
 }

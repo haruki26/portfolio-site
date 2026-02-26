@@ -66,10 +66,10 @@ const CosmoBackground: React.FC = () => {
       aria-hidden={true}
       className="-z-50 pointer-events-none fixed top-0 left-0 h-full w-full overflow-hidden"
     >
-      <span className="cosmo absolute top-1/4 right-1/4 h-40 w-40 bg-radial from-purple-500/50 to-purple-300/5 blur-2xl delay-193" />
-      <span className="cosmo absolute right-1/3 bottom-1/3 h-50 w-50 bg-radial from-teal-500/30 to-teal-300/5 blur-2xl delay-367" />
-      <span className="cosmo absolute top-1/3 left-1/3 h-60 w-60 bg-radial from-indigo-500/40 to-indigo-300/5 blur-2xl" />
-      <span className="twinkle absolute bottom-1/2 left-1/2 h-20 w-20 bg-radial from-slate-200/60 to-indigo-300/40 blur-2xl" />
+      <span className="cosmo absolute top-1/4 right-1/4 size-40 bg-radial from-purple-500/50 to-purple-300/5 blur-2xl delay-193 md:size-80" />
+      <span className="cosmo absolute right-1/3 bottom-1/3 size-50 bg-radial from-teal-500/30 to-teal-300/5 blur-2xl delay-367 md:size-100" />
+      <span className="cosmo absolute top-1/3 left-1/3 size-60 bg-radial from-indigo-500/40 to-indigo-300/5 blur-2xl md:left-1/2 md:size-100" />
+      <span className="twinkle absolute bottom-1/2 left-1/2 size-20 bg-radial from-slate-200/60 to-indigo-300/40 blur-2xl md:left-7/12 md:size-40" />
       {stars.map(({ id, ...props }) => (
         <Star key={id} {...props} />
       ))}

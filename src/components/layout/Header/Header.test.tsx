@@ -2,6 +2,17 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Header from '.'
 
+vi.mock('@tanstack/react-router', () => ({
+  Link: ({ children }: { children: React.ReactNode }) => (
+    <a href="/">{children}</a>
+  ),
+  MatchRoute: ({
+    children,
+  }: {
+    children: ((match: boolean) => React.ReactNode) | React.ReactNode
+  }) => <>{typeof children === 'function' ? children(false) : children}</>,
+}))
+
 describe('Header', () => {
   it('ハンバーガーボタンで開閉状態を切り替える', async () => {
     const user = userEvent.setup()

@@ -8,6 +8,8 @@
     --font-roboto-flex: "Roboto Flex", sans-serif;
     --font-jetbrains-mono: "JetBrains Mono", monospace;
 
+    --breakpoint-xs: 32rem;
+
     /* Base - 深い紫がかったダークブルー */
     --color-base-100: oklch(0.26 0.04 280.5);
     --color-base-200: oklch(0.18 0.04 280.5);
@@ -34,6 +36,18 @@
     --color-base-content-muted: oklch(0.60 0.02 280);
     --color-primary-content: oklch(0.15 0.01 280);
     --color-secondary-content: oklch(0.15 0.01 280);
+
+
+    --animate-fade-in: fade-in 0.5s;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 }
 
 body {

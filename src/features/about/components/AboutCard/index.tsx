@@ -4,7 +4,7 @@ import { toUpperFirst } from '@/libs/toUpperFirst'
 
 const AboutCard: React.FC = () => {
   return (
-    <Glass className="flex w-full flex-col gap-3">
+    <Glass className="flex w-full max-w-md flex-col gap-3">
       <div className="flex items-center gap-5">
         <img
           src={MY_INFO.iconImage}

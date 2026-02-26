@@ -14,9 +14,10 @@ describe('contact complete page', () => {
     expect(
       screen.getByText('まさかURL直打ちで来てないよね...?'),
     ).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Back to top' })).toHaveAttribute(
-      'href',
-      '/',
-    )
+    const links = screen.getAllByRole('link', { name: 'Back to top' })
+    expect(links.length).toBeGreaterThan(0)
+    for (const link of links) {
+      expect(link).toHaveAttribute('href', '/')
+    }
   })
 })

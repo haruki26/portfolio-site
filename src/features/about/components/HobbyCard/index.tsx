@@ -7,7 +7,7 @@ interface Props {
 
 const HobbyCard: React.FC<Props> = ({ hobby }) => {
   return (
-    <Glass className="flex flex-col items-center gap-4 px-3 py-5">
+    <Glass className="flex max-w-sm flex-col items-center gap-4 px-3 py-5">
       <h3 className="font-medium text-3xl">{hobby.name}</h3>
       <p className="wrap-anywhere break-keep px-2 text-lg tracking-wider">
         {hobby.description}
@@ -20,7 +20,7 @@ const HobbyCard: React.FC<Props> = ({ hobby }) => {
             alt={image.alt ?? `${hobby.name}画像${i}`}
             width={image.width}
             height={image.height}
-            className="size-32 object-cover"
+            className="size-36 object-cover"
           />
         ))}
       </div>

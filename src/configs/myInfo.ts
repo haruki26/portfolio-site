@@ -13,4 +13,8 @@ export const MY_INFO = {
   },
   avatarImage: avatarImage,
   iconImage: iconImage,
+  sns: {
+    github: 'https://github.com/haruki26',
+    instagram: 'https://instagram.com/yosei_81',
+  },
 }

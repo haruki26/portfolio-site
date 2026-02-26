@@ -1,6 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import PageFrame from '.'
 
+vi.mock('@tanstack/react-router', () => ({
+  Link: ({ children }: { children: React.ReactNode }) => (
+    <a href="/">{children}</a>
+  ),
+}))
+
 describe('PageFrame', () => {
   it('ページ見出し・アイコン・子要素を表示する', () => {
     const Icon = ({ className }: { className: string }) => (

@@ -6,6 +6,11 @@ vi.mock('@tanstack/react-router', () => ({
   Link: ({ children }: { children: React.ReactNode }) => (
     <a href="/">{children}</a>
   ),
+  MatchRoute: ({
+    children,
+  }: {
+    children: ((match: boolean) => React.ReactNode) | React.ReactNode
+  }) => <>{typeof children === 'function' ? children(false) : children}</>,
 }))
 
 describe('Header', () => {

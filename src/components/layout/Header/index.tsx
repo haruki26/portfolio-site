@@ -55,7 +55,11 @@ const Header: React.FC = () => {
             </nav>
           </div>
           <div className="flex gap-3 md:gap-5">
-            <a href={MY_INFO.sns.github} target="_blank">
+            <a
+              href={MY_INFO.sns.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MarkGithubIcon className="size-8" />
             </a>
             <Link to="/contact">

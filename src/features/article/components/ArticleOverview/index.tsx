@@ -10,7 +10,7 @@ interface Props {
 
 const ArticleOverview: React.FC<Props> = ({ article }) => {
   return (
-    <div className="flex flex-col items-center gap-8 px-5">
+    <div className="flex w-full flex-col items-center gap-8 px-5 md:px-10">
       {article.thumbnail && (
         <img
           src={article.thumbnail.src}
@@ -31,7 +31,7 @@ const ArticleOverview: React.FC<Props> = ({ article }) => {
           </LabelWithIcon>
         </div>
       </div>
-      <Glass className="p-3">
+      <Glass className="max-w-xl p-5">
         <p className="wrap-anywhere w-full break-keep text-xl">
           {article.description}
         </p>

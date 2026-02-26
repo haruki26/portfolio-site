@@ -68,8 +68,8 @@ const CosmoBackground: React.FC = () => {
     >
       <span className="cosmo absolute top-1/4 right-1/4 size-40 bg-radial from-purple-500/50 to-purple-300/5 blur-2xl delay-193 md:size-80" />
       <span className="cosmo absolute right-1/3 bottom-1/3 size-50 bg-radial from-teal-500/30 to-teal-300/5 blur-2xl delay-367 md:size-100" />
-      <span className="cosmo absolute top-1/3 left-1/3 size-60 bg-radial from-indigo-500/40 to-indigo-300/5 blur-2xl md:size-120" />
-      <span className="twinkle absolute bottom-1/2 left-1/2 size-20 bg-radial from-slate-200/60 to-indigo-300/40 blur-2xl md:size-40" />
+      <span className="cosmo absolute top-1/3 left-1/3 size-60 bg-radial from-indigo-500/40 to-indigo-300/5 blur-2xl md:left-1/2 md:size-100" />
+      <span className="twinkle absolute bottom-1/2 left-1/2 size-20 bg-radial from-slate-200/60 to-indigo-300/40 blur-2xl md:left-7/12 md:size-40" />
       {stars.map(({ id, ...props }) => (
         <Star key={id} {...props} />
       ))}

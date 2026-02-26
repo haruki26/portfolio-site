@@ -31,6 +31,7 @@ function RouteComponent() {
     <div className="flex w-full flex-col items-center gap-16 px-3 py-3 md:gap-20">
       <div className="flex h-80 flex-col items-center justify-center gap-8 text-shadow-lg text-shadow-secondary-200 md:gap-16">
         <h1 className="font-orbitron text-6xl md:text-8xl">Welcome</h1>
+        <p className="text-3xl">I&apos;m a web developer&#46;</p>
       </div>
       <Section sectionLabel="About">
         <div className="flex flex-col items-center gap-7 md:gap-10">

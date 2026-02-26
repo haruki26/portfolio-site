@@ -38,7 +38,7 @@ describe('works page', () => {
     await renderWithRouter('/works?page=1')
 
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Works' }),
+      await screen.findByRole('heading', { level: 1, name: 'Work' }),
     ).toBeInTheDocument()
     expect(await screen.findByText('作品1')).toBeInTheDocument()
     expect(screen.getByText('作品2')).toBeInTheDocument()
@@ -85,7 +85,7 @@ describe('works page', () => {
     await renderWithRouter('/works?page=1')
 
     expect(
-      await screen.findByRole('heading', { level: 1, name: 'Works' }),
+      await screen.findByRole('heading', { level: 1, name: 'Work' }),
     ).toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'next' })).not.toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'prev' })).not.toBeInTheDocument()

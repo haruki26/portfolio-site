@@ -10,7 +10,7 @@ describe('contact page', () => {
     await renderWithRouter('/contact')
 
     expect(
-      await screen.findByRole('heading', { level: 2, name: 'Contact' }),
+      await screen.findByRole('heading', { level: 1, name: 'Contact' }),
     ).toBeInTheDocument()
     expect(screen.getByText('mock contact form')).toBeInTheDocument()
   })

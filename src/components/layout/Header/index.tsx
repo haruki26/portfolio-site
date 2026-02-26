@@ -59,10 +59,11 @@ const Header: React.FC = () => {
               href={MY_INFO.sns.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Go to github page"
             >
               <MarkGithubIcon className="size-8" />
             </a>
-            <Link to="/contact">
+            <Link to="/contact" aria-label="Go to contact page">
               <Mail className="size-8" />
             </Link>
           </div>

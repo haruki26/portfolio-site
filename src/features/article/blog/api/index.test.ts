@@ -7,7 +7,7 @@ const { mockGetBlogs, mockGetBlog, mockCreateQueryError } = vi.hoisted(() => ({
   mockCreateQueryError: vi.fn((e: { message: string }) => new Error(e.message)),
 }))
 
-vi.mock('../functions/index.server', () => ({
+vi.mock('../functions', () => ({
   getBlogs: mockGetBlogs,
   getBlog: mockGetBlog,
 }))

@@ -10,7 +10,7 @@ const { mockGetCertifications, mockGetHobbies, mockCreateQueryError } =
     ),
   }))
 
-vi.mock('../functions/index.server', () => ({
+vi.mock('../functions', () => ({
   getCertifications: mockGetCertifications,
   getHobbies: mockGetHobbies,
 }))

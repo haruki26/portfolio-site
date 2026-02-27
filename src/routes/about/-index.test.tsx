@@ -9,7 +9,7 @@ const { mockGetHobbies } = vi.hoisted(() => ({
   mockGetHobbies: vi.fn(),
 }))
 
-vi.mock('@/features/about/functions/index.server', () => ({
+vi.mock('@/features/about/functions', () => ({
   getCertifications: mockGetCertifications,
   getHobbies: mockGetHobbies,
 }))

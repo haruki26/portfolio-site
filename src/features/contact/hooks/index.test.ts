@@ -9,7 +9,7 @@ const { mockSendForm, mockNavigate, mockUseNavigate } = vi.hoisted(() => ({
   mockUseNavigate: vi.fn(),
 }))
 
-vi.mock('../functions/index.server', () => ({
+vi.mock('../functions', () => ({
   sendForm: mockSendForm,
 }))
 

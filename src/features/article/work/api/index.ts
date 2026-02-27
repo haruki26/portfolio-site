@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query'
 import type { GetArticleListQuery } from '@/features/article/shared/types'
 import { createQueryError } from '@/features/shared/createQueryError'
 import { ARTICLE_STALE_TIME } from '../../shared/config'
-import { getWork, getWorks } from '../functions/index.server'
+import { getWork, getWorks } from '../functions'
 import { worksKeys } from './key'
 
 const getWorksOptions = (query?: GetArticleListQuery) =>

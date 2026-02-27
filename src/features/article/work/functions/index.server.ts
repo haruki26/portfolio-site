@@ -1,21 +1,7 @@
-import { createServerFn, createServerOnlyFn } from '@tanstack/react-start'
-import z from 'zod'
+import { createServerOnlyFn } from '@tanstack/react-start'
 import { getWorkDetail, getWorkList } from '@/cms/endpoints/works'
-import { getArticleListSchema } from '@/features/article/shared/schemas'
-import { toSerializableResult } from '@/libs/result'
 
-const _getWorks = createServerOnlyFn(getWorkList)
-const getWorks = createServerFn()
-  .inputValidator(getArticleListSchema)
-  .handler(async ({ data }) => toSerializableResult(await _getWorks(data)))
-
-const getWorkDetailSchema = z.object({
-  id: z.string(),
-})
-
-const _getWork = createServerOnlyFn(getWorkDetail)
-const getWork = createServerFn()
-  .inputValidator(getWorkDetailSchema)
-  .handler(async ({ data }) => toSerializableResult(await _getWork(data.id)))
+const getWorks = createServerOnlyFn(getWorkList)
+const getWork = createServerOnlyFn(getWorkDetail)
 
 export { getWorks, getWork }

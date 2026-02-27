@@ -5,7 +5,7 @@ const { mockGetWork } = vi.hoisted(() => ({
   mockGetWork: vi.fn(),
 }))
 
-vi.mock('@/features/article/work/functions/index.server', () => ({
+vi.mock('@/features/article/work/functions', () => ({
   getWorks: vi.fn(),
   getWork: mockGetWork,
 }))

@@ -1,6 +1,6 @@
 import { useForm } from '@tanstack/react-form'
 import { useNavigate } from '@tanstack/react-router'
-import { sendForm } from '../functions/index.server'
+import { sendForm } from '../functions'
 import { contactFormSchema } from '../schemas'
 
 export const useContactForm = () => {

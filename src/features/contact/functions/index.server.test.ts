@@ -40,12 +40,10 @@ describe('contact sendForm', () => {
     })
 
     const result = await sendForm({
-      data: {
-        lastName: 'Yamada',
-        firstName: 'Taro',
-        email: 'taro@example.com',
-        message: 'hello',
-      },
+      lastName: 'Yamada',
+      firstName: 'Taro',
+      email: 'taro@example.com',
+      message: 'hello',
     })
 
     expect(result).toEqual({
@@ -82,12 +80,10 @@ describe('contact sendForm', () => {
     })
 
     const result = await sendForm({
-      data: {
-        lastName: 'Yamada',
-        firstName: 'Taro',
-        email: 'taro@example.com',
-        message: 'hello',
-      },
+      lastName: 'Yamada',
+      firstName: 'Taro',
+      email: 'taro@example.com',
+      message: 'hello',
     })
 
     expect(result).toMatchObject({
@@ -105,12 +101,10 @@ describe('contact sendForm', () => {
     mockFetch.mockRejectedValueOnce(new Error('network error'))
 
     const result = await sendForm({
-      data: {
-        lastName: 'Yamada',
-        firstName: 'Taro',
-        email: 'taro@example.com',
-        message: 'hello',
-      },
+      lastName: 'Yamada',
+      firstName: 'Taro',
+      email: 'taro@example.com',
+      message: 'hello',
     })
 
     expect(result).toMatchObject({

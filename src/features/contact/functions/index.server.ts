@@ -1,7 +1,7 @@
-import { createServerFn, createServerOnlyFn } from '@tanstack/react-start'
+import { createServerOnlyFn } from '@tanstack/react-start'
 import { appEnv } from '@/libs/env'
-import { toSerializableResult, tryAsync } from '@/libs/result'
-import { contactFormSchema, sendFormResponseSchema } from '../schemas'
+import { tryAsync } from '@/libs/result'
+import { sendFormResponseSchema } from '../schemas'
 import type { ContactFormSchema, SendFormResponseSchema } from '../types'
 
 const createFormData = (data: ContactFormSchema): FormData => {
@@ -32,16 +32,12 @@ const handleSendForm = async (
   throw new Error('Received invalid response.')
 }
 
-const _sendForm = createServerOnlyFn(async (data: ContactFormSchema) => {
+const sendForm = createServerOnlyFn(async (data: ContactFormSchema) => {
   const formData = createFormData(data)
   return tryAsync(async () => {
     const res = await handleSendForm(formData)
     return res.ok
   })
 })
-
-const sendForm = createServerFn({ method: 'POST' })
-  .inputValidator(contactFormSchema)
-  .handler(async ({ data }) => toSerializableResult(await _sendForm(data)))
 
 export { sendForm }

@@ -19,11 +19,14 @@ jobs:
       - name: setup
         uses: ./.github/actions/setup
 
+      - name: create .env
+        run: |
+          echo "MICROCMS_API_KEY=${{ secrets.MICROCMS_API_KEY }}" >> .env
+          echo "MICROCMS_SERVICE_DOMAIN=${{ secrets.MICROCMS_SERVICE_DOMAIN }}" >> .env
+          echo "FORM_API_URL=${{ secrets.FORM_API_URL }}" >> .env
+
       - name: Build and deploy
         run: pnpm run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
-          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
-          FORM_API_URL: ${{ secrets.FORM_API_URL }}

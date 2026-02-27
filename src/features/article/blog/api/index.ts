@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query'
 import type { GetArticleListQuery } from '@/features/article/shared/types'
 import { createQueryError } from '@/features/shared/createQueryError'
 import { ARTICLE_STALE_TIME } from '../../shared/config'
-import { getBlog, getBlogs } from '../functions/index.server'
+import { getBlog, getBlogs } from '../functions'
 import { blogsKeys } from './key'
 
 const getBlogsOptions = (query?: GetArticleListQuery) =>

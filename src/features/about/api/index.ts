@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
 import { createQueryError } from '@/features/shared/createQueryError'
-import { getCertifications, getHobbies } from '../functions/index.server'
+import { getCertifications, getHobbies } from '../functions'
 import { aboutKeys } from './key'
 
 const getCertificationsOptions = () =>

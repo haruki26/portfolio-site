@@ -13,4 +13,8 @@ const getArticleListSchema = z
   ])
   .optional()
 
-export { getArticleListSchema }
+const getArticleDetailSchema = z.object({
+  id: z.string(),
+})
+
+export { getArticleDetailSchema, getArticleListSchema }

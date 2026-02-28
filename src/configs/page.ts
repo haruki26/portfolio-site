@@ -40,6 +40,6 @@ const PAGE: Record<Page, PageConfig> = {
       to: '/contact',
     },
   },
-}
+} as const
 
 export { LIST_ARTICLES_NUM, PAGE, TOP_ARTICLE_NUM }

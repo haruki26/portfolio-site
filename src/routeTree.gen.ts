@@ -8,8 +8,6 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorksRouteRouteImport } from './routes/works/route'
 import { Route as ContactRouteRouteImport } from './routes/contact/route'
@@ -17,14 +15,12 @@ import { Route as BlogsRouteRouteImport } from './routes/blogs/route'
 import { Route as AboutRouteRouteImport } from './routes/about/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorksIndexRouteImport } from './routes/works/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
+import { Route as ContactCompleteIndexRouteImport } from './routes/contact/complete/index'
 import { Route as BlogsIdIndexRouteImport } from './routes/blogs/$id/index'
-
-const ContactIndexLazyRouteImport = createFileRoute('/contact/')()
-const ContactCompleteIndexLazyRouteImport =
-  createFileRoute('/contact/complete/')()
 
 const WorksRouteRoute = WorksRouteRouteImport.update({
   id: '/works',
@@ -51,16 +47,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-const ContactIndexLazyRoute = ContactIndexLazyRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ContactRouteRoute,
-} as any).lazy(() => import('./routes/contact/index.lazy').then((d) => d.Route))
 const WorksIndexRoute = WorksIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => WorksRouteRoute,
 } as any).lazy(() => import('./routes/works/index.lazy').then((d) => d.Route))
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ContactRouteRoute,
+} as any).lazy(() => import('./routes/contact/index.lazy').then((d) => d.Route))
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -71,20 +67,19 @@ const AboutIndexRoute = AboutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AboutRouteRoute,
 } as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
-const ContactCompleteIndexLazyRoute =
-  ContactCompleteIndexLazyRouteImport.update({
-    id: '/complete/',
-    path: '/complete/',
-    getParentRoute: () => ContactRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/contact/complete/index.lazy').then((d) => d.Route),
-  )
 const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
   getParentRoute: () => WorksRouteRoute,
 } as any).lazy(() =>
   import('./routes/works/$id/index.lazy').then((d) => d.Route),
+)
+const ContactCompleteIndexRoute = ContactCompleteIndexRouteImport.update({
+  id: '/complete/',
+  path: '/complete/',
+  getParentRoute: () => ContactRouteRoute,
+} as any).lazy(() =>
+  import('./routes/contact/complete/index.lazy').then((d) => d.Route),
 )
 const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
   id: '/$id/',
@@ -102,21 +97,21 @@ export interface FileRoutesByFullPath {
   '/works': typeof WorksRouteRouteWithChildren
   '/about/': typeof AboutIndexRoute
   '/blogs/': typeof BlogsIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/works/': typeof WorksIndexRoute
-  '/contact/': typeof ContactIndexLazyRoute
   '/blogs/$id/': typeof BlogsIdIndexRoute
+  '/contact/complete/': typeof ContactCompleteIndexRoute
   '/works/$id/': typeof WorksIdIndexRoute
-  '/contact/complete/': typeof ContactCompleteIndexLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutIndexRoute
   '/blogs': typeof BlogsIndexRoute
+  '/contact': typeof ContactIndexRoute
   '/works': typeof WorksIndexRoute
-  '/contact': typeof ContactIndexLazyRoute
   '/blogs/$id': typeof BlogsIdIndexRoute
+  '/contact/complete': typeof ContactCompleteIndexRoute
   '/works/$id': typeof WorksIdIndexRoute
-  '/contact/complete': typeof ContactCompleteIndexLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -127,11 +122,11 @@ export interface FileRoutesById {
   '/works': typeof WorksRouteRouteWithChildren
   '/about/': typeof AboutIndexRoute
   '/blogs/': typeof BlogsIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/works/': typeof WorksIndexRoute
-  '/contact/': typeof ContactIndexLazyRoute
   '/blogs/$id/': typeof BlogsIdIndexRoute
+  '/contact/complete/': typeof ContactCompleteIndexRoute
   '/works/$id/': typeof WorksIdIndexRoute
-  '/contact/complete/': typeof ContactCompleteIndexLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -143,21 +138,21 @@ export interface FileRouteTypes {
     | '/works'
     | '/about/'
     | '/blogs/'
-    | '/works/'
     | '/contact/'
+    | '/works/'
     | '/blogs/$id/'
-    | '/works/$id/'
     | '/contact/complete/'
+    | '/works/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/blogs'
-    | '/works'
     | '/contact'
+    | '/works'
     | '/blogs/$id'
-    | '/works/$id'
     | '/contact/complete'
+    | '/works/$id'
   id:
     | '__root__'
     | '/'
@@ -167,11 +162,11 @@ export interface FileRouteTypes {
     | '/works'
     | '/about/'
     | '/blogs/'
-    | '/works/'
     | '/contact/'
+    | '/works/'
     | '/blogs/$id/'
-    | '/works/$id/'
     | '/contact/complete/'
+    | '/works/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -219,19 +214,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact/': {
-      id: '/contact/'
-      path: '/'
-      fullPath: '/contact/'
-      preLoaderRoute: typeof ContactIndexLazyRouteImport
-      parentRoute: typeof ContactRouteRoute
-    }
     '/works/': {
       id: '/works/'
       path: '/'
       fullPath: '/works/'
       preLoaderRoute: typeof WorksIndexRouteImport
       parentRoute: typeof WorksRouteRoute
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
+      parentRoute: typeof ContactRouteRoute
     }
     '/blogs/': {
       id: '/blogs/'
@@ -247,19 +242,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof AboutRouteRoute
     }
-    '/contact/complete/': {
-      id: '/contact/complete/'
-      path: '/complete'
-      fullPath: '/contact/complete/'
-      preLoaderRoute: typeof ContactCompleteIndexLazyRouteImport
-      parentRoute: typeof ContactRouteRoute
-    }
     '/works/$id/': {
       id: '/works/$id/'
       path: '/$id'
       fullPath: '/works/$id/'
       preLoaderRoute: typeof WorksIdIndexRouteImport
       parentRoute: typeof WorksRouteRoute
+    }
+    '/contact/complete/': {
+      id: '/contact/complete/'
+      path: '/complete'
+      fullPath: '/contact/complete/'
+      preLoaderRoute: typeof ContactCompleteIndexRouteImport
+      parentRoute: typeof ContactRouteRoute
     }
     '/blogs/$id/': {
       id: '/blogs/$id/'
@@ -298,13 +293,13 @@ const BlogsRouteRouteWithChildren = BlogsRouteRoute._addFileChildren(
 )
 
 interface ContactRouteRouteChildren {
-  ContactIndexLazyRoute: typeof ContactIndexLazyRoute
-  ContactCompleteIndexLazyRoute: typeof ContactCompleteIndexLazyRoute
+  ContactIndexRoute: typeof ContactIndexRoute
+  ContactCompleteIndexRoute: typeof ContactCompleteIndexRoute
 }
 
 const ContactRouteRouteChildren: ContactRouteRouteChildren = {
-  ContactIndexLazyRoute: ContactIndexLazyRoute,
-  ContactCompleteIndexLazyRoute: ContactCompleteIndexLazyRoute,
+  ContactIndexRoute: ContactIndexRoute,
+  ContactCompleteIndexRoute: ContactCompleteIndexRoute,
 }
 
 const ContactRouteRouteWithChildren = ContactRouteRoute._addFileChildren(

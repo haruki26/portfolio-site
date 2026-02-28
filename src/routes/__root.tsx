@@ -9,6 +9,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import CosmoBackground from '@/components/layout/CosmoBackground'
 import Header from '@/components/layout/Header'
+import { SEO } from '@/configs/seo'
 import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools'
 import * as TanStackQueryProvider from '@/integrations/tanstack-query/root-provider'
 import appCss from '@/styles.css?url'
@@ -27,8 +28,10 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
       },
+      { title: SEO.title },
       {
-        title: 'Haruki Portfolio site | 久保陽生のポートフォリオサイト',
+        name: 'description',
+        content: SEO.description,
       },
     ],
     links: [

@@ -63,6 +63,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
+  headers: () => ({
+    'Cache-Control':
+      'public, max-age=21600, s-maxage=21600, stale-while-revalidate=86400',
+  }),
+  staleTime: 5 * 60 * 100,
   shellComponent: RootDocument,
 })
 

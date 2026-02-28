@@ -47,6 +47,10 @@ const config = defineConfig({
         enabled: true,
         crawlLinks: true,
       },
+      sitemap: {
+        enabled: true,
+        host: 'https://about.yosei-82s.fun',
+      },
     }),
     viteReact(),
   ],

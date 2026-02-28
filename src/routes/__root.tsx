@@ -28,17 +28,23 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Haruki Portfolio',
+        title: 'Haruki Portfolio site | 久保陽生のポートフォリオサイト',
       },
     ],
-    links: appCss
-      ? [
-          {
-            rel: 'stylesheet',
-            href: appCss,
-          },
-        ]
-      : [],
+    links: [
+      ...(appCss
+        ? [
+            {
+              rel: 'stylesheet',
+              href: appCss,
+            },
+          ]
+        : []),
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
+      },
+    ],
   }),
   shellComponent: RootDocument,
 })

@@ -1,7 +1,11 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import z from 'zod'
+import { MY_INFO } from '@/configs/myInfo'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
+import { SEO } from '@/configs/seo'
 import { getWorksOptions } from '@/features/article/work/api'
+import { createCollectionJsonLD } from '@/libs/createJsonLD'
+import { generateHead } from '@/libs/generateHead'
 
 const searchParamsSchema = z.object({
   page: z.number().min(1).default(1).catch(1),
@@ -31,12 +35,25 @@ export const Route = createFileRoute('/works/')({
     }
   },
   loader: async ({ context: { queryClient }, deps: { page } }) => {
-    const { totalCount } = await queryClient.ensureQueryData(
+    await queryClient.ensureQueryData(
       getWorksOptions({
         limit: LIST_ARTICLES_NUM,
         currentPage: page,
       }),
     )
-    return { totalCount }
+
+    return { page }
   },
+  head: ({ loaderData }) =>
+    generateHead({
+      title: `成果物一覧 | ${SEO.title}`,
+      description: '成果物に関する記事の一覧ページです。',
+      url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
+      image: MY_INFO.iconImage,
+      type: 'website',
+      jsonLD: createCollectionJsonLD({
+        name: '成果物記事一覧',
+        url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
+      }),
+    }),
 })

@@ -50,6 +50,16 @@ const options: HTMLReactParserOptions = {
             </code>
           )
         }
+        break
+      }
+      case 'img': {
+        return (
+          <img
+            {...domNode.attribs}
+            alt={domNode.attribs.alt || 'Article image'}
+            loading="lazy"
+          />
+        )
       }
     }
   },
@@ -69,7 +79,7 @@ const HtmlViewer: React.FC<Props> = ({ htmlString, className }) => {
         'prose wrap-anywhere mx-auto w-full break-keep px-3 text-base-content',
         'prose-pre:overflow-x-auto prose-code:font-jetbrains-mono prose-headings:text-base-content',
         'prose-a:text-secondary-100 prose-li:text-base-content prose-strong:text-primary-100',
-        'max-w-3xl md:text-xl',
+        'max-w-3xl prose-img:rounded-md md:text-xl',
         className,
       )}
     >

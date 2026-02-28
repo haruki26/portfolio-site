@@ -1,5 +1,4 @@
-import { createLazyFileRoute, Link } from '@tanstack/react-router'
-import Button from '@/components/ui/Button'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import Glass from '@/components/ui/Glass'
 
 export const Route = createLazyFileRoute('/contact/complete/')({
@@ -15,9 +14,6 @@ function RouteComponent() {
           まさかURL直打ちで来てないよね...?
         </p>
       </Glass>
-      <Link to="/">
-        <Button className="px-6 py-3 text-2xl">Back to top</Button>
-      </Link>
     </div>
   )
 }

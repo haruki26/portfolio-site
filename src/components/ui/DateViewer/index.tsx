@@ -5,13 +5,15 @@ interface Props {
 
 const DateViewer: React.FC<Props> = ({ date, separator = '-' }) => {
   return (
-    <div className="flex flex-row gap-0.5 text-lg">
-      <span>{date.getFullYear()}</span>
-      <span>{separator}</span>
-      <span>{date.getMonth() + 1}</span>
-      <span>{separator}</span>
-      <span>{date.getDate()}</span>
-    </div>
+    <time dateTime={date.toISOString()}>
+      <div className="flex flex-row gap-0.5 text-lg">
+        <span>{date.getFullYear()}</span>
+        <span>{separator}</span>
+        <span>{date.getMonth() + 1}</span>
+        <span>{separator}</span>
+        <span>{date.getDate()}</span>
+      </div>
+    </time>
   )
 }
 

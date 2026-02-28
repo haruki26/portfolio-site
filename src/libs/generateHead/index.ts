@@ -14,6 +14,10 @@ export const generateHead = (vals: {
   url: `https://${string}`
   image: string
   type: 'website' | 'article' | 'profile'
+  jsonLD?: Record<PropertyKey, unknown> & {
+    '@context': 'https://schema.org'
+    '@type': string
+  }
 }): {
   meta: Array<
     | OpenGraph
@@ -22,6 +26,7 @@ export const generateHead = (vals: {
     | { name: 'description'; content: string }
   >
   links: Array<{ rel: 'canonical'; href: `https://${string}` }>
+  scripts: Array<{ type: 'application/ld+json'; children: string }> | undefined
 } => ({
   meta: [
     {
@@ -73,4 +78,13 @@ export const generateHead = (vals: {
     },
   ],
   links: [{ rel: 'canonical', href: vals.url }],
+  scripts:
+    vals.jsonLD !== undefined
+      ? [
+          {
+            type: 'application/ld+json',
+            children: JSON.stringify(vals.jsonLD),
+          },
+        ]
+      : undefined,
 })

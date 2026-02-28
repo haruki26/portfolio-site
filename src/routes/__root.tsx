@@ -9,6 +9,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import CosmoBackground from '@/components/layout/CosmoBackground'
 import Header from '@/components/layout/Header'
+import { MY_INFO } from '@/configs/myInfo'
 import { SEO } from '@/configs/seo'
 import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools'
 import * as TanStackQueryProvider from '@/integrations/tanstack-query/root-provider'
@@ -46,6 +47,19 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       {
         rel: 'manifest',
         href: '/manifest.json',
+      },
+    ],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: `${MY_INFO.lastName}${MY_INFO.firstName}`,
+          url: SEO.url,
+          jobTitle: 'Student',
+          sameAs: [...Object.entries(MY_INFO.sns).map(([_, link]) => link)],
+        }),
       },
     ],
   }),

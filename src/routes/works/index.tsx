@@ -4,6 +4,7 @@ import { MY_INFO } from '@/configs/myInfo'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
 import { SEO } from '@/configs/seo'
 import { getWorksOptions } from '@/features/article/work/api'
+import { createCollectionJsonLD } from '@/libs/createJsonLD'
 import { generateHead } from '@/libs/generateHead'
 
 const searchParamsSchema = z.object({
@@ -50,5 +51,9 @@ export const Route = createFileRoute('/works/')({
       url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
       image: MY_INFO.iconImage,
       type: 'website',
+      jsonLD: createCollectionJsonLD({
+        name: '成果物記事一覧',
+        url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
+      }),
     }),
 })

@@ -15,6 +15,5 @@ export const MY_INFO = {
   iconImage: iconImage,
   sns: {
     github: 'https://github.com/haruki26',
-    instagram: 'https://instagram.com/yosei_81',
   },
 } as const

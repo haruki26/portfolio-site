@@ -13,6 +13,7 @@ export const generateHead = (vals: {
   description: string
   url: `https://${string}`
   image: string
+  type: 'website' | 'article' | 'profile'
 }): {
   meta: Array<
     | OpenGraph
@@ -45,6 +46,10 @@ export const generateHead = (vals: {
     {
       property: 'og:image',
       content: vals.image,
+    },
+    {
+      property: 'og:type',
+      content: vals.type,
     },
     {
       name: 'twitter:card',

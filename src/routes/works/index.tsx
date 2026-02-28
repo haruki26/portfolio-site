@@ -49,5 +49,6 @@ export const Route = createFileRoute('/works/')({
       description: `成果物に関する記事の一覧ページです。${loaderData !== undefined ? `${loaderData.tags.map((tag) => tag.name).join('、')}などに関連する記事があります。` : ''}`,
       url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
       image: MY_INFO.iconImage,
+      type: 'website',
     }),
 })

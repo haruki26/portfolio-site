@@ -10,5 +10,6 @@ export const Route = createFileRoute('/contact/')({
       description: `お問い合わせはこちらから。`,
       image: MY_INFO.iconImage,
       url: `${SEO.url}/contact`,
+      type: 'website',
     }),
 })

@@ -15,11 +15,13 @@ export const Route = createFileRoute('/blogs/$id/')({
           description: loaderData.description,
           image: loaderData.thumbnail?.src ?? MY_INFO.iconImage,
           url: `${SEO.url}/blogs/${params.id}`,
+          type: 'article',
         })
       : generateHead({
           title: SEO.title,
           description: SEO.description,
           image: MY_INFO.iconImage,
           url: `${SEO.url}/blogs/${params.id}`,
+          type: 'article',
         }),
 })

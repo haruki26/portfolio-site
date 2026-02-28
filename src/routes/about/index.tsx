@@ -20,5 +20,6 @@ export const Route = createFileRoute('/about/')({
       description: '久保陽生のプロフィール。取得資格や趣味について記載します。',
       image: MY_INFO.avatarImage,
       url: `${SEO.url}/about`,
+      type: 'profile',
     }),
 })

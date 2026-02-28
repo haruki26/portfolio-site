@@ -19,5 +19,6 @@ export const Route = createFileRoute('/')({
       description: SEO.description,
       url: SEO.url,
       image: MY_INFO.iconImage,
+      type: 'website',
     }),
 })

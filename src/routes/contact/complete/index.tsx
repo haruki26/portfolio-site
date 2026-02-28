@@ -10,5 +10,6 @@ export const Route = createFileRoute('/contact/complete/')({
       description: 'お問い合わせが完了しました',
       image: MY_INFO.iconImage,
       url: `${SEO.url}/contact/complete`,
+      type: 'website',
     }),
 })

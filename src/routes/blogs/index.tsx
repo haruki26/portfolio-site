@@ -35,19 +35,19 @@ export const Route = createFileRoute('/blogs/')({
     }
   },
   loader: async ({ context: { queryClient }, deps: { page } }) => {
-    const { blogs } = await queryClient.ensureQueryData(
+    await queryClient.ensureQueryData(
       getBlogsOptions({
         limit: LIST_ARTICLES_NUM,
         currentPage: page,
       }),
     )
 
-    return { page, tags: blogs.flatMap((blog) => blog.tags) }
+    return { page }
   },
   head: ({ loaderData }) =>
     generateHead({
       title: `ブログ一覧 | ${SEO.title}`,
-      description: `ブログの一覧ページです。${loaderData !== undefined ? `${loaderData.tags.map((tag) => tag.name).join('、')}などに関連する記事があります。` : ''}`,
+      description: 'ブログの一覧ページです。',
       url: `${SEO.url}/blogs?page=${loaderData?.page ?? 1}`,
       image: MY_INFO.iconImage,
       type: 'website',

@@ -35,19 +35,19 @@ export const Route = createFileRoute('/works/')({
     }
   },
   loader: async ({ context: { queryClient }, deps: { page } }) => {
-    const { works } = await queryClient.ensureQueryData(
+    await queryClient.ensureQueryData(
       getWorksOptions({
         limit: LIST_ARTICLES_NUM,
         currentPage: page,
       }),
     )
 
-    return { page, tags: works.flatMap((w) => w.tags) }
+    return { page }
   },
   head: ({ loaderData }) =>
     generateHead({
       title: `成果物一覧 | ${SEO.title}`,
-      description: `成果物に関する記事の一覧ページです。${loaderData !== undefined ? `${loaderData.tags.map((tag) => tag.name).join('、')}などに関連する記事があります。` : ''}`,
+      description: '成果物に関する記事の一覧ページです。',
       url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
       image: MY_INFO.iconImage,
       type: 'website',

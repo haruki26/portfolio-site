@@ -1,0 +1,18 @@
+pre-commit:
+  commands:
+    check:
+      root: packages/site/
+      glob: "src/**/*.{ts,tsx}"
+      run: biome check --write {staged_files}
+
+pre-push:
+  parallel: true
+  commands:
+    type-check:
+      root: packages/site/
+      run: "pnpm ci:type"
+
+    test:
+      root: packages/site/
+      run: pnpm test
+

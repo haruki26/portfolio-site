@@ -59,3 +59,4 @@ jobs:
 
       - name: Show coverage
         uses: davelosert/vitest-coverage-report-action@v2
+        working-directory: ./packages/site

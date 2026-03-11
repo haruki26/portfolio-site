@@ -1,0 +1,17 @@
+packages:
+  - packages/*
+
+catalog:
+  typescript: ^5.9.3
+  vite: ^7.3.1
+
+catalogs:
+  test:
+    vitest: ^4.0.18
+    "@vitest/coverage-v8": ^4.0.18
+
+onlyBuiltDependencies:
+  - esbuild
+  - lefthook
+  - sharp
+  - workerd

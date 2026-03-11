@@ -1,17 +1,42 @@
-name: Run Test
+name: Run Site Check
 
 on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
     types: [opened, reopened, synchronize, ready_for_review]
+    paths:
+      - ".github/workflows/test_site.yaml"
+      - "packages/site/**/*.{ts,tsx}"
+      - "packages/site/package.json"
+
+default:
+  run:
+    working-directory: ./packages/site
 
 jobs:
+  check:
+    name: Lint and type check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup
+        uses: ./.github/actions/setup
+
+      - name: Run Lint
+        run: "pnpm ci:check"
+
+      - name: Run Type Check
+        run: "pnpm ci:type"
+
   test:
-    name: Run test codes
+    name: Test
     if: |
       github.event.pull_request.draft == false
       && !startsWith(github.head_ref, 'release')
@@ -34,4 +59,3 @@ jobs:
 
       - name: Show coverage
         uses: davelosert/vitest-coverage-report-action@v2
-

@@ -10,7 +10,7 @@ on:
     types:
       - completed
 
-default:
+defaults:
   run:
     working-directory: ./packages/site
 

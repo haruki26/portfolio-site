@@ -14,7 +14,7 @@ on:
       - "packages/site/**/*.{ts,tsx}"
       - "packages/site/package.json"
 
-default:
+defaults:
   run:
     working-directory: ./packages/site
 

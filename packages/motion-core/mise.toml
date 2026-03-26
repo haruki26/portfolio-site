@@ -1,0 +1,25 @@
+[tasks.setup]
+description = "Setup"
+run = [
+    "cargo install wasm-pack"
+]
+
+[tasks."wasm:build"]
+description = "Build wasm"
+run = "wasm-pack build --target web"
+
+[tasks."wasm:fmt"]
+description = "Format wasm source"
+run = "cargo fmt"
+
+[tasks."wasm:lint"]
+description = "Lint wasm source"
+run = "cargo clippy"
+
+[tasks."wasm:check"]
+description = "Check wasm source"
+run = [
+    "cargo fmt",
+    "cargo clippy"
+]
+

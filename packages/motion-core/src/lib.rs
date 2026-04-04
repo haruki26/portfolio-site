@@ -1,11 +1,16 @@
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
-extern "C" {
-    pub fn alert(s: &str);
-}
+pub mod core;
 
 #[wasm_bindgen]
-pub fn greet(name: &str) {
-    alert(&format!("Hello, {}!", name));
+pub fn update(state: &[f32], input: f32, dt: f32) -> Vec<f32> {
+    // Param
+    let base_gain = 2.5;
+    let damping = 0.92;
+    let max_speed = 10.0;
+
+    let angle = state[0];
+    let velocity = state[1];
+
+    vec![]
 }

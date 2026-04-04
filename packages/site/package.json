@@ -37,6 +37,7 @@
         "html-react-parser": "^5.2.17",
         "lucide-react": "^0.545.0",
         "microcms-js-sdk": "^3.3.0",
+        "motion-core": "workspace:*",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "react-syntax-highlighter": "^16.1.1",

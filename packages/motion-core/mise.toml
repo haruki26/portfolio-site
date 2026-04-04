@@ -1,12 +1,15 @@
 [tasks.setup]
 description = "Setup"
 run = [
-    "cargo install wasm-pack"
+    "cargo install wasm-bindgen-cli"
 ]
 
 [tasks."wasm:build"]
 description = "Build wasm"
-run = "wasm-pack build --target web"
+run = [
+    "cargo build --target wasm32-unknown-unknown --release",
+    "wasm-bindgen target/wasm32-unknown-unknown/release/motion_core.wasm --out-dir ./pkg --target web"
+]
 
 [tasks."wasm:fmt"]
 description = "Format wasm source"

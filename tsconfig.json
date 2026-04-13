@@ -1,0 +1,7 @@
+{
+    "files": [],
+    "references": [
+        { "path": "packages/site" },
+        { "path": "packages/motion-core" }
+    ]
+}

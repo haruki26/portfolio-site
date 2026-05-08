@@ -37,14 +37,13 @@
         "html-react-parser": "^5.2.17",
         "lucide-react": "^0.545.0",
         "microcms-js-sdk": "^3.3.0",
-        "motion-core": "workspace:*",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "react-syntax-highlighter": "^16.1.1",
         "storybook": "^10.2.17",
         "tailwind-merge": "^3.5.0",
         "tailwindcss": "^4.2.1",
-        "vite-tsconfig-paths": "^5.1.4",
+        "vite-tsconfig-paths": "catalog:build",
         "zod": "^4.3.6"
     },
     "devDependencies": {
@@ -62,7 +61,7 @@
         "@vitest/coverage-v8": "catalog:test",
         "jsdom": "^27.4.0",
         "typescript": "catalog:",
-        "vite": "catalog:",
+        "vite": "catalog:build",
         "vitest": "catalog:test",
         "wrangler": "^4.72.0"
     }

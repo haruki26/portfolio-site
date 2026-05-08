@@ -51,6 +51,6 @@ pub fn update_state(state: State, raw_input: f32, params: Parameter) -> State {
     State { velocity, angle, filtered_input }
 }
 
-pub fn update_states(states: Vec<State>, raw_input: f32, params: Parameter) -> Vec<State> {
-    states.iter().map()
-}
+// pub fn update_states(states: Vec<State>, raw_input: f32, params: Parameter) -> Vec<State> {
+//     states.iter().map()
+// }

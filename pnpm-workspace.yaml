@@ -3,14 +3,17 @@ packages:
 
 catalog:
   typescript: ^5.9.3
-  vite: ^7.3.1
 
 catalogs:
+  build:
+    vite: ^7.3.1
+    vite-tsconfig-paths: ^5.1.4
   test:
+    '@vitest/coverage-v8': ^4.0.18
     vitest: ^4.0.18
-    "@vitest/coverage-v8": ^4.0.18
 
 onlyBuiltDependencies:
+  - '@swc/core'
   - esbuild
   - lefthook
   - sharp

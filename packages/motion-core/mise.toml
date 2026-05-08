@@ -12,17 +12,40 @@ run = [
 ]
 
 [tasks."wasm:fmt"]
-description = "Format wasm source"
+hide = true
 run = "cargo fmt"
 
 [tasks."wasm:lint"]
-description = "Lint wasm source"
+hide = true
 run = "cargo clippy"
 
 [tasks."wasm:check"]
-description = "Check wasm source"
+hide = true
 run = [
     "cargo fmt",
     "cargo clippy"
 ]
 
+[tasks."ts:fmt"]
+hide = true
+run = "pnpm format"
+
+[tasks."ts:lint"]
+hide = true
+run = "pnpm lint"
+
+[tasks."ts:check"]
+hide = true
+run = "pnpm check"
+
+[tasks.format]
+description = "Run format"
+run = { tasks = ["wasm:fmt", "ts:fmt"] }
+
+[tasks.lint]
+description = "Run lint"
+run = { tasks = ["wasm:lint", "ts:lint"] }
+
+[tasks.check]
+description = "Run check"
+run = { tasks = ["wasm:fmt", "ts:check"] }

@@ -1,5 +1,10 @@
-import init from "../pkg/motion_core"
+import init, { type InitOutput } from '@pkg/motion_core'
 
-const wasm = await init()
+let wasm: InitOutput | null = null
 
-const rotate = wasm.rotator_new()
+export const createWasm = async () => {
+  if (!wasm) {
+    wasm = await init()
+  }
+  return wasm
+}

@@ -9,9 +9,7 @@ export default defineConfig({
       provider: 'v8',
       include: ['src/**/*.ts', 'src/**/*.tsx'],
       exclude: ['routeTree.gen.ts'],
-      reporter: [
-        'text', 'json-summary', 'json'
-      ],
+      reporter: ['text', 'json-summary', 'json'],
       reportOnFailure: true,
     },
     projects: [
@@ -32,7 +30,7 @@ export default defineConfig({
           environment: 'jsdom',
           include: ['src/**/components/**/*.test.tsx'],
           setupFiles: ['./test/component/setup.ts'],
-        }
+        },
       },
       {
         extends: true,
@@ -41,9 +39,9 @@ export default defineConfig({
           environment: 'jsdom',
           include: ['src/routes/**/*.test.tsx'],
           exclude: ['src/routes/**/-components/*/*.test.tsx'],
-          setupFiles: ['./test/page/setup.ts']
-        }
+          setupFiles: ['./test/page/setup.ts'],
+        },
       },
     ],
-  }
+  },
 })

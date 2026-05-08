@@ -2,5 +2,20 @@
     "name": "motion-core",
     "version": "0.0.1",
     "main": "ts/index.ts",
-    "types": "ts/index.ts"
+    "types": "ts/index.ts",
+    "scripts": {
+        "build": "vite build",
+        "format": "biome format --write",
+        "lint": "biome lint",
+        "check": "biome check --write"
+    },
+    "devDependencies": {
+        "typescript": "catalog:",
+        "vite": "catalog:build",
+        "vite-plugin-top-level-await": "^1.6.0",
+        "vite-plugin-wasm": "^3.6.0"
+    },
+    "dependencies": {
+        "vite-tsconfig-paths": "catalog:build"
+    }
 }

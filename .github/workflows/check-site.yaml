@@ -11,12 +11,12 @@ on:
     types: [opened, reopened, synchronize, ready_for_review]
     paths:
       - ".github/workflows/test_site.yaml"
-      - "packages/site/**/*.{ts,tsx}"
-      - "packages/site/package.json"
+      - "app/**/*.{ts,tsx}"
+      - "app/package.json"
 
 defaults:
   run:
-    working-directory: ./packages/site
+    working-directory: ./app
 
 jobs:
   check:
@@ -61,4 +61,4 @@ jobs:
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: "site"
-          working-directory: ./packages/site
+          working-directory: ./app

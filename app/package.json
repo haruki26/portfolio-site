@@ -43,7 +43,7 @@
         "storybook": "^10.2.17",
         "tailwind-merge": "^3.5.0",
         "tailwindcss": "^4.2.1",
-        "vite-tsconfig-paths": "^5.1.4",
+        "vite-tsconfig-paths": "catalog:build",
         "zod": "^4.3.6"
     },
     "devDependencies": {
@@ -61,7 +61,7 @@
         "@vitest/coverage-v8": "catalog:test",
         "jsdom": "^27.4.0",
         "typescript": "catalog:",
-        "vite": "catalog:",
+        "vite": "catalog:build",
         "vitest": "catalog:test",
         "wrangler": "^4.72.0"
     }

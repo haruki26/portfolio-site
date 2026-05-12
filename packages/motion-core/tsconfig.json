@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "include": ["ts/**/*.ts", "pkg/**/*"],
+    "compilerOptions": {
+        "lib": ["ES2022", "WebWorker"],
+        "outDir": "./dist",
+        "allowJs": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./ts/*"],
+            "@pkg/*": ["./pkg/*"]
+        }
+    }
+}

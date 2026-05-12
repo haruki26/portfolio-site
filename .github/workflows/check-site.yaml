@@ -10,7 +10,7 @@ on:
       - main
     types: [opened, reopened, synchronize, ready_for_review]
     paths:
-      - ".github/workflows/test_site.yaml"
+      - ".github/workflows/check-site.yaml"
       - "app/**/*.{ts,tsx}"
       - "app/package.json"
 

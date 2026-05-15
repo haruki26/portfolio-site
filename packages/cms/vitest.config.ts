@@ -1,7 +1,16 @@
+import { fileURLToPath, URL } from 'node:url'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    ],
+  },
   plugins: [tsconfigPaths()],
   test: {
     globals: true,
@@ -19,10 +28,9 @@ export default defineConfig({
           environment: 'node',
           include: ['src/**/*.test.ts'],
           fileParallelism: false,
-          setupFiles: ['./test/logic/setup.ts'],
+          setupFiles: ['./test/unit/setup.ts'],
         },
       },
     ],
   },
 })
-

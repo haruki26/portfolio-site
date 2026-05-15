@@ -20,6 +20,7 @@ export default defineConfig({
     topLevelAwait(),
     dts({
       insertTypesEntry: true,
+      exclude: ['**/*.test.ts', '**/test/**'],
     }),
   ],
   build: {

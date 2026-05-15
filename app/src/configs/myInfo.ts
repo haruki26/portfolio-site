@@ -1,5 +1,5 @@
-import avatarImage from '/avatar.webp?url'
-import iconImage from '/icon.svg?url'
+import avatarImage from '/avatar.webp'
+import iconImage from '/icon.svg'
 
 export const MY_INFO = {
   firstName: '陽生',

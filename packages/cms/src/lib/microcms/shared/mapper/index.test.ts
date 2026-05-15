@@ -1,5 +1,5 @@
-import { dateMapper, imageMapper } from '@/lib/microcms/shared/mapper'
 import { describe, expect, it } from 'vitest'
+import { dateMapper, imageMapper } from '@/lib/microcms/shared/mapper'
 
 describe('imageMapper', () => {
   it('url を src に変換する', () => {

@@ -4,8 +4,11 @@ export const createRawCMSClient = <TClient, TArgs extends readonly unknown[]>(
 ): (() => TClient) =>
   (() => {
     let client: TClient | null = null
-    if (client === null) {
-      client = factory(...args)
+    return () => {
+      if (client === null) {
+        client = factory(...args)
+      }
+
+      return client ?? factory(...args)
     }
-    return () => client
   })()

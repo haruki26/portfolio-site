@@ -1,5 +1,5 @@
-import { createHobbiesEndpoint } from '@/lib/microcms/endpoints/hobbies'
 import { describe, expect, it, vi } from 'vitest'
+import { createHobbiesEndpoint } from '@/lib/microcms/endpoints/hobbies'
 
 describe('createHobbiesEndpoint', () => {
   it('hobbies を取得して画像を変換する', async () => {
@@ -22,7 +22,7 @@ describe('createHobbiesEndpoint', () => {
       offset: 0,
       limit: 10,
     }))
-    const endpoint = createHobbiesEndpoint(() => ({ getList } as never))
+    const endpoint = createHobbiesEndpoint(() => ({ getList }) as never)
 
     const result = await endpoint.getList()
 

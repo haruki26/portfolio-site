@@ -38,8 +38,14 @@ describe('createMicroCMSClient', () => {
   it('各 endpoint を組み立てて返す', async () => {
     const getClient = vi.fn()
     mockCreateClient.mockReturnValue(getClient)
-    mockCreateBlogsEndpoint.mockReturnValue({ getList: vi.fn(), getDetail: vi.fn() })
-    mockCreateWorksEndpoint.mockReturnValue({ getList: vi.fn(), getDetail: vi.fn() })
+    mockCreateBlogsEndpoint.mockReturnValue({
+      getList: vi.fn(),
+      getDetail: vi.fn(),
+    })
+    mockCreateWorksEndpoint.mockReturnValue({
+      getList: vi.fn(),
+      getDetail: vi.fn(),
+    })
     mockCreateCertificationsEndpoint.mockReturnValue({ getList: vi.fn() })
     mockCreateHobbiesEndpoint.mockReturnValue({ getList: vi.fn() })
 

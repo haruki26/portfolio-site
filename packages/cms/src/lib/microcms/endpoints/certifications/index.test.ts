@@ -1,5 +1,5 @@
-import { createCertificationsEndpoint } from '@/lib/microcms/endpoints/certifications'
 import { describe, expect, it, vi } from 'vitest'
+import { createCertificationsEndpoint } from '@/lib/microcms/endpoints/certifications'
 
 describe('createCertificationsEndpoint', () => {
   it('certifications を取得して date を Date に変換する', async () => {
@@ -9,7 +9,7 @@ describe('createCertificationsEndpoint', () => {
       offset: 0,
       limit: 10,
     }))
-    const endpoint = createCertificationsEndpoint(() => ({ getList } as never))
+    const endpoint = createCertificationsEndpoint(() => ({ getList }) as never)
 
     const result = await endpoint.getList()
 

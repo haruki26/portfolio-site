@@ -15,5 +15,3 @@ pre-push:
     test-cms-pack:
       root: packages/cms/
       run: pnpm test
-
-

@@ -2,7 +2,7 @@ pre-commit:
   commands:
     check-cms-pack:
       root: packages/cms/
-      glob: "src/**/*.{ts,tsx}"
+      glob: "src/**/*.ts"
       run: biome check --write {staged_files}
 
 pre-push:

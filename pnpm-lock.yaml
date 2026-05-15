@@ -46,9 +46,6 @@ importers:
       '@primer/octicons-react':
         specifier: ^19.25.0
         version: 19.25.0(react@19.2.6)
-      '@repo/cms':
-        specifier: workspace:*
-        version: link:../packages/cms
       '@storybook/react-vite':
         specifier: ^10.3.6
         version: 10.3.6(esbuild@0.27.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@5.9.3)(vite@7.3.3(@types/node@22.19.18)(jiti@2.7.0)(lightningcss@1.32.0))

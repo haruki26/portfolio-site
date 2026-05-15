@@ -29,10 +29,10 @@ type ArticleOverview<TArticle extends Article> = Pick<
   ArticleOverviewKeys
 >
 
-interface Blog extends Article { }
+interface Blog extends Article {}
 type BlogOverview = ArticleOverview<Blog>
 
-interface Work extends Article { }
+interface Work extends Article {}
 type WorkOverview = ArticleOverview<Work>
 
 interface Certification {

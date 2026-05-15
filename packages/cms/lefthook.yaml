@@ -1,0 +1,19 @@
+pre-commit:
+  commands:
+    check:
+      root: packages/cms/
+      glob: "src/**/*.{ts,tsx}"
+      run: biome check --write {staged_files}
+
+pre-push:
+  parallel: true
+  commands:
+    type-check:
+      root: packages/cms/
+      run: "pnpm ci:type"
+
+    test:
+      root: packages/cms/
+      run: pnpm test
+
+

@@ -20,9 +20,4 @@ catalogs:
     '@vitest/coverage-v8': ^4.1.5
     vitest: ^4.1.5
 
-onlyBuiltDependencies:
-  - '@swc/core'
-  - esbuild
-  - lefthook
-  - sharp
-  - workerd
+minimumReleaseAge: 1440

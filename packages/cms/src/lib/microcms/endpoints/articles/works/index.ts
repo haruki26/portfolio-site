@@ -2,7 +2,7 @@ import { ARTICLE_OVERVIEW_KEYS } from '@/constant'
 import type { GetMicroCMSClient } from '@/lib/microcms/shared/type'
 import { createEndpointBuilder } from '@/lib/shared/createEndpoint'
 import type { Work } from '@/schema'
-import { articleDetailMapper, articleOverviewMapper } from '../shared/mappper'
+import { articleDetailMapper, articleOverviewMapper } from '../shared/mapper'
 import { calcPaging } from '../shared/paging'
 
 export const createWorksEndpoint = (getClient: GetMicroCMSClient) =>

@@ -1,5 +1,5 @@
-import { calcPaging } from '@/lib/microcms/endpoints/articles/shared/paging'
 import { describe, expect, it } from 'vitest'
+import { calcPaging } from '@/lib/microcms/endpoints/articles/shared/paging'
 
 describe('calcPaging', () => {
   it('currentPage ありの場合 offset を計算する', () => {

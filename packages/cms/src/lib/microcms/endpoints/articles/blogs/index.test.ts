@@ -1,5 +1,5 @@
-import { createBlogsEndpoint } from '@/lib/microcms/endpoints/articles/blogs'
 import { describe, expect, it, vi } from 'vitest'
+import { createBlogsEndpoint } from '@/lib/microcms/endpoints/articles/blogs'
 
 const baseArticle = {
   id: 'blog-1',
@@ -28,14 +28,23 @@ describe('createBlogsEndpoint', () => {
       limit: 10,
     }))
     const getListDetail = vi.fn()
-    const endpoint = createBlogsEndpoint(() => ({ getList, getListDetail } as never))
+    const endpoint = createBlogsEndpoint(
+      () => ({ getList, getListDetail }) as never,
+    )
 
     const result = await endpoint.getList({ limit: 5, currentPage: 2 })
 
     expect(getList).toHaveBeenCalledWith({
       endpoint: 'blogs',
       queries: {
-        fields: ['id', 'title', 'description', 'thumbnail', 'publishedAt', 'tags'],
+        fields: [
+          'id',
+          'title',
+          'description',
+          'thumbnail',
+          'publishedAt',
+          'tags',
+        ],
         limit: 5,
         offset: 5,
       },
@@ -62,7 +71,9 @@ describe('createBlogsEndpoint', () => {
     const getListDetail = vi.fn(async () => {
       throw new Error('not found')
     })
-    const endpoint = createBlogsEndpoint(() => ({ getList, getListDetail } as never))
+    const endpoint = createBlogsEndpoint(
+      () => ({ getList, getListDetail }) as never,
+    )
 
     await expect(endpoint.getDetail('blog-404')).resolves.toBeNull()
   })

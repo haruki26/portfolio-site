@@ -1,12 +1,12 @@
-import type { Articles } from '@/lib/microcms/type'
-import { NotPublishedError } from '@/lib/microcms/shared/error'
+import { describe, expect, it } from 'vitest'
 import {
   articleDetailMapper,
   articleOverviewMapper,
-} from '@/lib/microcms/endpoints/articles/shared/mappper'
-import { describe, expect, it } from 'vitest'
+} from '@/lib/microcms/endpoints/articles/shared/mapper'
+import { NotPublishedError } from '@/lib/microcms/shared/error'
+import type { Articles } from '@/lib/microcms/type'
 
-const baseArticle: Articles = {
+const baseArticle = {
   id: 'article-1',
   title: 'Article title',
   description: 'Article description',
@@ -32,7 +32,7 @@ const baseArticle: Articles = {
   updatedAt: '2026-02-15T00:00:00.000Z',
   publishedAt: '2026-02-16T00:00:00.000Z',
   revisedAt: '2026-02-17T00:00:00.000Z',
-}
+} satisfies Articles
 
 describe('articleOverviewMapper', () => {
   it('一覧用の article を返す', () => {
@@ -55,7 +55,7 @@ describe('articleOverviewMapper', () => {
         width: 640,
         height: 360,
       },
-      publishedAt: new Date(baseArticle.publishedAt!),
+      publishedAt: new Date(baseArticle.publishedAt),
       tags: baseArticle.tags,
     })
   })
@@ -87,7 +87,7 @@ describe('articleDetailMapper', () => {
         width: 640,
         height: 360,
       },
-      publishedAt: new Date(baseArticle.publishedAt!),
+      publishedAt: new Date(baseArticle.publishedAt),
       updatedAt: new Date(baseArticle.updatedAt),
       tags: baseArticle.tags,
     })

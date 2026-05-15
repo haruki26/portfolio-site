@@ -1,5 +1,5 @@
-import { createWorksEndpoint } from '@/lib/microcms/endpoints/articles/works'
 import { describe, expect, it, vi } from 'vitest'
+import { createWorksEndpoint } from '@/lib/microcms/endpoints/articles/works'
 
 const baseArticle = {
   id: 'work-1',
@@ -28,14 +28,23 @@ describe('createWorksEndpoint', () => {
       limit: 10,
     }))
     const getListDetail = vi.fn()
-    const endpoint = createWorksEndpoint(() => ({ getList, getListDetail } as never))
+    const endpoint = createWorksEndpoint(
+      () => ({ getList, getListDetail }) as never,
+    )
 
     const result = await endpoint.getList({ limit: 10, currentPage: 3 })
 
     expect(getList).toHaveBeenCalledWith({
       endpoint: 'works',
       queries: {
-        fields: ['id', 'title', 'description', 'thumbnail', 'publishedAt', 'tags'],
+        fields: [
+          'id',
+          'title',
+          'description',
+          'thumbnail',
+          'publishedAt',
+          'tags',
+        ],
         limit: 10,
         offset: 20,
       },
@@ -46,7 +55,9 @@ describe('createWorksEndpoint', () => {
   it('getDetail は詳細取得クエリを実行し整形を返す', async () => {
     const getList = vi.fn()
     const getListDetail = vi.fn(async () => baseArticle)
-    const endpoint = createWorksEndpoint(() => ({ getList, getListDetail } as never))
+    const endpoint = createWorksEndpoint(
+      () => ({ getList, getListDetail }) as never,
+    )
 
     const result = await endpoint.getDetail('work-1')
 

@@ -10,10 +10,13 @@ export const createHobbiesEndpoint = (getClient: GetMicroCMSClient) =>
         endpoint: 'hobbies',
       })
 
-      return res.contents.map((hobby) => ({
-        name: hobby.name,
-        description: hobby.description,
-        images: hobby.images.map(imageMapper),
-      }))
+      return {
+        contents: res.contents.map((hobby) => ({
+          name: hobby.name,
+          description: hobby.description,
+          images: hobby.images.map(imageMapper),
+        })),
+        totalCount: res.totalCount,
+      }
     })
     .build()

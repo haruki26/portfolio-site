@@ -49,21 +49,24 @@ describe('createBlogsEndpoint', () => {
         offset: 5,
       },
     })
-    expect(result).toEqual([
-      {
-        id: 'blog-1',
-        title: 'Blog title',
-        description: 'Blog description',
-        thumbnail: {
-          src: 'https://example.com/article/thumbnail.png',
-          alt: 'thumbnail',
-          width: 640,
-          height: 360,
+    expect(result).toEqual({
+      contents: [
+        {
+          id: 'blog-1',
+          title: 'Blog title',
+          description: 'Blog description',
+          thumbnail: {
+            src: 'https://example.com/article/thumbnail.png',
+            alt: 'thumbnail',
+            width: 640,
+            height: 360,
+          },
+          publishedAt: new Date(baseArticle.publishedAt),
+          tags: [{ id: 'tag-1', name: 'Frontend' }],
         },
-        publishedAt: new Date(baseArticle.publishedAt),
-        tags: [{ id: 'tag-1', name: 'Frontend' }],
-      },
-    ])
+      ],
+      totalCount: 1,
+    })
   })
 
   it('getDetail は未取得時に null を返す', async () => {

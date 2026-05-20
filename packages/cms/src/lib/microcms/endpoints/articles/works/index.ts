@@ -16,7 +16,10 @@ export const createWorksEndpoint = (getClient: GetMicroCMSClient) =>
         },
       })
 
-      return res.contents.map(articleOverviewMapper)
+      return {
+        contents: res.contents.map(articleOverviewMapper),
+        totalCount: res.totalCount,
+      }
     })
     .addGetDetailFn<Work>((client) => async (id) => {
       const res = await (async () => {

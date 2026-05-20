@@ -49,7 +49,24 @@ describe('createWorksEndpoint', () => {
         offset: 20,
       },
     })
-    expect(result).toHaveLength(1)
+    expect(result).toEqual({
+      contents: [
+        {
+          id: 'work-1',
+          title: 'Work title',
+          description: 'Work description',
+          thumbnail: {
+            src: 'https://example.com/article/thumbnail.png',
+            alt: 'thumbnail',
+            width: 640,
+            height: 360,
+          },
+          publishedAt: new Date(baseArticle.publishedAt),
+          tags: [{ id: 'tag-1', name: 'Frontend' }],
+        },
+      ],
+      totalCount: 1,
+    })
   })
 
   it('getDetail は詳細取得クエリを実行し整形を返す', async () => {

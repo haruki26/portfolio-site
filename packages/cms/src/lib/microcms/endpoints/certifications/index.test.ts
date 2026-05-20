@@ -16,8 +16,11 @@ describe('createCertificationsEndpoint', () => {
     expect(getList).toHaveBeenCalledWith({
       endpoint: 'certifications',
     })
-    expect(result).toEqual([
-      { name: 'AWS SAA', date: new Date('2026-02-16T00:00:00.000Z') },
-    ])
+    expect(result).toEqual({
+      contents: [
+        { name: 'AWS SAA', date: new Date('2026-02-16T00:00:00.000Z') },
+      ],
+      totalCount: 1,
+    })
   })
 })

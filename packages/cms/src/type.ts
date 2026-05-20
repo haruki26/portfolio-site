@@ -26,18 +26,16 @@ interface ListResponse<TSchema extends {}> {
 
 type PagingOptions =
   | {
-    currentPage?: undefined
-    limit?: number
-  }
+      currentPage?: undefined
+      limit?: number
+    }
   | {
-    currentPage: number
-    limit: number
-  }
+      currentPage: number
+      limit: number
+    }
 
 type GetListFn<TSchema extends {}> = TSchema extends PagingSchema
-  ? (
-    options?: PagingOptions
-  ) => Promise<ListResponse<TSchema>>
+  ? (options?: PagingOptions) => Promise<ListResponse<TSchema>>
   : () => Promise<ListResponse<TSchema>>
 
 type GetDetailFn<TSchema extends {}> = (id: string) => Promise<TSchema | null>
@@ -59,4 +57,11 @@ interface CMSClient {
   hobbies: GetableListEndpoint<Hobby>
 }
 
-export type { CMSConfig, CMSClient, GetListFn, ListResponse, GetDetailFn, PagingOptions }
+export type {
+  CMSConfig,
+  CMSClient,
+  GetListFn,
+  ListResponse,
+  GetDetailFn,
+  PagingOptions,
+}

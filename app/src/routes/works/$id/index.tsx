@@ -18,17 +18,17 @@ export const Route = createFileRoute('/works/$id/')({
   head: ({ loaderData, params }) =>
     loaderData !== undefined
       ? generateHead({
-        title: `${loaderData.title} | ${SEO.title}`,
-        description: loaderData.description,
-        image: loaderData.thumbnail?.src ?? MY_INFO.iconImage,
-        url: `${SEO.url}/works/${params.id}`,
-        type: 'article',
-        jsonLD: createArticleJsonLD({
-          title: loaderData.title,
-          thumbnailSrc: loaderData.thumbnail?.src ?? MY_INFO.iconImage,
-          publishedAt: loaderData.publishedAt,
-          authorName: `${MY_INFO.lastName}${MY_INFO.firstName}`,
-        }),
-      })
+          title: `${loaderData.title} | ${SEO.title}`,
+          description: loaderData.description,
+          image: loaderData.thumbnail?.src ?? MY_INFO.iconImage,
+          url: `${SEO.url}/works/${params.id}`,
+          type: 'article',
+          jsonLD: createArticleJsonLD({
+            title: loaderData.title,
+            thumbnailSrc: loaderData.thumbnail?.src ?? MY_INFO.iconImage,
+            publishedAt: loaderData.publishedAt,
+            authorName: `${MY_INFO.lastName}${MY_INFO.firstName}`,
+          }),
+        })
       : {},
 })

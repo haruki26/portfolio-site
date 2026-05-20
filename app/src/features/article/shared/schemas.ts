@@ -1,6 +1,5 @@
 import z from 'zod'
 
-
 const getArticleListSchema = z
   .union([
     z.object({

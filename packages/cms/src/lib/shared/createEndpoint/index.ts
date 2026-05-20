@@ -1,9 +1,4 @@
-import type {
-  Blog,
-  Certification,
-  Hobby,
-  Work,
-} from '@/schema'
+import type { Blog, Certification, Hobby, Work } from '@/schema'
 import type { GetDetailFn, GetListFn } from '@/type'
 
 type Schema = Blog | Certification | Hobby | Work

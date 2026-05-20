@@ -1,5 +1,5 @@
-import { appEnv } from "@/libs/env"
-import { createCMSClient } from "@repo/cms"
+import { createCMSClient } from '@repo/cms'
+import { appEnv } from '@/libs/env'
 
 export const cmsClient = createCMSClient({
   serviceDomain: appEnv.MICROCMS_SERVICE_DOMAIN,

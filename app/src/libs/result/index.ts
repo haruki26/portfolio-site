@@ -4,8 +4,8 @@ interface SerializableError {
   stack?: string
 }
 
-type SuccessType = "success"
-type FailType = "fail"
+type SuccessType = 'success'
+type FailType = 'fail'
 
 interface BaseResult {
   resultType: SuccessType | FailType
@@ -23,30 +23,32 @@ interface Fail<TError> extends BaseResult {
 
 type Result<TSuccess, TFail> = Success<TSuccess> | Fail<TFail>
 
-const tryAsync = async <TValue>(callbackfn: () => Promise<TValue>): Promise<Result<TValue, SerializableError>> => {
+const tryAsync = async <TValue>(
+  callbackfn: () => Promise<TValue>,
+): Promise<Result<TValue, SerializableError>> => {
   try {
     return {
-      resultType: "success",
-      value: await callbackfn()
+      resultType: 'success',
+      value: await callbackfn(),
     }
   } catch (error) {
     if (error instanceof Error) {
       return {
-        resultType: "fail",
+        resultType: 'fail',
         error: {
           name: error.name,
           message: error.message,
           stack: error.stack,
-        }
+        },
       }
     }
   }
   return {
-    resultType: "fail",
+    resultType: 'fail',
     error: {
-      name: "UnknownError",
-      message: "Unknown error occurred."
-    }
+      name: 'UnknownError',
+      message: 'Unknown error occurred.',
+    },
   }
 }
 

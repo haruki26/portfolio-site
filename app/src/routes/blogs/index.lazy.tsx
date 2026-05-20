@@ -12,7 +12,7 @@ function RouteComponent() {
   const search = Route.useSearch()
 
   const {
-    data: { totalCount, blogs },
+    data: { totalCount, contents: blogs },
   } = useSuspenseQuery(
     getBlogsOptions({
       limit: LIST_ARTICLES_NUM,

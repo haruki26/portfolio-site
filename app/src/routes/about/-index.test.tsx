@@ -17,23 +17,27 @@ vi.mock('@/features/about/functions', () => ({
 describe('about page', () => {
   it('プロフィールと認定・趣味情報を表示する', async () => {
     mockGetCertifications.mockResolvedValue({
-      type: 'Success',
-      value: [
-        { name: 'Zeta Certification', date: new Date(2025, 0, 10) },
-        { name: 'Alpha Certification', date: new Date(2024, 0, 10) },
-      ],
+      resultType: 'success',
+      value: {
+        contents: [
+          { name: 'Zeta Certification', date: new Date(2025, 0, 10) },
+          { name: 'Alpha Certification', date: new Date(2024, 0, 10) },
+        ],
+      },
     })
     mockGetHobbies.mockResolvedValue({
-      type: 'Success',
-      value: [
-        {
-          name: 'Photography',
-          description: '旅先で写真を撮っています。',
-          images: [
-            { src: '/hobby.png', alt: '趣味画像', width: 120, height: 120 },
-          ],
-        },
-      ],
+      resultType: 'success',
+      value: {
+        contents: [
+          {
+            name: 'Photography',
+            description: '旅先で写真を撮っています。',
+            images: [
+              { src: '/hobby.png', alt: '趣味画像', width: 120, height: 120 },
+            ],
+          },
+        ],
+      },
     })
 
     await renderWithRouter('/about')

@@ -13,7 +13,7 @@ function RouteComponent() {
   const search = Route.useSearch()
 
   const {
-    data: { totalCount, works },
+    data: { totalCount, contents: works },
   } = useSuspenseQuery(
     getWorksOptions({
       limit: LIST_ARTICLES_NUM,

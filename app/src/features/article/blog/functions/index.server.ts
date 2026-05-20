@@ -1,7 +1,7 @@
 import { createServerOnlyFn } from '@tanstack/react-start'
-import { getBlogDetail, getBlogList } from '@/cms/endpoints/blogs'
+import { cmsClient } from '@/integrations/cms/client'
 
-const getBlogs = createServerOnlyFn(getBlogList)
-const getBlog = createServerOnlyFn(getBlogDetail)
+const getBlogs = createServerOnlyFn(cmsClient.articles.blogs.getList)
+const getBlog = createServerOnlyFn(cmsClient.articles.blogs.getDetail)
 
 export { getBlogs, getBlog }

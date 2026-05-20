@@ -13,10 +13,10 @@ vi.mock('@/features/article/work/functions', () => ({
 describe('works page', () => {
   it('作品一覧とページネーションを表示する', async () => {
     mockGetWorks.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 20,
-        works: [
+        contents: [
           {
             id: 'work-1',
             title: '作品1',
@@ -50,10 +50,10 @@ describe('works page', () => {
 
   it('最大ページを超えた場合は最終ページへリダイレクトする', async () => {
     mockGetWorks.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 15,
-        works: [
+        contents: [
           {
             id: 'work-1',
             title: '作品1',
@@ -75,10 +75,10 @@ describe('works page', () => {
 
   it('totalCountが0の場合はページネーションを表示しない', async () => {
     mockGetWorks.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 0,
-        works: [],
+        contents: [],
       },
     })
 

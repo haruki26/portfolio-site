@@ -12,14 +12,14 @@ on:
         required: true
         type: string
 
-defaults:
-  run:
-    working-directory: ${{ inputs.working_directory }}
 
 jobs:
   check:
     name: Lint and Type check
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working_directory }}
 
     steps:
       - name: setup
@@ -33,15 +33,18 @@ jobs:
 
   test:
     name: Test
-    if: |
-      github.event.pull_request.draft == false
-      && !startsWith(github.head_ref, 'release')
-      && !startsWith(github.head_ref, 'doc')
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
+    defaults:
+      run:
+        working-directory: ${{ inputs.working_directory }}
+
+    if: |
+      github.event.pull_request.draft == false
+      && !startsWith(github.head_ref, 'release')
+      && !startsWith(github.head_ref, 'doc')
 
     steps:
       - name: setup

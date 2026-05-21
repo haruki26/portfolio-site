@@ -16,6 +16,7 @@ on:
 
 jobs:
   ci-site:
-    uses: ./.github/workflows/shared-lint-test.yaml
+    uses: ./.github/workflows/ts-ci.yaml
     with:
       working_directory: 'app'
+      name: 'site'

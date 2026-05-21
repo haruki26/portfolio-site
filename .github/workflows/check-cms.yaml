@@ -15,7 +15,8 @@ on:
       - "packages/cms/package.json"
 
 jobs:
-  ci-site:
+  ci-cms-pack:
     uses: ./.github/workflows/ts-ci.yaml
     with:
       working_directory: 'packages/cms'
+      name: 'cms-pack'

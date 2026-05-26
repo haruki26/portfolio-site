@@ -24,8 +24,8 @@ describe('about api queryOptions', () => {
     const queryClient = new QueryClient()
     const certifications = [{ name: 'cert-1' }]
     mockGetCertifications.mockResolvedValueOnce({
-      type: 'Success',
-      value: certifications,
+      resultType: 'success',
+      value: { contents: certifications },
     })
 
     const result = await queryClient.fetchQuery(getCertificationsOptions())
@@ -37,7 +37,7 @@ describe('about api queryOptions', () => {
   it('getHobbiesOptions: Failure のとき QueryError を投げる', async () => {
     const queryClient = new QueryClient()
     const error = { name: 'Error', message: 'failed', stack: 'stack' }
-    mockGetHobbies.mockResolvedValueOnce({ type: 'Failure', error })
+    mockGetHobbies.mockResolvedValueOnce({ resultType: 'fail', error })
 
     await expect(queryClient.fetchQuery(getHobbiesOptions())).rejects.toThrow(
       'failed',

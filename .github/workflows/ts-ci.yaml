@@ -1,0 +1,64 @@
+name: TypeScript CI
+
+on:
+  workflow_call:
+    inputs:
+      working_directory:
+        description: '対象パッケージのディレクトリパス'
+        required: true
+        type: string
+      name:
+        description: '対象パッケージ名'
+        required: true
+        type: string
+
+
+jobs:
+  check:
+    name: Lint and Type check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working_directory }}
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: setup
+        uses: ./.github/actions/setup
+
+      - name: Run Lint
+        run: "pnpm ci:check"
+
+      - name: Run Type Check
+        run: "pnpm ci:type"
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    defaults:
+      run:
+        working-directory: ${{ inputs.working_directory }}
+
+    if: |
+      github.event.pull_request.draft == false
+      && !startsWith(github.head_ref, 'release')
+      && !startsWith(github.head_ref, 'doc')
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: setup
+        uses: ./.github/actions/setup
+
+      - name: Run test
+        run: "pnpm test:coverage"
+
+      - name: Show coverage
+        uses: davelosert/vitest-coverage-report-action@02f3c2e641286b7fa308cd3e430783103ce6103b
+        with:
+          name: ${{ inputs.name }}
+          working-directory: ${{ inputs.working_directory }}

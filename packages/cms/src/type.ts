@@ -2,11 +2,9 @@ import type {
   Article,
   ArticleOverview,
   Blog,
-  BlogOverview,
   Certification,
   Hobby,
   Work,
-  WorkOverview,
 } from '@/schema'
 
 interface CMSConfig {
@@ -19,25 +17,24 @@ type ListResponseSchema<TSchema> = TSchema extends Article
   ? ArticleOverview<TSchema>
   : TSchema
 
+interface ListResponse<TSchema extends {}> {
+  contents: ListResponseSchema<TSchema>[]
+  totalCount: number
+}
+
 type PagingOptions =
   | {
       currentPage?: undefined
-      limit: number
+      limit?: number
     }
   | {
       currentPage: number
       limit: number
     }
 
-type GetListOptions<TSchema extends {}> = TSchema extends PagingSchema
-  ? PagingOptions
-  : undefined
-
 type GetListFn<TSchema extends {}> = TSchema extends PagingSchema
-  ? (
-      options?: GetListOptions<TSchema>,
-    ) => Promise<ListResponseSchema<TSchema>[]>
-  : () => Promise<TSchema[]>
+  ? (options?: PagingOptions) => Promise<ListResponse<TSchema>>
+  : () => Promise<ListResponse<TSchema>>
 
 type GetDetailFn<TSchema extends {}> = (id: string) => Promise<TSchema | null>
 
@@ -51,11 +48,18 @@ interface GetableDetailEndpoint<TSchema extends {}> {
 
 interface CMSClient {
   articles: {
-    blogs: GetableListEndpoint<BlogOverview> & GetableDetailEndpoint<Blog>
-    works: GetableListEndpoint<WorkOverview> & GetableDetailEndpoint<Work>
+    blogs: GetableListEndpoint<Blog> & GetableDetailEndpoint<Blog>
+    works: GetableListEndpoint<Work> & GetableDetailEndpoint<Work>
   }
   certifications: GetableListEndpoint<Certification>
   hobbies: GetableListEndpoint<Hobby>
 }
 
-export type { CMSConfig, CMSClient, GetListFn, GetDetailFn, PagingOptions }
+export type {
+  CMSConfig,
+  CMSClient,
+  GetListFn,
+  ListResponse,
+  GetDetailFn,
+  PagingOptions,
+}

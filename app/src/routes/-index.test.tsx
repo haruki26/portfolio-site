@@ -20,10 +20,10 @@ vi.mock('@/features/article/blog/functions', () => ({
 describe('home page', () => {
   it('トップページにプロフィールと作品・ブログ一覧を表示する', async () => {
     mockGetWorks.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 1,
-        works: [
+        contents: [
           {
             id: 'work-1',
             title: '作品A',
@@ -35,10 +35,10 @@ describe('home page', () => {
       },
     })
     mockGetBlogs.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 1,
-        blogs: [
+        contents: [
           {
             id: 'blog-1',
             title: 'ブログA',

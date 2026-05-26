@@ -9,10 +9,10 @@ const getCertificationsOptions = () =>
     queryFn: async () => {
       const result = await getCertifications()
 
-      if (result.type === 'Failure') {
+      if (result.resultType === 'fail') {
         throw createQueryError(result.error)
       }
-      return result.value
+      return result.value.contents
     },
   })
 
@@ -22,10 +22,10 @@ const getHobbiesOptions = () =>
     queryFn: async () => {
       const result = await getHobbies()
 
-      if (result.type === 'Failure') {
+      if (result.resultType === 'fail') {
         throw createQueryError(result.error)
       }
-      return result.value
+      return result.value.contents
     },
   })
 

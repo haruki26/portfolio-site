@@ -2,8 +2,9 @@ pre-commit:
   commands:
     check:
       root: app/
-      glob: "src/**/*.{ts,tsx}"
-      run: biome check --write {staged_files}
+      glob: "app/**/*.{ts,tsx,json}"
+      run: pnpm biome check --write {staged_files}
+      stage_fixed: true
 
 pre-push:
   parallel: true
@@ -15,4 +16,3 @@ pre-push:
     test:
       root: app/
       run: pnpm test
-

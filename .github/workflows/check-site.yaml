@@ -14,51 +14,13 @@ on:
       - "app/**/*.{ts,tsx}"
       - "app/package.json"
 
-defaults:
-  run:
-    working-directory: ./app
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
-  check:
-    name: Lint and type check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: setup
-        uses: ./.github/actions/setup
-
-      - name: Run Lint
-        run: "pnpm ci:check"
-
-      - name: Run Type Check
-        run: "pnpm ci:type"
-
-  test:
-    name: Test
-    if: |
-      github.event.pull_request.draft == false
-      && !startsWith(github.head_ref, 'release')
-      && !startsWith(github.head_ref, 'doc')
-
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: setup
-        uses: ./.github/actions/setup
-
-      - name: Run test
-        run: "pnpm test:coverage"
-
-      - name: Show coverage
-        uses: davelosert/vitest-coverage-report-action@v2
-        with:
-          name: "site"
-          working-directory: ./app
+  ci-site:
+    uses: ./.github/workflows/ts-ci.yaml
+    with:
+      working_directory: 'app'
+      name: 'site'

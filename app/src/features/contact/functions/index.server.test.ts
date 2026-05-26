@@ -47,7 +47,7 @@ describe('contact sendForm', () => {
     })
 
     expect(result).toEqual({
-      type: 'Success',
+      resultType: 'success',
       value: true,
     })
 
@@ -87,7 +87,7 @@ describe('contact sendForm', () => {
     })
 
     expect(result).toMatchObject({
-      type: 'Failure',
+      resultType: 'fail',
       error: {
         name: 'Error',
         message: 'Received invalid response.',
@@ -108,7 +108,7 @@ describe('contact sendForm', () => {
     })
 
     expect(result).toMatchObject({
-      type: 'Failure',
+      resultType: 'fail',
       error: {
         name: 'Error',
         message: 'network error',

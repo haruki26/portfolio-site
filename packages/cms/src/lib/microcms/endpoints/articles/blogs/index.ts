@@ -16,7 +16,10 @@ export const createBlogsEndpoint = (getClient: GetMicroCMSClient) =>
         },
       })
 
-      return res.contents.map(articleOverviewMapper)
+      return {
+        contents: res.contents.map(articleOverviewMapper),
+        totalCount: res.totalCount,
+      }
     })
     .addGetDetailFn<Blog>((client) => async (id) => {
       const res = await (async () => {

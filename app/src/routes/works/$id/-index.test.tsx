@@ -13,7 +13,7 @@ vi.mock('@/features/article/work/functions', () => ({
 describe('work detail page', () => {
   it('作品詳細を表示する', async () => {
     mockGetWork.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         id: 'work-1',
         title: '作品詳細',

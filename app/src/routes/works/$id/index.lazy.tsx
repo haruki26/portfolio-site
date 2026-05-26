@@ -17,6 +17,8 @@ function RouteComponent() {
   const params = Route.useParams()
   const { data } = useSuspenseQuery(getWorkOptions(params.id))
 
+  if (data === null) return null
+
   return (
     <div className="flex w-full flex-col items-center gap-12">
       <article className="flex w-full flex-col gap-10 px-2">

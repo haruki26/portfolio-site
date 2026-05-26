@@ -13,10 +13,10 @@ vi.mock('@/features/article/blog/functions', () => ({
 describe('blogs page', () => {
   it('ブログ一覧とページネーションを表示する', async () => {
     mockGetBlogs.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 20,
-        blogs: [
+        contents: [
           {
             id: 'blog-1',
             title: 'ブログ1',
@@ -47,10 +47,10 @@ describe('blogs page', () => {
 
   it('最大ページを超えた場合は最終ページへリダイレクトする', async () => {
     mockGetBlogs.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 15,
-        blogs: [
+        contents: [
           {
             id: 'blog-1',
             title: 'ブログ1',
@@ -72,10 +72,10 @@ describe('blogs page', () => {
 
   it('totalCountが0の場合はページネーションを表示しない', async () => {
     mockGetBlogs.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         totalCount: 0,
-        blogs: [],
+        contents: [],
       },
     })
 

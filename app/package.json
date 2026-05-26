@@ -19,8 +19,8 @@
     },
     "dependencies": {
         "@cloudflare/vite-plugin": "^1.36.3",
-        "@praha/byethrow": "^0.9.0",
         "@primer/octicons-react": "^19.25.0",
+        "@repo/cms": "workspace:*",
         "@storybook/react-vite": "^10.3.6",
         "@tailwindcss/vite": "^4.3.0",
         "@tanstack/react-devtools": "^0.7.11",
@@ -36,7 +36,6 @@
         "dotenv": "^17.4.2",
         "html-react-parser": "^5.2.17",
         "lucide-react": "^0.545.0",
-        "microcms-js-sdk": "^3.4.0",
         "react": "^19.2.6",
         "react-dom": "^19.2.6",
         "react-syntax-highlighter": "^16.1.1",

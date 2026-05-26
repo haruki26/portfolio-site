@@ -28,7 +28,7 @@ describe('useContactForm', () => {
   })
 
   it('送信成功時に完了ページへ遷移する', async () => {
-    mockSendForm.mockResolvedValueOnce({ type: 'Success', value: true })
+    mockSendForm.mockResolvedValueOnce({ resultType: 'success', value: true })
 
     const { result } = renderHook(() => useContactForm())
 
@@ -53,7 +53,7 @@ describe('useContactForm', () => {
 
   it('送信失敗時は遷移しない', async () => {
     mockSendForm.mockResolvedValueOnce({
-      type: 'Failure',
+      resultType: 'fail',
       error: { name: 'Error', message: 'failed', stack: '' },
     })
 

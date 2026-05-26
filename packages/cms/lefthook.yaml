@@ -2,8 +2,9 @@ pre-commit:
   commands:
     check-cms-pack:
       root: packages/cms/
-      glob: "src/**/*.ts"
-      run: biome check --write {staged_files}
+      glob: packages/cms/**/*.ts
+      run: pnpm biome check --write {staged_files}
+      stage_fixed: true
 
 pre-push:
   parallel: true

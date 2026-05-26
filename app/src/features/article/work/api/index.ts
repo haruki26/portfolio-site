@@ -11,7 +11,7 @@ const getWorksOptions = (query?: GetArticleListQuery) =>
     queryFn: async () => {
       const result = await getWorks({ data: query })
 
-      if (result.type === 'Failure') {
+      if (result.resultType === 'fail') {
         throw createQueryError(result.error)
       }
       return result.value
@@ -25,7 +25,7 @@ const getWorkOptions = (id: string) =>
     queryFn: async () => {
       const result = await getWork({ data: { id } })
 
-      if (result.type === 'Failure') {
+      if (result.resultType === 'fail') {
         throw createQueryError(result.error)
       }
       return result.value

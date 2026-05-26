@@ -40,12 +40,12 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: ^1.36.3
         version: 1.36.3(vite@7.3.3(@types/node@22.19.18)(jiti@2.7.0)(lightningcss@1.32.0))(workerd@1.20260507.1)(wrangler@4.90.0)
-      '@praha/byethrow':
-        specifier: ^0.9.0
-        version: 0.9.0(typescript@5.9.3)
       '@primer/octicons-react':
         specifier: ^19.25.0
         version: 19.25.0(react@19.2.6)
+      '@repo/cms':
+        specifier: workspace:*
+        version: link:../packages/cms
       '@storybook/react-vite':
         specifier: ^10.3.6
         version: 10.3.6(esbuild@0.27.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@5.9.3)(vite@7.3.3(@types/node@22.19.18)(jiti@2.7.0)(lightningcss@1.32.0))
@@ -91,9 +91,6 @@ importers:
       lucide-react:
         specifier: ^0.545.0
         version: 0.545.0(react@19.2.6)
-      microcms-js-sdk:
-        specifier: ^3.4.0
-        version: 3.4.0
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -1014,11 +1011,6 @@ packages:
 
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
-
-  '@praha/byethrow@0.9.0':
-    resolution: {integrity: sha512-D8XhQ40RsGkwcJdKYqoQ2RUfoqgzztHWXZNpMaRE5P5U+D1c1YboFPc8hysJWQhqloQ32kCXB0XPwM3dFiNyIg==}
-    peerDependencies:
-      typescript: '>=5.0.0'
 
   '@primer/octicons-react@19.25.0':
     resolution: {integrity: sha512-Cv7l7Mk4ahe6pOJ4A59viOQ22q5QkJ3jtkMyrQ2lpOofcKpVzvVg4CpYiq76Lj0RRlYC4qk1Tp9FpfzQnf4AuQ==}
@@ -3902,11 +3894,6 @@ snapshots:
       supports-color: 10.2.2
 
   '@poppinss/exception@1.2.3': {}
-
-  '@praha/byethrow@0.9.0(typescript@5.9.3)':
-    dependencies:
-      '@standard-schema/spec': 1.1.0
-      typescript: 5.9.3
 
   '@primer/octicons-react@19.25.0(react@19.2.6)':
     dependencies:

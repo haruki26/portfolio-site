@@ -20,7 +20,10 @@ describe('work api queryOptions', () => {
   it('getWorksOptions: Success の value を返す', async () => {
     const queryClient = new QueryClient()
     const works = [{ id: 'work-1' }]
-    mockGetWorks.mockResolvedValueOnce({ type: 'Success', value: works })
+    mockGetWorks.mockResolvedValueOnce({
+      resultType: 'success',
+      value: works,
+    })
 
     const options = getWorksOptions({ limit: 10 })
     const result = await queryClient.fetchQuery(options)
@@ -32,7 +35,7 @@ describe('work api queryOptions', () => {
   it('getWorkOptions: Failure のとき QueryError を投げる', async () => {
     const queryClient = new QueryClient()
     const error = { name: 'Error', message: 'failed', stack: 'stack' }
-    mockGetWork.mockResolvedValueOnce({ type: 'Failure', error })
+    mockGetWork.mockResolvedValueOnce({ resultType: 'fail', error })
 
     const options = getWorkOptions('work-1')
 

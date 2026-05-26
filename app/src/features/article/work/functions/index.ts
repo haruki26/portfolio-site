@@ -3,15 +3,22 @@ import {
   getArticleDetailSchema,
   getArticleListSchema,
 } from '@/features/article/shared/schemas'
-import { toSerializableResult } from '@/libs/result'
+import { getCMSClientMiddleware } from '@/integrations/cms/client'
+import { tryAsync } from '@/libs/result'
 import { getWork as _getWork, getWorks as _getWorks } from './index.server'
 
 const getWorks = createServerFn()
   .inputValidator(getArticleListSchema)
-  .handler(async ({ data }) => toSerializableResult(await _getWorks(data)))
+  .middleware([getCMSClientMiddleware])
+  .handler(async ({ data, context: { getCMSClient } }) =>
+    tryAsync(async () => _getWorks(getCMSClient(), data)),
+  )
 
 const getWork = createServerFn()
   .inputValidator(getArticleDetailSchema)
-  .handler(async ({ data }) => toSerializableResult(await _getWork(data.id)))
+  .middleware([getCMSClientMiddleware])
+  .handler(async ({ data, context: { getCMSClient } }) =>
+    tryAsync(async () => _getWork(getCMSClient(), data.id)),
+  )
 
 export { getWorks, getWork }

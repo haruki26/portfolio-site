@@ -10,6 +10,7 @@
         "includes": [
             "**/.vscode/**/*",
             "vite.config.ts",
+            "vitest.config.ts",
             "**/biome.{json,jsonc}",
             "**/package.json",
             "**/tsconfig*.json"

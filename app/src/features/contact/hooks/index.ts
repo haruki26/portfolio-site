@@ -19,7 +19,7 @@ export const useContactForm = () => {
     onSubmit: async ({ value }) => {
       const result = await sendForm({ data: value })
 
-      if (result.type === 'Success' && result.value) {
+      if (result.resultType === 'success' && result.value) {
         return navigate({ to: '/contact/complete' })
       }
     },

@@ -15,10 +15,10 @@ export const Route = createLazyFileRoute('/')({
 function RouteComponent() {
   const [
     {
-      data: { works },
+      data: { contents: works },
     },
     {
-      data: { blogs },
+      data: { contents: blogs },
     },
   ] = useSuspenseQueries({
     queries: [

@@ -1,2 +1,3 @@
 extends:
   - packages/*/lefthook.yaml
+  - app/lefthook.yaml

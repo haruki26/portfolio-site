@@ -29,19 +29,22 @@ describe('createHobbiesEndpoint', () => {
     expect(getList).toHaveBeenCalledWith({
       endpoint: 'hobbies',
     })
-    expect(result).toEqual([
-      {
-        name: 'Photography',
-        description: 'Take photos',
-        images: [
-          {
-            src: 'https://example.com/hobby/photo.png',
-            alt: 'photo',
-            width: 100,
-            height: 100,
-          },
-        ],
-      },
-    ])
+    expect(result).toEqual({
+      contents: [
+        {
+          name: 'Photography',
+          description: 'Take photos',
+          images: [
+            {
+              src: 'https://example.com/hobby/photo.png',
+              alt: 'photo',
+              width: 100,
+              height: 100,
+            },
+          ],
+        },
+      ],
+      totalCount: 1,
+    })
   })
 })

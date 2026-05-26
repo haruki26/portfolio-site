@@ -1,14 +1,7 @@
-import type {
-  Blog,
-  BlogOverview,
-  Certification,
-  Hobby,
-  Work,
-  WorkOverview,
-} from '@/schema'
+import type { Blog, Certification, Hobby, Work } from '@/schema'
 import type { GetDetailFn, GetListFn } from '@/type'
 
-type Schema = Blog | BlogOverview | Certification | Hobby | Work | WorkOverview
+type Schema = Blog | Certification | Hobby | Work
 
 const endpointBuilder = <TClient, TState extends {}>(
   client: TClient,

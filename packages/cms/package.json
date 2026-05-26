@@ -10,7 +10,7 @@
         "test": "vitest run",
         "test:coverage": "vitest run --coverage",
         "format": "biome format --write",
-        "lint": "biome lint",
+        "lint": "biome lint --write",
         "check": "biome check --write",
         "ci:check": "biome check",
         "ci:type": "tsc --noEmit",

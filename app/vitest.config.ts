@@ -5,6 +5,11 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     globals: true,
+    env: {
+      MICROCMS_API_KEY: 'test-api-key',
+      MICROCMS_SERVICE_DOMAIN: 'test-domain',
+      FORM_API_URL: 'https://test-api.example.com',
+    },
     coverage: {
       provider: 'v8',
       include: ['src/**/*.ts', 'src/**/*.tsx'],

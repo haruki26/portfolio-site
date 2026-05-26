@@ -1,39 +1,56 @@
-import { Result } from '@praha/byethrow'
-
-const onOk = <T>(value: T) => Result.succeed(value)
-
-const onError = <T>(error: T) => Result.fail(error)
-
-const tryAsync = async <T>(callback: () => Promise<T>) => {
-  let result = null
-  try {
-    result = onOk(await callback())
-  } catch (err) {
-    if (err instanceof Error) {
-      result = onError(err)
-    }
-  }
-
-  if (result === null) return onError(new Error('Unknown error occurred.'))
-  return result
-}
-
 interface SerializableError {
   name: string
   message: string
   stack?: string
 }
 
-const toSerializableResult = <T>(
-  result: Result.Result<T, Error>,
-): Result.Result<T, SerializableError> =>
-  result.type === 'Success'
-    ? result
-    : onError({
-        name: result.error.name,
-        message: result.error.message,
-        stack: result.error.stack,
-      })
+type SuccessType = 'success'
+type FailType = 'fail'
 
-export { onOk, onError, tryAsync, toSerializableResult }
+interface BaseResult {
+  resultType: SuccessType | FailType
+}
+
+interface Success<TValue> extends BaseResult {
+  resultType: SuccessType
+  value: TValue
+}
+
+interface Fail<TError> extends BaseResult {
+  resultType: FailType
+  error: TError
+}
+
+type Result<TSuccess, TFail> = Success<TSuccess> | Fail<TFail>
+
+const tryAsync = async <TValue>(
+  callbackfn: () => Promise<TValue>,
+): Promise<Result<TValue, SerializableError>> => {
+  try {
+    return {
+      resultType: 'success',
+      value: await callbackfn(),
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        resultType: 'fail',
+        error: {
+          name: error.name,
+          message: error.message,
+          stack: error.stack,
+        },
+      }
+    }
+  }
+  return {
+    resultType: 'fail',
+    error: {
+      name: 'UnknownError',
+      message: 'Unknown error occurred.',
+    },
+  }
+}
+
 export type { SerializableError }
+export { tryAsync }

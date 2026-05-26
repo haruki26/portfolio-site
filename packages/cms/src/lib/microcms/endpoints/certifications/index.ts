@@ -10,9 +10,12 @@ export const createCertificationsEndpoint = (getClient: GetMicroCMSClient) =>
         endpoint: 'certifications',
       })
 
-      return res.contents.map((cert) => ({
-        name: cert.name,
-        date: dateMapper(cert.date),
-      }))
+      return {
+        contents: res.contents.map((cert) => ({
+          name: cert.name,
+          date: dateMapper(cert.date),
+        })),
+        totalCount: res.totalCount,
+      }
     })
     .build()

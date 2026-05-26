@@ -11,7 +11,7 @@ const getBlogsOptions = (query?: GetArticleListQuery) =>
     queryFn: async () => {
       const result = await getBlogs({ data: query })
 
-      if (result.type === 'Failure') {
+      if (result.resultType === 'fail') {
         throw createQueryError(result.error)
       }
       return result.value
@@ -25,7 +25,7 @@ const getBlogOptions = (id: string) =>
     queryFn: async () => {
       const result = await getBlog({ data: { id } })
 
-      if (result.type === 'Failure') {
+      if (result.resultType === 'fail') {
         throw createQueryError(result.error)
       }
       return result.value

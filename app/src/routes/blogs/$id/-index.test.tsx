@@ -13,7 +13,7 @@ vi.mock('@/features/article/blog/functions', () => ({
 describe('blog detail page', () => {
   it('ブログ詳細を表示する', async () => {
     mockGetBlog.mockResolvedValue({
-      type: 'Success',
+      resultType: 'success',
       value: {
         id: 'blog-1',
         title: 'ブログ詳細',

@@ -3,3 +3,5 @@ import type { CMSConfig } from './type'
 
 export const createCMSClient = (config: CMSConfig) =>
   createMicroCMSClient(config)
+
+export type { CMSClient } from './type'

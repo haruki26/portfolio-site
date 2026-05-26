@@ -30,10 +30,8 @@ type ArticleOverview<TArticle extends Article> = Pick<
 >
 
 interface Blog extends Article {}
-type BlogOverview = ArticleOverview<Blog>
 
 interface Work extends Article {}
-type WorkOverview = ArticleOverview<Work>
 
 interface Certification {
   name: string
@@ -53,9 +51,7 @@ export type {
   ArticleOverviewKeys,
   ArticleOverview,
   Blog,
-  BlogOverview,
   Work,
-  WorkOverview,
   Certification,
   Hobby,
 }

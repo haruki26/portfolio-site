@@ -2,11 +2,9 @@ import type {
   Article,
   ArticleOverview,
   Blog,
-  BlogOverview,
   Certification,
   Hobby,
   Work,
-  WorkOverview,
 } from '@/schema'
 
 interface CMSConfig {
@@ -50,8 +48,8 @@ interface GetableDetailEndpoint<TSchema extends {}> {
 
 interface CMSClient {
   articles: {
-    blogs: GetableListEndpoint<BlogOverview> & GetableDetailEndpoint<Blog>
-    works: GetableListEndpoint<WorkOverview> & GetableDetailEndpoint<Work>
+    blogs: GetableListEndpoint<Blog> & GetableDetailEndpoint<Blog>
+    works: GetableListEndpoint<Work> & GetableDetailEndpoint<Work>
   }
   certifications: GetableListEndpoint<Certification>
   hobbies: GetableListEndpoint<Hobby>

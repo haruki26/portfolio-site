@@ -1,14 +1,14 @@
 pre-commit:
   parallel: true
   commands:
-
     check-ts:
       root: packages/motion-core/
-      glob: "ts/**/*.ts"
-      run: biome check --write {staged_files}
+      glob: packages/motion-core/ts/**/*.ts
+      run: pnpm biome check --write {staged_files}
+      stage_fixed: true
 
     check-rs:
       root: packages/motion-core/
-      glob: "src/**/*.rs"
+      glob: packages/motion-core/src/**/*.rs
       run: rustfmt {staged_files} && cargo clippy
-
+      stage_fixed: true

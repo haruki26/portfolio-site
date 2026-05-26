@@ -1,7 +1,14 @@
+import type { CMSClient } from '@repo/cms'
 import { createServerOnlyFn } from '@tanstack/react-start'
-import { cmsClient } from '@/integrations/cms/client'
+import type { GetBlogListOptions } from '../types'
 
-const getBlogs = createServerOnlyFn(cmsClient.articles.blogs.getList)
-const getBlog = createServerOnlyFn(cmsClient.articles.blogs.getDetail)
+const getBlogs = createServerOnlyFn(
+  (client: CMSClient, ...params: GetBlogListOptions) =>
+    client.articles.blogs.getList(...params),
+)
+
+const getBlog = createServerOnlyFn((client: CMSClient, id: string) =>
+  client.articles.blogs.getDetail(id),
+)
 
 export { getBlogs, getBlog }

@@ -1,4 +1,5 @@
 import { createServerFn } from '@tanstack/react-start'
+import { getCMSClientMiddleware } from '@/integrations/cms/client'
 import { tryAsync } from '@/libs/result'
 import {
   getArticleDetailSchema,
@@ -8,10 +9,16 @@ import { getBlog as _getBlog, getBlogs as _getBlogs } from './index.server'
 
 const getBlogs = createServerFn()
   .inputValidator(getArticleListSchema)
-  .handler(async ({ data }) => tryAsync(async () => await _getBlogs(data)))
+  .middleware([getCMSClientMiddleware])
+  .handler(async ({ data, context: { getCMSClient } }) =>
+    tryAsync(async () => _getBlogs(getCMSClient(), data)),
+  )
 
 const getBlog = createServerFn()
   .inputValidator(getArticleDetailSchema)
-  .handler(async ({ data }) => tryAsync(async () => _getBlog(data.id)))
+  .middleware([getCMSClientMiddleware])
+  .handler(async ({ data, context: { getCMSClient } }) =>
+    tryAsync(async () => _getBlog(getCMSClient(), data.id)),
+  )
 
 export { getBlog, getBlogs }

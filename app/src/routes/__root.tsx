@@ -1,8 +1,7 @@
 import { TanStackDevtools } from '@tanstack/react-devtools'
-import type { QueryClient } from '@tanstack/react-query'
 import {
   ClientOnly,
-  createRootRouteWithContext,
+  createRootRoute,
   HeadContent,
   Scripts,
 } from '@tanstack/react-router'
@@ -11,15 +10,9 @@ import CosmoBackground from '@/components/layout/CosmoBackground'
 import Header from '@/components/layout/Header'
 import { MY_INFO } from '@/configs/myInfo'
 import { SEO } from '@/configs/seo'
-import TanStackQueryDevtools from '@/integrations/tanstack-query/devtools'
-import * as TanStackQueryProvider from '@/integrations/tanstack-query/root-provider'
 import appCss from '@/styles.css?url'
 
-interface MyRouterContext {
-  queryClient: QueryClient
-}
-
-export const Route = createRootRouteWithContext<MyRouterContext>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
@@ -72,34 +65,29 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const contexts = TanStackQueryProvider.getContext()
-
   return (
     <html lang="ja">
       <head>
         <HeadContent />
       </head>
       <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-linear-to-br from-5% from-base-200 to-base-300 px-2 py-4">
-        <TanStackQueryProvider.Provider {...contexts}>
-          <div className="sticky top-0 left-0 z-50 w-full py-2">
-            <Header />
-          </div>
-          <div className="flex-1">
-            <main>{children}</main>
-          </div>
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-              TanStackQueryDevtools,
-            ]}
-          />
-        </TanStackQueryProvider.Provider>
+        <div className="sticky top-0 left-0 z-50 w-full py-2">
+          <Header />
+        </div>
+        <div className="flex-1">
+          <main>{children}</main>
+        </div>
+        <TanStackDevtools
+          config={{
+            position: 'bottom-right',
+          }}
+          plugins={[
+            {
+              name: 'Tanstack Router',
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
         <ClientOnly>
           <CosmoBackground />
         </ClientOnly>

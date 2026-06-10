@@ -1,19 +1,23 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 import { MY_INFO } from '@/configs/myInfo'
 import { SEO } from '@/configs/seo'
-import { getBlogOptions } from '@/features/article/blog/api'
+import { getBlog } from '@/features/article/blog/functions'
 import { createArticleJsonLD } from '@/libs/createJsonLD'
 import { generateHead } from '@/libs/generateHead'
 
 export const Route = createFileRoute('/blogs/$id/')({
-  loader: async ({ context: { queryClient }, params }) => {
-    const data = await queryClient.ensureQueryData(getBlogOptions(params.id))
+  loader: async ({ params }) => {
+    const data = await getBlog({ data: { id: params.id } })
 
-    if (data === null) {
+    if (data.resultType === 'fail') {
+      throw new Error(data.error.message)
+    }
+
+    if (data.value === null) {
       throw notFound()
     }
 
-    return data
+    return data.value
   },
   head: ({ loaderData, params }) =>
     loaderData !== undefined

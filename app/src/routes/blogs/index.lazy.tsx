@@ -1,24 +1,13 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
 import Pagination from '@/components/ui/Pagination'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
-import { getBlogsOptions } from '@/features/article/blog/api'
 import ArticleCards from '@/features/article/components/ArticleCards'
 export const Route = createLazyFileRoute('/blogs/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  const search = Route.useSearch()
-
-  const {
-    data: { totalCount, contents: blogs },
-  } = useSuspenseQuery(
-    getBlogsOptions({
-      limit: LIST_ARTICLES_NUM,
-      currentPage: search.page,
-    }),
-  )
+  const { totalCount, blogs, page } = Route.useLoaderData()
 
   return (
     <div className="flex w-full flex-col items-center gap-12">
@@ -34,7 +23,7 @@ function RouteComponent() {
       </section>
       <Pagination
         totalCount={totalCount}
-        currentPage={search.page}
+        currentPage={page}
         pageLimit={LIST_ARTICLES_NUM}
         LinkComponent={({ children, navTo }) => (
           <Link

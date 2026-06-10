@@ -1,11 +1,9 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
 import { Clock9 } from 'lucide-react'
 import LabelWithIcon from '@/components/layout/LabelWithIcon'
 import Button from '@/components/ui/Button'
 import DateViewer from '@/components/ui/DateViewer'
 import Divider from '@/components/ui/Divider'
-import { getBlogOptions } from '@/features/article/blog/api'
 import ArticleOverview from '@/features/article/components/ArticleOverview'
 import HtmlViewer from '@/features/article/components/HtmlViewer'
 
@@ -14,10 +12,7 @@ export const Route = createLazyFileRoute('/blogs/$id/')({
 })
 
 function RouteComponent() {
-  const params = Route.useParams()
-  const { data } = useSuspenseQuery(getBlogOptions(params.id))
-
-  if (data === null) return null
+  const data = Route.useLoaderData()
 
   return (
     <div className="flex w-full flex-col items-center gap-12">

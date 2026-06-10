@@ -1,10 +1,5 @@
-import { useSuspenseQueries } from '@tanstack/react-query'
 import { createLazyFileRoute } from '@tanstack/react-router'
 import Section from '@/components/layout/Section'
-import {
-  getCertificationsOptions,
-  getHobbiesOptions,
-} from '@/features/about/api'
 import CertificationCard from '@/features/about/components/CertificationCard'
 import HobbyCard from '@/features/about/components/HobbyCard'
 import Profile from '@/features/about/components/Profile'
@@ -14,9 +9,7 @@ export const Route = createLazyFileRoute('/about/')({
 })
 
 function RouteComponent() {
-  const [{ data: certifications }, { data: hobbies }] = useSuspenseQueries({
-    queries: [getCertificationsOptions(), getHobbiesOptions()],
-  })
+  const { certifications, hobbies } = Route.useLoaderData()
 
   return (
     <div className="flex flex-col items-center gap-10 md:gap-20">

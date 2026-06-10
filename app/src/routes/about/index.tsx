@@ -1,18 +1,24 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { MY_INFO } from '@/configs/myInfo'
 import { SEO } from '@/configs/seo'
-import {
-  getCertificationsOptions,
-  getHobbiesOptions,
-} from '@/features/about/api'
+import { getCertifications, getHobbies } from '@/features/about/functions'
 import { generateHead } from '@/libs/generateHead'
 
 export const Route = createFileRoute('/about/')({
-  loader: async ({ context: { queryClient } }) => {
-    await Promise.all([
-      queryClient.ensureQueryData(getCertificationsOptions()),
-      queryClient.ensureQueryData(getHobbiesOptions()),
+  loader: async () => {
+    const [certifications, hobbies] = await Promise.all([
+      getCertifications(),
+      getHobbies(),
     ])
+
+    if (certifications.resultType === 'fail' || hobbies.resultType === 'fail') {
+      throw new Error('Failed to load certifications or hobbies')
+    }
+
+    return {
+      certifications: certifications.value.contents,
+      hobbies: hobbies.value.contents,
+    }
   },
   head: () =>
     generateHead({

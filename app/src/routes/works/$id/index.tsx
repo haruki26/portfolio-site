@@ -1,19 +1,23 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 import { MY_INFO } from '@/configs/myInfo'
 import { SEO } from '@/configs/seo'
-import { getWorkOptions } from '@/features/article/work/api'
+import { getWork } from '@/features/article/work/functions'
 import { createArticleJsonLD } from '@/libs/createJsonLD'
 import { generateHead } from '@/libs/generateHead'
 
 export const Route = createFileRoute('/works/$id/')({
-  loader: async ({ context: { queryClient }, params }) => {
-    const data = await queryClient.ensureQueryData(getWorkOptions(params.id))
+  loader: async ({ params }) => {
+    const data = await getWork({ data: { id: params.id } })
 
-    if (data === null) {
+    if (data.resultType === 'fail') {
+      throw new Error(data.error.message)
+    }
+
+    if (data.value === null) {
       throw notFound()
     }
 
-    return data
+    return data.value
   },
   head: ({ loaderData, params }) =>
     loaderData !== undefined

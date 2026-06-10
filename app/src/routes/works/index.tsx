@@ -3,7 +3,7 @@ import z from 'zod'
 import { MY_INFO } from '@/configs/myInfo'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
 import { SEO } from '@/configs/seo'
-import { getWorksOptions } from '@/features/article/work/api'
+import { getWorks } from '@/features/article/work/functions'
 import { createCollectionJsonLD } from '@/libs/createJsonLD'
 import { generateHead } from '@/libs/generateHead'
 
@@ -14,14 +14,16 @@ const searchParamsSchema = z.object({
 export const Route = createFileRoute('/works/')({
   validateSearch: searchParamsSchema,
   loaderDeps: ({ search }) => ({ ...search }),
-  beforeLoad: async ({ context: { queryClient }, search: { page } }) => {
-    const { totalCount } = await queryClient.ensureQueryData(
-      getWorksOptions({
-        limit: LIST_ARTICLES_NUM,
-        currentPage: page,
-      }),
-    )
-    if (totalCount === 0) return
+  beforeLoad: async ({ search: { page } }) => {
+    const result = await getWorks({
+      data: { limit: LIST_ARTICLES_NUM, currentPage: page },
+    })
+
+    if (result.resultType === 'fail') {
+      throw new Error(result.error.message)
+    }
+
+    const { totalCount, contents } = result.value
 
     const maxPage = Math.ceil(totalCount / LIST_ARTICLES_NUM)
 
@@ -33,17 +35,14 @@ export const Route = createFileRoute('/works/')({
         },
       })
     }
-  },
-  loader: async ({ context: { queryClient }, deps: { page } }) => {
-    await queryClient.ensureQueryData(
-      getWorksOptions({
-        limit: LIST_ARTICLES_NUM,
-        currentPage: page,
-      }),
-    )
 
-    return { page }
+    return { totalCount, contents }
   },
+  loader: async ({ context: { contents, totalCount }, deps: { page } }) => ({
+    page,
+    totalCount,
+    works: contents,
+  }),
   head: ({ loaderData }) =>
     generateHead({
       title: `成果物一覧 | ${SEO.title}`,

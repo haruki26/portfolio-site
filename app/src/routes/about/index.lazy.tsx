@@ -27,15 +27,18 @@ function RouteComponent() {
         <div className="flex max-w-3xl flex-row flex-wrap items-center justify-center gap-x-5 gap-y-7">
           {certifications
             .sort((a, b) => a.date.getTime() - b.date.getTime())
-            .map((c) => (
-              <CertificationCard key={Math.random()} certification={c} />
+            .map((c, i) => (
+              <CertificationCard
+                key={`${i}-${c.date.toString()}`}
+                certification={c}
+              />
             ))}
         </div>
       </Section>
       <Section sectionLabel="Hobby">
         <div className="flex flex-row flex-wrap items-center justify-center gap-5 px-5">
-          {hobbies.map((hobby) => (
-            <HobbyCard key={Math.random()} hobby={hobby} />
+          {hobbies.map((hobby, i) => (
+            <HobbyCard key={`${i}-${hobby.name}`} hobby={hobby} />
           ))}
         </div>
       </Section>

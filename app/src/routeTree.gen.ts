@@ -46,48 +46,42 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+} as any)
 const WorksIndexRoute = WorksIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => WorksRouteRoute,
-} as any).lazy(() => import('./routes/works/index.lazy').then((d) => d.Route))
+} as any)
 const ContactIndexRoute = ContactIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ContactRouteRoute,
-} as any).lazy(() => import('./routes/contact/index.lazy').then((d) => d.Route))
+} as any)
 const BlogsIndexRoute = BlogsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => BlogsRouteRoute,
-} as any).lazy(() => import('./routes/blogs/index.lazy').then((d) => d.Route))
+} as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AboutRouteRoute,
-} as any).lazy(() => import('./routes/about/index.lazy').then((d) => d.Route))
+} as any)
 const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
   getParentRoute: () => WorksRouteRoute,
-} as any).lazy(() =>
-  import('./routes/works/$id/index.lazy').then((d) => d.Route),
-)
+} as any)
 const ContactCompleteIndexRoute = ContactCompleteIndexRouteImport.update({
   id: '/complete/',
   path: '/complete/',
   getParentRoute: () => ContactRouteRoute,
-} as any).lazy(() =>
-  import('./routes/contact/complete/index.lazy').then((d) => d.Route),
-)
+} as any)
 const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
   getParentRoute: () => BlogsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/blogs/$id/index.lazy').then((d) => d.Route),
-)
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute

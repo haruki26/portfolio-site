@@ -1,8 +1,10 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, Link, redirect } from '@tanstack/react-router'
 import z from 'zod'
+import Pagination from '@/components/ui/Pagination'
 import { MY_INFO } from '@/configs/myInfo'
 import { LIST_ARTICLES_NUM } from '@/configs/page'
 import { SEO } from '@/configs/seo'
+import ArticleCards from '@/features/article/components/ArticleCards'
 import { getWorks } from '@/features/article/work/functions'
 import { createCollectionJsonLD } from '@/libs/createJsonLD'
 import { generateHead } from '@/libs/generateHead'
@@ -25,7 +27,7 @@ export const Route = createFileRoute('/works/')({
 
     const { totalCount, contents } = result.value
 
-    const maxPage = Math.ceil(totalCount / LIST_ARTICLES_NUM)
+    const maxPage = Math.max(Math.ceil(totalCount / LIST_ARTICLES_NUM), 1)
 
     if (maxPage < page) {
       throw redirect({
@@ -55,4 +57,38 @@ export const Route = createFileRoute('/works/')({
         url: `${SEO.url}/works?page=${loaderData?.page ?? 1}`,
       }),
     }),
+  component: RouteComponent,
 })
+
+function RouteComponent() {
+  const { totalCount, works, page } = Route.useLoaderData()
+
+  return (
+    <div className="flex w-full flex-col items-center gap-12">
+      <section>
+        <h2 className="sr-only">All works</h2>
+        <ArticleCards
+          articleType="work"
+          articles={works}
+          className="md:grid-cols-2"
+        />
+      </section>
+      <Pagination
+        totalCount={totalCount}
+        currentPage={page}
+        pageLimit={LIST_ARTICLES_NUM}
+        LinkComponent={({ children, navTo }) => (
+          <Link
+            to="."
+            search={{
+              page: navTo,
+            }}
+          >
+            {children}
+          </Link>
+        )}
+        className="px-8"
+      />
+    </div>
+  )
+}

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import Section from '@/components/layout/Section'
 import Button from '@/components/ui/Button'
 import { MY_INFO } from '@/configs/myInfo'
@@ -49,9 +49,9 @@ function RouteComponent() {
           <article>
             <AboutCard />
           </article>
-          <Link to="/about">
-            <Button>More</Button>
-          </Link>
+          <Button type="link" path={{ to: '/about' }}>
+            More
+          </Button>
         </div>
       </Section>
       <Section sectionLabel="Works">
@@ -61,9 +61,9 @@ function RouteComponent() {
             articles={works}
             className="lg:grid-cols-3 lg:gap-10"
           />
-          <Link to="/works" search={{ page: 1 }}>
-            <Button>All Works</Button>
-          </Link>
+          <Button type="link" path={{ to: '/works', search: { page: 1 } }}>
+            All Works
+          </Button>
         </div>
       </Section>
       <Section sectionLabel="Blogs">
@@ -73,9 +73,9 @@ function RouteComponent() {
             articles={blogs}
             className="lg:grid-cols-3 lg:gap-10"
           />
-          <Link to="/blogs" search={{ page: 1 }}>
-            <Button>All Blogs</Button>
-          </Link>
+          <Button type="link" path={{ to: '/blogs', search: { page: 1 } }}>
+            All Blogs
+          </Button>
         </div>
       </Section>
     </div>

@@ -1,4 +1,3 @@
-import { Link } from '@tanstack/react-router'
 import Button from '@/components/ui/Button'
 import Divider from '@/components/ui/Divider'
 import { cn } from '@/libs/cn'
@@ -28,9 +27,9 @@ const PageFrame: React.FC<Props> = ({ children, Icon, pageName }) => {
       <div className="w-full px-3" aria-hidden={true}>
         <Divider />
       </div>
-      <Link to="/">
-        <Button className="max-w-60">Back to top</Button>
-      </Link>
+      <Button type="link" path={{ to: '/' }} className="max-w-60">
+        Back to top
+      </Button>
     </div>
   )
 }

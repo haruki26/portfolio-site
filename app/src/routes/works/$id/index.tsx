@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@tanstack/react-router'
 import { Clock9 } from 'lucide-react'
 import LabelWithIcon from '@/components/layout/LabelWithIcon'
 import Button from '@/components/ui/Button'
@@ -62,9 +62,9 @@ function RouteComponent() {
           </LabelWithIcon>
         </div>
       </article>
-      <Link to=".." search={(old) => old}>
-        <Button className="px-10 py-3 text-xl">All Works</Button>
-      </Link>
+      <Button type="link" path={{ to: '..' }} className="px-10 py-3 text-xl">
+        All Works
+      </Button>
     </div>
   )
 }

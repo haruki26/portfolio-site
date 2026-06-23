@@ -45,7 +45,7 @@ function RouteComponent() {
       </Section>
       <Section sectionLabel="Certification">
         <div className="flex max-w-3xl flex-row flex-wrap items-center justify-center gap-x-5 gap-y-7">
-          {certifications
+          {[...certifications]
             .sort((a, b) => a.date.getTime() - b.date.getTime())
             .map((c, i) => (
               <CertificationCard

@@ -12,7 +12,11 @@ interface ParsedDate {
 }
 
 export const parseDate = (date: Date): ParsedDate => {
-  const formatted = formatter.format(date)
-  const [year, month, day] = formatted.split('/')
+  const parts = formatter.formatToParts(date)
+
+  const year = parts.find((part) => part.type === 'year')?.value ?? ''
+  const month = parts.find((part) => part.type === 'month')?.value ?? ''
+  const day = parts.find((part) => part.type === 'day')?.value ?? ''
+
   return { year, month, day }
 }

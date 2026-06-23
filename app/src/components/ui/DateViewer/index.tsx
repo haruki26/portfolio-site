@@ -1,17 +1,21 @@
+import { parseDate } from '@/libs/dateParser'
+
 interface Props {
   date: Date
   separator?: string
 }
 
 const DateViewer: React.FC<Props> = ({ date, separator = '-' }) => {
+  const parsed = parseDate(date)
+
   return (
     <time dateTime={date.toISOString()}>
       <span className="flex flex-row gap-0.5 text-lg">
-        <span>{date.getFullYear()}</span>
+        <span>{parsed.year}</span>
         <span>{separator}</span>
-        <span>{date.getMonth() + 1}</span>
+        <span>{parsed.month}</span>
         <span>{separator}</span>
-        <span>{date.getDate()}</span>
+        <span>{parsed.day}</span>
       </span>
     </time>
   )

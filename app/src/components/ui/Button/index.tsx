@@ -14,7 +14,7 @@ interface ButtonProps extends BaseProps {
 }
 
 interface LinkProps extends BaseProps {
-  type?: 'link'
+  type: 'link'
   path: AppPath
 }
 

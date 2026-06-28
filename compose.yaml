@@ -1,0 +1,24 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/workspace
+      - mise:/mise
+      - pnpm_store:/pnpm_store
+    stdin_open: true
+    tty: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        pnpm install
+        cd /workspace/app
+        pnpm dev
+
+volumes:
+  mise:
+  pnpm_store:

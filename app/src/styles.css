@@ -1,71 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?&family=Orbitron&family=Roboto+Flex&family=JetBrains+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=JetBrains+Mono&subset=latin&display=swap");
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --font-orbitron: "Orbitron", sans-serif;
-    --font-roboto-flex: "Roboto Flex", sans-serif;
-    --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
 
-    --breakpoint-xs: 32rem;
+  --breakpoint-xs: 32rem;
 
-    /* Base - 深い紫がかったダークブルー */
-    --color-base-100: oklch(0.26 0.04 280.5);
-    --color-base-200: oklch(0.18 0.04 280.5);
-    --color-base-300: oklch(0.10 0.04 280.5);
+  /* Base - 深い紫がかったダークブルー */
+  --color-base-100: oklch(0.26 0.04 280.5);
+  --color-base-200: oklch(0.18 0.04 280.5);
+  --color-base-300: oklch(0.1 0.04 280.5);
 
-    --color-surface: oklch(0.38 0.05 285);
-    --color-edge: oklch(0.9 0.02 280);
+  --color-surface: oklch(0.38 0.05 285);
+  --color-edge: oklch(0.9 0.02 280);
 
-    /* Primary - Deep Teal */
-    --color-primary-100: oklch(0.65 0.12 195);
-    --color-primary-200: oklch(0.50 0.10 195);
-    --color-primary-300: oklch(0.40 0.08 195);
+  /* Primary - Deep Teal */
+  --color-primary-100: oklch(0.65 0.12 195);
+  --color-primary-200: oklch(0.5 0.1 195);
+  --color-primary-300: oklch(0.4 0.08 195);
 
-    /* Secondary - ラベンダーパープル */
-    --color-secondary-100: oklch(0.70 0.18 300);
-    --color-secondary-200: oklch(0.60 0.16 300);
-    --color-secondary-300: oklch(0.50 0.15 300);
+  /* Secondary - ラベンダーパープル */
+  --color-secondary-100: oklch(0.7 0.18 300);
+  --color-secondary-200: oklch(0.6 0.16 300);
+  --color-secondary-300: oklch(0.5 0.15 300);
 
-    /* Accent - コーラルオレンジ */
-    --color-accent: oklch(0.80 0.15 60);
+  /* Accent - コーラルオレンジ */
+  --color-accent: oklch(0.8 0.15 60);
 
-    /* Content - Platinum (プラチナホワイト) */
-    --color-base-content: oklch(0.92 0.01 280);
-    --color-base-content-muted: oklch(0.60 0.02 280);
-    --color-primary-content: oklch(0.15 0.01 280);
-    --color-secondary-content: oklch(0.15 0.01 280);
+  /* Content - Platinum (プラチナホワイト) */
+  --color-base-content: oklch(0.92 0.01 280);
+  --color-base-content-muted: oklch(0.6 0.02 280);
+  --color-primary-content: oklch(0.15 0.01 280);
+  --color-secondary-content: oklch(0.15 0.01 280);
 
+  --animate-fade-in: fade-in 0.5s;
 
-    --animate-fade-in: fade-in 0.5s;
-
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
     }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 body {
-  font-family: "Roboto Flex", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @apply text-base-content;
 }
 
 code {
-  font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family:
+    "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 @utility cosmo {
-    animation: float 6.0s alternate infinite;
+  animation: float 6s alternate infinite;
 }
 
 @keyframes float {
@@ -75,22 +74,21 @@ code {
   }
   to {
     opacity: 0.6;
-    transform: translate(40px,-30px) scale(1.15);
+    transform: translate(40px, -30px) scale(1.15);
   }
 }
 
 @utility twinkle {
-    animation: twinkle 2s infinite alternate;
+  animation: twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle {
-    from {
-        opacity: 0;
-        transform: scale(1);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1.2);
-    }
+  from {
+    opacity: 0;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
-

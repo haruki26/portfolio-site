@@ -41,6 +41,15 @@ export const Route = createRootRoute({
         rel: 'manifest',
         href: '/manifest.json',
       },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: '',
+      },
     ],
     scripts: [
       {

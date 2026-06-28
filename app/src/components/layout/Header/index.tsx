@@ -1,12 +1,11 @@
 import { MarkGithubIcon } from '@primer/octicons-react'
-import { Link, MatchRoute } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import { Mail } from 'lucide-react'
 import { useState } from 'react'
 import Glass from '@/components/ui/Glass'
 import Hamburger from '@/components/ui/HamburgerButton'
 import { MY_INFO } from '@/configs/myInfo'
 import { PAGE } from '@/configs/page'
-import { cn } from '@/libs/cn'
 import { toUpperFirst } from '@/libs/toUpperFirst'
 import Sidemenu from './Sidemenu'
 
@@ -23,9 +22,12 @@ const Header: React.FC = () => {
               isOpen={isOpenSidemenu}
             />
           </span>
-          <span className="font-bold font-orbitron text-lg text-shadow-edge text-shadow-lg/40 md:text-3xl">
+          <Link
+            to="/"
+            className="font-bold font-orbitron text-lg text-shadow-edge text-shadow-lg/40 md:text-3xl"
+          >
             yosei&#46;dev
-          </span>
+          </Link>
         </div>
         <div className="flex flex-row items-center gap-5 md:gap-10">
           <div className="hidden md:block">
@@ -35,20 +37,15 @@ const Header: React.FC = () => {
                   .filter(([p, _]) => p !== 'contact')
                   .map(([page, conf]) => (
                     <li key={`header-${page}`}>
-                      <MatchRoute to={conf.path.to} fuzzy>
-                        {(match) => (
-                          <Link
-                            {...conf.path}
-                            className={cn(
-                              'font-bold font-orbitron text-2xl',
-                              match &&
-                                'text-accent underline underline-offset-4',
-                            )}
-                          >
-                            {toUpperFirst(page)}
-                          </Link>
-                        )}
-                      </MatchRoute>
+                      <Link
+                        {...conf.path}
+                        className="font-bold font-orbitron text-2xl"
+                        activeProps={{
+                          className: 'text-accent underline underline-offset-4',
+                        }}
+                      >
+                        {toUpperFirst(page)}
+                      </Link>
                     </li>
                   ))}
               </ul>

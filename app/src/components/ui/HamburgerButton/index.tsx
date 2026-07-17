@@ -29,7 +29,7 @@ const Hamburger: React.FC<Props> = ({ isOpen, onClick }) => {
       type="button"
       onClick={onClick}
       className="group flex h-fit flex-col gap-1.5 transition md:gap-2"
-      aria-label="Open sidebar"
+      aria-label="Toggle sidebar"
     >
       <HamburgerElement
         className={isOpen && 'translate-y-2 rotate-45 md:translate-y-2.5'}

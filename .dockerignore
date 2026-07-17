@@ -1,6 +1,25 @@
+# deps
 node_modules
 .tanstack
-.git
-Dockerfile
-docker-compose.yaml
+.wrangler
+coverage
+dist
+target
+pkg
 
+# dev deps
+leftfook.yaml
+biome.json
+
+# test
+*.test.ts
+*.test.tsx
+vitest.config.ts
+
+# git
+.git*
+.gitignore
+
+# other
+AGENTS.md
+.env.sample

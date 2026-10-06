@@ -8,14 +8,14 @@ import {
 import { getBlog as _getBlog, getBlogs as _getBlogs } from './index.server'
 
 const getBlogs = createServerFn()
-  .inputValidator(getArticleListSchema)
+  .validator(getArticleListSchema)
   .middleware([getCMSClientMiddleware])
   .handler(async ({ data, context: { getCMSClient } }) =>
     tryAsync(async () => _getBlogs(getCMSClient(), data)),
   )
 
 const getBlog = createServerFn()
-  .inputValidator(getArticleDetailSchema)
+  .validator(getArticleDetailSchema)
   .middleware([getCMSClientMiddleware])
   .handler(async ({ data, context: { getCMSClient } }) =>
     tryAsync(async () => _getBlog(getCMSClient(), data.id)),

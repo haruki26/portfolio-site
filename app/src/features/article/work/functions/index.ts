@@ -8,14 +8,14 @@ import { tryAsync } from '@/libs/result'
 import { getWork as _getWork, getWorks as _getWorks } from './index.server'
 
 const getWorks = createServerFn()
-  .inputValidator(getArticleListSchema)
+  .validator(getArticleListSchema)
   .middleware([getCMSClientMiddleware])
   .handler(async ({ data, context: { getCMSClient } }) =>
     tryAsync(async () => _getWorks(getCMSClient(), data)),
   )
 
 const getWork = createServerFn()
-  .inputValidator(getArticleDetailSchema)
+  .validator(getArticleDetailSchema)
   .middleware([getCMSClientMiddleware])
   .handler(async ({ data, context: { getCMSClient } }) =>
     tryAsync(async () => _getWork(getCMSClient(), data.id)),

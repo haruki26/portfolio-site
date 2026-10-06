@@ -9,32 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorksRouteRouteImport } from './routes/works/route'
-import { Route as ContactRouteRouteImport } from './routes/contact/route'
-import { Route as BlogsRouteRouteImport } from './routes/blogs/route'
-import { Route as AboutRouteRouteImport } from './routes/about/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as WorksIndexRouteImport } from './routes/works/index'
-import { Route as ContactIndexRouteImport } from './routes/contact/index'
-import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
+import { Route as AboutRouteRouteImport } from './routes/about/route'
+import { Route as BlogsRouteRouteImport } from './routes/blogs/route'
+import { Route as ContactRouteRouteImport } from './routes/contact/route'
+import { Route as WorksRouteRouteImport } from './routes/works/route'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
-import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
-import { Route as ContactCompleteIndexRouteImport } from './routes/contact/complete/index'
+import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
+import { Route as WorksIndexRouteImport } from './routes/works/index'
 import { Route as BlogsIdIndexRouteImport } from './routes/blogs/$id/index'
+import { Route as ContactCompleteIndexRouteImport } from './routes/contact/complete/index'
+import { Route as WorksIdIndexRouteImport } from './routes/works/$id/index'
 
-const WorksRouteRoute = WorksRouteRouteImport.update({
-  id: '/works',
-  path: '/works',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRouteRoute = ContactRouteRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogsRouteRoute = BlogsRouteRouteImport.update({
-  id: '/blogs',
-  path: '/blogs',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRouteRoute = AboutRouteRouteImport.update({
@@ -42,45 +32,55 @@ const AboutRouteRoute = AboutRouteRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BlogsRouteRoute = BlogsRouteRouteImport.update({
+  id: '/blogs',
+  path: '/blogs',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WorksIndexRoute = WorksIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => WorksRouteRoute,
+const ContactRouteRoute = ContactRouteRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const ContactIndexRoute = ContactIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ContactRouteRoute,
-} as any)
-const BlogsIndexRoute = BlogsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => BlogsRouteRoute,
+const WorksRouteRoute = WorksRouteRouteImport.update({
+  id: '/works',
+  path: '/works',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AboutRouteRoute,
 } as any)
-const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogsRouteRoute,
+} as any)
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ContactRouteRoute,
+} as any)
+const WorksIndexRoute = WorksIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorksRouteRoute,
+} as any)
+const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
-  getParentRoute: () => WorksRouteRoute,
+  getParentRoute: () => BlogsRouteRoute,
 } as any)
 const ContactCompleteIndexRoute = ContactCompleteIndexRouteImport.update({
   id: '/complete/',
   path: '/complete/',
   getParentRoute: () => ContactRouteRoute,
 } as any)
-const BlogsIdIndexRoute = BlogsIdIndexRouteImport.update({
+const WorksIdIndexRoute = WorksIdIndexRouteImport.update({
   id: '/$id/',
   path: '/$id/',
-  getParentRoute: () => BlogsRouteRoute,
+  getParentRoute: () => WorksRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -173,25 +173,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/works': {
-      id: '/works'
-      path: '/works'
-      fullPath: '/works'
-      preLoaderRoute: typeof WorksRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blogs': {
-      id: '/blogs'
-      path: '/blogs'
-      fullPath: '/blogs'
-      preLoaderRoute: typeof BlogsRouteRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -201,33 +187,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/blogs': {
+      id: '/blogs'
+      path: '/blogs'
+      fullPath: '/blogs'
+      preLoaderRoute: typeof BlogsRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/works/': {
-      id: '/works/'
-      path: '/'
-      fullPath: '/works/'
-      preLoaderRoute: typeof WorksIndexRouteImport
-      parentRoute: typeof WorksRouteRoute
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/contact/': {
-      id: '/contact/'
-      path: '/'
-      fullPath: '/contact/'
-      preLoaderRoute: typeof ContactIndexRouteImport
-      parentRoute: typeof ContactRouteRoute
-    }
-    '/blogs/': {
-      id: '/blogs/'
-      path: '/'
-      fullPath: '/blogs/'
-      preLoaderRoute: typeof BlogsIndexRouteImport
-      parentRoute: typeof BlogsRouteRoute
+    '/works': {
+      id: '/works'
+      path: '/works'
+      fullPath: '/works'
+      preLoaderRoute: typeof WorksRouteRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/about/': {
       id: '/about/'
@@ -236,12 +215,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutIndexRouteImport
       parentRoute: typeof AboutRouteRoute
     }
-    '/works/$id/': {
-      id: '/works/$id/'
-      path: '/$id'
-      fullPath: '/works/$id/'
-      preLoaderRoute: typeof WorksIdIndexRouteImport
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof BlogsRouteRoute
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
+      parentRoute: typeof ContactRouteRoute
+    }
+    '/works/': {
+      id: '/works/'
+      path: '/'
+      fullPath: '/works/'
+      preLoaderRoute: typeof WorksIndexRouteImport
       parentRoute: typeof WorksRouteRoute
+    }
+    '/blogs/$id/': {
+      id: '/blogs/$id/'
+      path: '/$id'
+      fullPath: '/blogs/$id/'
+      preLoaderRoute: typeof BlogsIdIndexRouteImport
+      parentRoute: typeof BlogsRouteRoute
     }
     '/contact/complete/': {
       id: '/contact/complete/'
@@ -250,12 +250,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactCompleteIndexRouteImport
       parentRoute: typeof ContactRouteRoute
     }
-    '/blogs/$id/': {
-      id: '/blogs/$id/'
+    '/works/$id/': {
+      id: '/works/$id/'
       path: '/$id'
-      fullPath: '/blogs/$id/'
-      preLoaderRoute: typeof BlogsIdIndexRouteImport
-      parentRoute: typeof BlogsRouteRoute
+      fullPath: '/works/$id/'
+      preLoaderRoute: typeof WorksIdIndexRouteImport
+      parentRoute: typeof WorksRouteRoute
     }
   }
 }

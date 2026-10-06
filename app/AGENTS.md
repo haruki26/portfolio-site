@@ -78,7 +78,7 @@ import { tryAsync } from '@/libs/result'
 import { getBlog as _getBlog, getBlogs as _getBlogs } from './index.server'
 
 const getBlogs = createServerFn()
-  .inputValidator(getArticleListSchema)        // zod schema from shared/schemas.ts
+  .validator(getArticleListSchema)        // zod schema from shared/schemas.ts
   .middleware([getCMSClientMiddleware])
   .handler(async ({ data, context: { getCMSClient } }) =>
     tryAsync(async () => _getBlogs(getCMSClient(), data)),

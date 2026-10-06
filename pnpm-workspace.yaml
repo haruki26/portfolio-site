@@ -14,10 +14,10 @@ catalog:
 
 catalogs:
   build:
-    vite: ^7.3.3
+    vite: ^7.3.6
     vite-tsconfig-paths: ^5.1.4
   test:
-    '@vitest/coverage-v8': ^4.1.5
-    vitest: ^4.1.5
+    '@vitest/coverage-v8': ^4.1.11
+    vitest: ^4.1.11
 
 minimumReleaseAge: 1440

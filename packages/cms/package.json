@@ -19,12 +19,12 @@
     "devDependencies": {
         "typescript": "catalog:",
         "vite": "catalog:build",
-        "vite-plugin-dts": "^5.0.0",
-        "vite-plugin-top-level-await": "^1.6.0",
+        "vite-plugin-dts": "5.1.2",
+        "vite-plugin-top-level-await": "1.6.0",
         "vitest": "catalog:test"
     },
     "dependencies": {
-        "microcms-js-sdk": "^3.4.0",
+        "microcms-js-sdk": "3.5.1",
         "vite-tsconfig-paths": "catalog:build"
     }
 }

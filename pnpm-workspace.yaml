@@ -10,14 +10,14 @@ allowBuilds:
   workerd: true
 
 catalog:
-  typescript: ^5.9.3
+  typescript: 5.9.3
 
 catalogs:
   build:
-    vite: ^7.3.6
-    vite-tsconfig-paths: ^5.1.4
+    vite: 7.3.6
+    vite-tsconfig-paths: 5.1.4
   test:
-    '@vitest/coverage-v8': ^4.1.11
-    vitest: ^4.1.11
+    '@vitest/coverage-v8': 4.1.11
+    vitest: 4.1.11
 
 minimumReleaseAge: 1440

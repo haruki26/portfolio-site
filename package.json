@@ -2,7 +2,7 @@
     "name": "portfolio",
     "private": true,
     "devDependencies": {
-        "@biomejs/biome": "2.2.4",
+        "@biomejs/biome": "2.2.7",
         "lefthook": "2.1.17"
     }
 }

@@ -83,7 +83,7 @@ const ContactForm: React.FC = () => {
             />
           )}
         </form.Field>
-        <Divider className="my-3 to-accent/50" />
+        <Divider className="to-accent/50 my-3" />
         <form.Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
         >
@@ -91,7 +91,7 @@ const ContactForm: React.FC = () => {
             <Button
               type="submit"
               isDisabled={!canSubmit || isSubmitting}
-              className="bg-primary-100 text-xl tracking-widest transition-colors duration-150 disabled:bg-primary-300/80"
+              className="bg-primary-100 disabled:bg-primary-300/80 text-xl tracking-widest transition-colors duration-150"
             >
               Submit
             </Button>

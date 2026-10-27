@@ -64,7 +64,7 @@ const CosmoBackground: React.FC = () => {
   return (
     <div
       aria-hidden={true}
-      className="-z-50 pointer-events-none fixed top-0 left-0 h-full w-full overflow-hidden"
+      className="pointer-events-none fixed top-0 left-0 -z-50 h-full w-full overflow-hidden"
     >
       <span className="cosmo absolute top-1/4 right-1/4 size-40 bg-radial from-purple-500/50 to-purple-300/5 blur-2xl delay-193 md:size-80" />
       <span className="cosmo absolute right-1/3 bottom-1/3 size-50 bg-radial from-teal-500/30 to-teal-300/5 blur-2xl delay-367 md:size-100" />

@@ -66,15 +66,15 @@ type GetObjectResponse<
 > = MicroCMSObjectContent & Pick<TSchema, TField>
 
 export type {
-  GetQueries,
+  Articles,
+  Blogs,
+  Certifications,
+  Endpoints,
   GetListRequest,
   GetListResponse,
   GetObjectResponse,
-  Endpoints,
-  Works,
-  Blogs,
-  Tags,
+  GetQueries,
   Hobbies,
-  Certifications,
-  Articles,
+  Tags,
+  Works,
 }

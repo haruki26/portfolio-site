@@ -16,7 +16,7 @@ const AboutCard: React.FC = () => {
             <span>{MY_INFO.lastName}</span>
             <span>{MY_INFO.firstName}</span>
           </div>
-          <div className="col-span-2 grid grid-cols-subgrid text-base-content-muted text-xl">
+          <div className="text-base-content-muted col-span-2 grid grid-cols-subgrid text-xl">
             <span className="pl-1">{toUpperFirst(MY_INFO.lastNameEn)}</span>
             <span className="pl-1.5">{toUpperFirst(MY_INFO.firstNameEn)}</span>
           </div>

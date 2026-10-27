@@ -11,7 +11,7 @@ const Glass: React.FC<Props> = ({ children, className }) => {
       className={cn(
         'overflow-hidden rounded-2xl p-6',
         'bg-surface/30 backdrop-blur-[1.5px]',
-        'inset-shadow-edge inset-shadow-sm/70 ring-2 ring-edge/20',
+        'inset-shadow-edge ring-edge/20 ring-2 inset-shadow-sm/70',
         className,
       )}
     >

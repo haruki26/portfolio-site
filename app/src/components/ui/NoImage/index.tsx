@@ -9,7 +9,7 @@ const NoImage: React.FC<Props> = ({ className }) => {
   return (
     <div
       className={cn(
-        'flex h-full w-full flex-row items-center justify-center gap-2 text-base-content-muted',
+        'text-base-content-muted flex h-full w-full flex-row items-center justify-center gap-2',
         className,
       )}
       aria-hidden={true}

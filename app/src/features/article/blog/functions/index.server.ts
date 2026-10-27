@@ -11,4 +11,4 @@ const getBlog = createServerOnlyFn((client: CMSClient, id: string) =>
   client.articles.blogs.getDetail(id),
 )
 
-export { getBlogs, getBlog }
+export { getBlog, getBlogs }

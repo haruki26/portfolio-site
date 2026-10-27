@@ -8,15 +8,15 @@ interface Props {
 const HobbyCard: React.FC<Props> = ({ hobby }) => {
   return (
     <Glass className="flex max-w-sm flex-col items-center gap-4 px-3 py-5">
-      <h3 className="font-medium text-3xl">{hobby.name}</h3>
-      <p className="wrap-anywhere break-keep px-2 text-lg tracking-wider">
+      <h3 className="text-3xl font-medium">{hobby.name}</h3>
+      <p className="px-2 text-lg tracking-wider wrap-anywhere break-keep">
         {hobby.description}
       </p>
       <div className="grid grid-cols-2 gap-1 overflow-clip rounded-xl">
         {hobby.images.map((image, i) => (
           <img
             src={image.src}
-            key={`${hobby.name}-${i}`}
+            key={`${hobby.name}-${image.src}`}
             alt={image.alt ?? `${hobby.name}画像${i}`}
             width={image.width}
             height={image.height}

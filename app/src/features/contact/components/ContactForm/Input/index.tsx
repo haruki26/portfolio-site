@@ -49,7 +49,7 @@ const Input: React.FC<Props> = ({
       <span
         aria-hidden={true}
         className={cn(
-          'pointer-events-none absolute top-0 left-0 pl-1 font-orbitron',
+          'font-orbitron pointer-events-none absolute top-0 left-0 pl-1',
           'transform transition duration-150',
           'peer-focus:-translate-y-6 peer-[:not(:placeholder-shown)]:-translate-y-6',
         )}

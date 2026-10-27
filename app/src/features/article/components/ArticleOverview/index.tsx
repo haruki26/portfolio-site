@@ -17,14 +17,14 @@ const ArticleOverview: React.FC<Props> = ({ article }) => {
           alt={article.thumbnail.alt ?? `${article.title}-サムネイル`}
           width={article.thumbnail.width}
           height={article.thumbnail.height}
-          className="w-1/2 rounded-xl shadow-lg shadow-secondary-200/60"
+          className="shadow-secondary-200/60 w-1/2 rounded-xl shadow-lg"
         />
       )}
       <div className="flex flex-col items-center gap-3">
-        <h2 className="wrap-anywhere w-full break-keep text-center font-bold text-3xl text-shadow-lg text-shadow-primary-300/80">
+        <h2 className="text-shadow-primary-300/80 w-full text-center text-3xl font-bold wrap-anywhere break-keep text-shadow-lg">
           {article.title}
         </h2>
-        <div className="flex gap-5 text-base-content-muted text-lg">
+        <div className="text-base-content-muted flex gap-5 text-lg">
           <span>公開日</span>
           <LabelWithIcon Icon={() => <ClockArrowUp className="h-5 w-5" />}>
             <DateViewer date={article.publishedAt} />
@@ -32,7 +32,7 @@ const ArticleOverview: React.FC<Props> = ({ article }) => {
         </div>
       </div>
       <Glass className="max-w-xl p-5">
-        <p className="wrap-anywhere w-full break-keep text-xl">
+        <p className="w-full text-xl wrap-anywhere break-keep">
           {article.description}
         </p>
       </Glass>

@@ -79,7 +79,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="m-0 flex min-h-dvh w-full flex-col gap-5 bg-linear-to-br from-5% from-base-200 to-base-300 px-2 py-4">
+      <body className="from-base-200 to-base-300 m-0 flex min-h-dvh w-full flex-col gap-5 bg-linear-to-br from-5% px-2 py-4">
         <div className="sticky top-0 left-0 z-50 w-full py-2">
           <Header />
         </div>

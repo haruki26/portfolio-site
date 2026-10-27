@@ -56,10 +56,10 @@ interface CMSClient {
 }
 
 export type {
-  CMSConfig,
   CMSClient,
+  CMSConfig,
+  GetDetailFn,
   GetListFn,
   ListResponse,
-  GetDetailFn,
   PagingOptions,
 }

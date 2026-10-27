@@ -40,7 +40,7 @@ function RouteComponent() {
   return (
     <div className="flex w-full flex-col items-center gap-16 px-3 py-3 md:gap-20">
       <h1 className="sr-only">久保陽生</h1>
-      <div className="flex h-80 flex-col items-center justify-center gap-8 text-shadow-lg text-shadow-secondary-200 md:gap-16">
+      <div className="text-shadow-secondary-200 flex h-80 flex-col items-center justify-center gap-8 text-shadow-lg md:gap-16">
         <span className="font-orbitron text-6xl md:text-8xl">Welcome</span>
         <p className="text-3xl">I&apos;m a web developer&#46;</p>
       </div>

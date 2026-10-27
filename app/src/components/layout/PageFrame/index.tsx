@@ -14,11 +14,11 @@ const PageFrame: React.FC<Props> = ({ children, Icon, pageName }) => {
       <div
         className={cn(
           'flex flex-row items-center justify-center gap-4 rounded-lg px-0.5 py-1',
-          'bg-linear-to-b from-70% from-secondary-100/0 to-secondary-300/45',
+          'from-secondary-100/0 to-secondary-300/45 bg-linear-to-b from-70%',
         )}
       >
         <Icon className="h-16 w-16" />
-        <h1 className="font-bold font-orbitron text-5xl">{pageName}</h1>
+        <h1 className="font-orbitron text-5xl font-bold">{pageName}</h1>
       </div>
       <div className="w-full px-3" aria-hidden={true}>
         <Divider />

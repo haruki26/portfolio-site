@@ -7,12 +7,12 @@ vi.mock('@tanstack/react-router', () => ({
   ),
 }))
 
+const Icon = ({ className }: { className: string }) => (
+  <svg data-testid="page-icon" className={className} />
+)
+
 describe('PageFrame', () => {
   it('ページ見出し・アイコン・子要素を表示する', () => {
-    const Icon = ({ className }: { className: string }) => (
-      <svg data-testid="page-icon" className={className} />
-    )
-
     render(
       <PageFrame Icon={Icon} pageName="Works">
         <div>page content</div>

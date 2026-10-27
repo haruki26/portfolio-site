@@ -1,5 +1,5 @@
 {
-    "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+    "$schema": "https://biomejs.dev/schemas/2.6.3/schema.json",
     "root": false,
     "extends": "//",
     "files": {
@@ -13,14 +13,12 @@
     "linter": {
         "rules": {
             "nursery": {
-                "useSortedClasses": {
+                "useTailwindSortedClasses": {
                     "fix": "safe",
-                    "level": "error",
-                    "options": {
-                        "functions": ["twMerge", "clsx", "cn"]
-                    }
+                    "level": "error"
                 }
             }
         }
-    }
+    },
+    "tailwind": { "mergeFunctions": ["twMerge", "clsx", "cn"] }
 }

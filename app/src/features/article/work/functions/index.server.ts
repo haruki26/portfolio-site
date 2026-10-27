@@ -10,4 +10,4 @@ const getWork = createServerOnlyFn((client: CMSClient, id: string) =>
   client.articles.works.getDetail(id),
 )
 
-export { getWorks, getWork }
+export { getWork, getWorks }

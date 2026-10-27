@@ -20,8 +20,8 @@ interface LinkProps extends BaseProps {
 
 const Button: React.FC<ButtonProps | LinkProps> = (props) => {
   const classNameWithDefault = cn(
-    'flex items-center justify-center text-nowrap rounded-xl px-5 py-2 font-bold font-orbitron',
-    'inset-shadow-edge inset-shadow-sm/70 bg-surface/50 ring-2 ring-edge/20 backdrop-blur-[0.8px]',
+    'font-orbitron flex items-center justify-center rounded-xl px-5 py-2 font-bold text-nowrap',
+    'inset-shadow-edge bg-surface/50 ring-edge/20 ring-2 inset-shadow-sm/70 backdrop-blur-[0.8px]',
     'md:px-10 md:py-3 md:text-3xl',
     props.className,
   )

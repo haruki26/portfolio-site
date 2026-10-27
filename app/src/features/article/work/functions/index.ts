@@ -21,4 +21,4 @@ const getWork = createServerFn()
     tryAsync(async () => _getWork(getCMSClient(), data.id)),
   )
 
-export { getWorks, getWork }
+export { getWork, getWorks }

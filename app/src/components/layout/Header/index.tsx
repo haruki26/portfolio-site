@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           </span>
           <Link
             to="/"
-            className="font-bold font-orbitron text-lg text-shadow-edge text-shadow-lg/40 md:text-3xl"
+            className="font-orbitron text-shadow-edge text-lg font-bold text-shadow-lg/40 md:text-3xl"
           >
             yosei&#46;dev
           </Link>
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
                     <li key={`header-${page}`}>
                       <Link
                         {...conf.path}
-                        className="font-bold font-orbitron text-2xl"
+                        className="font-orbitron text-2xl font-bold"
                         activeProps={{
                           className: 'text-accent underline underline-offset-4',
                         }}

@@ -55,7 +55,7 @@ function RouteComponent() {
         <ArticleOverview article={data} />
         <Divider className="to-secondary-100" />
         <HtmlViewer htmlString={data.body} />
-        <div className="mx-auto flex flex-row items-center gap-5 text-base-content-muted text-lg">
+        <div className="text-base-content-muted mx-auto flex flex-row items-center gap-5 text-lg">
           <span>更新日</span>
           <LabelWithIcon Icon={() => <Clock9 className="h-5 w-5" />}>
             <DateViewer date={data.updatedAt} />

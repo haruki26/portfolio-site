@@ -11,7 +11,7 @@ const HamburgerElement: React.FC<HamburgerElementProps> = ({ className }) => {
       className={cn(
         'h-0.5 w-6 md:w-8',
         'bg-primary-100 transition duration-500 ease-in-out',
-        'border border-white/20 group-hover:bg-primary-300',
+        'group-hover:bg-primary-300 border border-white/20',
         className,
       )}
     />

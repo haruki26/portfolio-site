@@ -26,7 +26,7 @@ const ArticleCards: React.FC<Props> = ({
           key={article.id}
           className="col-span-1 row-span-4 grid grid-rows-subgrid"
         >
-          <Glass className="col-span-1 row-span-4 grid w-xs xs:w-fit xs:max-w-sm grid-cols-1 grid-rows-subgrid gap-2">
+          <Glass className="xs:w-fit xs:max-w-sm col-span-1 row-span-4 grid w-xs grid-cols-1 grid-rows-subgrid gap-2">
             <Link
               to={articleType === 'work' ? '/works/$id' : '/blogs/$id'}
               params={{ id: article.id }}
@@ -45,7 +45,7 @@ const ArticleCards: React.FC<Props> = ({
                   <NoImage />
                 )}
               </div>
-              <h2 className="font-bold text-2xl">{article.title}</h2>
+              <h2 className="text-2xl font-bold">{article.title}</h2>
               <p className="text px-2">{article.description}</p>
               <LabelWithIcon
                 Icon={() => <ClockArrowUp className="h-5 w-5" />}

@@ -14,7 +14,7 @@ catalog:
 
 catalogs:
   build:
-    vite: 7.3.7
+    vite: 8.3.5
     vite-tsconfig-paths: 6.1.1
   test:
     '@vitest/coverage-v8': 4.1.12

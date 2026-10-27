@@ -45,13 +45,13 @@ interface Hobby {
 }
 
 export type {
-  CMSImage,
-  Tag,
   Article,
-  ArticleOverviewKeys,
   ArticleOverview,
+  ArticleOverviewKeys,
   Blog,
-  Work,
   Certification,
+  CMSImage,
   Hobby,
+  Tag,
+  Work,
 }

@@ -5,10 +5,9 @@
         "lib": ["ES2022", "WebWorker"],
         "outDir": "./dist",
         "allowJs": true,
-        "baseUrl": ".",
         "paths": {
             "@/*": ["./ts/*"],
-            "@pkg/*": ["./pkg/*"]
-        }
-    }
+            "@pkg/*": ["./pkg/*"],
+        },
+    },
 }

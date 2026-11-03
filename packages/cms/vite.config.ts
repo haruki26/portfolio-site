@@ -2,7 +2,6 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import topLevelAwait from 'vite-plugin-top-level-await'
-import viteTsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   resolve: {
@@ -12,11 +11,9 @@ export default defineConfig({
         replacement: fileURLToPath(new URL('./src', import.meta.url)),
       },
     ],
+    tsconfigPaths: true,
   },
   plugins: [
-    viteTsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
     topLevelAwait(),
     dts({
       insertTypesEntry: true,

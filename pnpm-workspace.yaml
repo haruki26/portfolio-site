@@ -3,7 +3,7 @@ packages:
   - app
 
 allowBuilds:
-  '@swc/core': true
+  "@swc/core": true
   esbuild: true
   lefthook: true
   sharp: true
@@ -15,9 +15,8 @@ catalog:
 catalogs:
   build:
     vite: 8.3.5
-    vite-tsconfig-paths: 6.1.1
   test:
-    '@vitest/coverage-v8': 4.1.12
+    "@vitest/coverage-v8": 4.1.12
     vitest: 4.1.12
 
 minimumReleaseAge: 1440

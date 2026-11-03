@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
@@ -10,8 +9,8 @@ export default defineConfig({
         replacement: fileURLToPath(new URL('./src', import.meta.url)),
       },
     ],
+    tsconfigPaths: true,
   },
-  plugins: [tsconfigPaths()],
   test: {
     globals: true,
     coverage: {

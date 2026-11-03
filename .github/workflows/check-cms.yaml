@@ -11,6 +11,11 @@ on:
     types: [opened, reopened, synchronize, ready_for_review]
     paths:
       - ".github/workflows/check-cms.yaml"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - "biome.json"
+      - ".github/workflows/ts-ci.yaml"
       - "packages/cms/**/*.ts"
       - "packages/cms/package.json"
 
@@ -22,5 +27,5 @@ jobs:
   ci-cms-pack:
     uses: ./.github/workflows/ts-ci.yaml
     with:
-      working_directory: 'packages/cms'
-      name: 'cms-pack'
+      working_directory: "packages/cms"
+      name: "cms-pack"

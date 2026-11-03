@@ -17,6 +17,7 @@
         "prepare": "pnpm build"
     },
     "devDependencies": {
+        "@typescript/typescript6": "^6.0.2",
         "typescript": "catalog:",
         "vite": "catalog:build",
         "vite-plugin-dts": "5.1.2",

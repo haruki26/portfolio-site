@@ -11,6 +11,11 @@ on:
     types: [opened, reopened, synchronize, ready_for_review]
     paths:
       - ".github/workflows/check-site.yaml"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - "biome.json"
+      - ".github/workflows/ts-ci.yaml"
       - "app/**/*.{ts,tsx}"
       - "app/package.json"
 
@@ -22,5 +27,5 @@ jobs:
   ci-site:
     uses: ./.github/workflows/ts-ci.yaml
     with:
-      working_directory: 'app'
-      name: 'site'
+      working_directory: "app"
+      name: "site"

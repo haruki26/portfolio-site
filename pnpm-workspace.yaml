@@ -16,7 +16,7 @@ catalogs:
   build:
     vite: 8.3.5
   test:
-    "@vitest/coverage-v8": 4.1.12
-    vitest: 4.1.12
+    "@vitest/coverage-v8": 5.1.0
+    vitest: 5.1.0
 
 minimumReleaseAge: 1440

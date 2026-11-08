@@ -21,8 +21,8 @@
         "@cloudflare/vite-plugin": "1.67.0",
         "@primer/octicons-react": "19.42.0",
         "@repo/cms": "workspace:*",
-        "@storybook/react-vite": "10.6.5",
-        "@tailwindcss/vite": "4.3.3",
+        "@storybook/react-vite": "10.6.6",
+        "@tailwindcss/vite": "4.3.4",
         "@tanstack/react-devtools": "0.10.14",
         "@tanstack/react-form": "1.33.5",
         "@tanstack/react-router": "1.170.46",
@@ -37,9 +37,9 @@
         "react": "19.3.1",
         "react-dom": "19.3.1",
         "react-syntax-highlighter": "16.1.2",
-        "storybook": "10.6.5",
+        "storybook": "10.6.6",
         "tailwind-merge": "3.7.0",
-        "tailwindcss": "4.3.3",
+        "tailwindcss": "4.3.4",
         "zod": "4.6.7"
     },
     "devDependencies": {

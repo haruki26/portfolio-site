@@ -163,7 +163,7 @@ importers:
         version: 3.6.0
     devDependencies:
       '@typescript/typescript6':
-        specifier: ^6.0.2
+        specifier: 6.0.2
         version: 6.0.2
       typescript:
         specifier: 'catalog:'

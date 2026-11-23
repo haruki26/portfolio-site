@@ -18,7 +18,7 @@
         "ci:type": "tsc --noEmit"
     },
     "dependencies": {
-        "@cloudflare/vite-plugin": "1.69.1",
+        "@cloudflare/vite-plugin": "1.70.1",
         "@primer/octicons-react": "19.42.0",
         "@repo/cms": "workspace:*",
         "@storybook/react-vite": "10.6.7",
@@ -33,7 +33,7 @@
         "clsx": "2.1.1",
         "dotenv": "18.0.10",
         "html-react-parser": "6.1.10",
-        "lucide-react": "1.72.0",
+        "lucide-react": "1.77.0",
         "react": "19.3.1",
         "react-dom": "19.3.1",
         "react-syntax-highlighter": "16.1.2",
@@ -59,6 +59,6 @@
         "typescript": "catalog:",
         "vite": "catalog:build",
         "vitest": "catalog:test",
-        "wrangler": "4.162.0"
+        "wrangler": "4.165.0"
     }
 }
